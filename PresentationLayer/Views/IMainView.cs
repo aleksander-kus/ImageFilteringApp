@@ -9,6 +9,7 @@ namespace PresentationLayer.Views
         public int CanvasWidth { get; }
         public int CanvasHeight { get; }
         public Image CanvasImage { set; }
+        public Image DefaultImage { get; }
         public void RedrawCanvas();
     }
 }

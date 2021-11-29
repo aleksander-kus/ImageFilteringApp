@@ -16,7 +16,7 @@ namespace PresentationLayer.Presenters
             this.view = view;
             this.viewLoader = viewLoader;
 
-            bitmap = new(this.view.CanvasWidth, this.view.CanvasHeight);
+            bitmap = new(view.DefaultImage);
             this.view.CanvasImage = bitmap;
             histogramParameters = new()
             {

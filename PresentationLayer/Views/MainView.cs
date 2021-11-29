@@ -8,9 +8,12 @@ namespace PresentationLayer.Views
     public partial class MainView : Form, IMainView
     {
         private MainPresenter presenter;
+        private readonly Image defaultImage;
         public MainView()
         {
             InitializeComponent();
+            // Default image source: https://upload.wikimedia.org/wikipedia/commons/thumb/2/22/Earth_Western_Hemisphere_transparent_background.png/1200px-Earth_Western_Hemisphere_transparent_background.png
+            defaultImage = Properties.Resources.earth;
         }
 
         public int CanvasWidth => pictureBox1.Width;
@@ -21,10 +24,9 @@ namespace PresentationLayer.Views
         public MainPresenter Presenter { set => presenter = value; }
         public Image CanvasImage { set => pictureBox1.Image = value; }
 
-        public void RedrawCanvas()
-        {
-            throw new NotImplementedException();
-        }
+        public Image DefaultImage => defaultImage;
+
+        public void RedrawCanvas() => pictureBox1.Invalidate();
 
         private void MainView_Load(object sender, EventArgs e)
         {
