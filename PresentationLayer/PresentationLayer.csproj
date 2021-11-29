@@ -100,5 +100,11 @@
   <ItemGroup>
     <None Include="Resources\earth.png" />
   </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\DomainLayer\DomainLayer.csproj">
+      <Project>{f4ca3fcd-6c86-4f3d-9353-6c798dfd8107}</Project>
+      <Name>DomainLayer</Name>
+    </ProjectReference>
+  </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

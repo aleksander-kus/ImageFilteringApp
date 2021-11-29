@@ -19,7 +19,7 @@ namespace PresentationLayer.Presenters
 
         private void GetHistogramsFromBitmap()
         {
-
+            DomainLayer.ByteBitmap bitmap = new ByteBitmap();
         }
     }
 }

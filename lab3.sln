@@ -6,6 +6,9 @@ MinimumVisualStudioVersion = 10.0.40219.1
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DomainLayer", "DomainLayer\DomainLayer.csproj", "{F4CA3FCD-6C86-4F3D-9353-6C798DFD8107}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "PresentationLayer", "PresentationLayer\PresentationLayer.csproj", "{CB0EBDA2-3797-4D1A-9D15-9504D935C5FF}"
+	ProjectSection(ProjectDependencies) = postProject
+		{F4CA3FCD-6C86-4F3D-9353-6C798DFD8107} = {F4CA3FCD-6C86-4F3D-9353-6C798DFD8107}
+	EndProjectSection
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution

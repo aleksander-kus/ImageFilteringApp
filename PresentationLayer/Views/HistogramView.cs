@@ -17,8 +17,8 @@ namespace PresentationLayer.Views
             rChart.Legends.Clear();
             gChart.Legends.Clear();
             bChart.Legends.Clear();
-            foreach(var point in rHistogram)
-                rChart.Series[0].Points.AddXY(point.X, point.Y);
+            foreach(var (X, Y) in rHistogram)
+                rChart.Series[0].Points.AddXY(X, Y);
         }
 
         public HistogramPresenter Presenter { set => presenter = value; }
