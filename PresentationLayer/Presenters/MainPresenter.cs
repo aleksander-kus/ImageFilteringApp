@@ -68,6 +68,7 @@ namespace PresentationLayer.Presenters
             view.RHistogram = rHistogram;
             view.GHistogram = gHistogram;
             view.BHistogram = bHistogram;
+            view.Function = filter.Function;
             view.CanvasImage = byteBitmap.Bitmap;
             view.RedrawCanvas();
             view.RedrawHistograms();

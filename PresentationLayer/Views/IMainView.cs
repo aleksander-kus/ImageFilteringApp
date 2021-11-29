@@ -8,6 +8,7 @@ namespace PresentationLayer.Views
         int[] RHistogram { set; }
         int[] GHistogram { set; }
         int[] BHistogram { set; }
+        int[] Function { set; }
         MainPresenter Presenter { set; }
         int CanvasWidth { get; }
         int CanvasHeight { get; }

@@ -13,6 +13,7 @@ namespace PresentationLayer.Views
         private int[] rHistogram;
         private int[] gHistogram;
         private int[] bHistogram;
+        private int[] function;
         private readonly Image defaultImage;
         public MainView()
         {
@@ -22,6 +23,10 @@ namespace PresentationLayer.Views
             rChart.Legends.Clear();
             gChart.Legends.Clear();
             bChart.Legends.Clear();
+            functionChart.Legends.Clear();
+            functionChart.ChartAreas[0].AxisY.Maximum = 255;
+            functionChart.ChartAreas[0].AxisX.MajorGrid.Enabled = false;
+            functionChart.ChartAreas[0].AxisY.MajorGrid.Enabled = false;
         }
 
         public int CanvasWidth => pictureBox1.Width;
@@ -35,6 +40,7 @@ namespace PresentationLayer.Views
         public int[] RHistogram { set => rHistogram = value; }
         public int[] GHistogram { set => gHistogram = value; }
         public int[] BHistogram { set => bHistogram = value; }
+        public int[] Function { set => function = value; }
 
         public void RedrawCanvas() => pictureBox1.Invalidate();
         public void RedrawHistograms()
@@ -42,6 +48,7 @@ namespace PresentationLayer.Views
             DrawHistogram(rChart, rHistogram);
             DrawHistogram(gChart, gHistogram);
             DrawHistogram(bChart, bHistogram);
+            DrawHistogram(functionChart, function);
         }
 
         private void DrawHistogram(Chart chart, int[] histogram)

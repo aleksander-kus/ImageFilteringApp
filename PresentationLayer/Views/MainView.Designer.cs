@@ -29,15 +29,18 @@ namespace PresentationLayer.Views
         /// </summary>
         private void InitializeComponent()
         {
-            System.Windows.Forms.DataVisualization.Charting.ChartArea chartArea7 = new System.Windows.Forms.DataVisualization.Charting.ChartArea();
-            System.Windows.Forms.DataVisualization.Charting.Legend legend7 = new System.Windows.Forms.DataVisualization.Charting.Legend();
-            System.Windows.Forms.DataVisualization.Charting.Series series7 = new System.Windows.Forms.DataVisualization.Charting.Series();
-            System.Windows.Forms.DataVisualization.Charting.ChartArea chartArea8 = new System.Windows.Forms.DataVisualization.Charting.ChartArea();
-            System.Windows.Forms.DataVisualization.Charting.Legend legend8 = new System.Windows.Forms.DataVisualization.Charting.Legend();
-            System.Windows.Forms.DataVisualization.Charting.Series series8 = new System.Windows.Forms.DataVisualization.Charting.Series();
-            System.Windows.Forms.DataVisualization.Charting.ChartArea chartArea9 = new System.Windows.Forms.DataVisualization.Charting.ChartArea();
-            System.Windows.Forms.DataVisualization.Charting.Legend legend9 = new System.Windows.Forms.DataVisualization.Charting.Legend();
-            System.Windows.Forms.DataVisualization.Charting.Series series9 = new System.Windows.Forms.DataVisualization.Charting.Series();
+            System.Windows.Forms.DataVisualization.Charting.ChartArea chartArea1 = new System.Windows.Forms.DataVisualization.Charting.ChartArea();
+            System.Windows.Forms.DataVisualization.Charting.Legend legend1 = new System.Windows.Forms.DataVisualization.Charting.Legend();
+            System.Windows.Forms.DataVisualization.Charting.Series series1 = new System.Windows.Forms.DataVisualization.Charting.Series();
+            System.Windows.Forms.DataVisualization.Charting.ChartArea chartArea2 = new System.Windows.Forms.DataVisualization.Charting.ChartArea();
+            System.Windows.Forms.DataVisualization.Charting.Legend legend2 = new System.Windows.Forms.DataVisualization.Charting.Legend();
+            System.Windows.Forms.DataVisualization.Charting.Series series2 = new System.Windows.Forms.DataVisualization.Charting.Series();
+            System.Windows.Forms.DataVisualization.Charting.ChartArea chartArea3 = new System.Windows.Forms.DataVisualization.Charting.ChartArea();
+            System.Windows.Forms.DataVisualization.Charting.Legend legend3 = new System.Windows.Forms.DataVisualization.Charting.Legend();
+            System.Windows.Forms.DataVisualization.Charting.Series series3 = new System.Windows.Forms.DataVisualization.Charting.Series();
+            System.Windows.Forms.DataVisualization.Charting.ChartArea chartArea4 = new System.Windows.Forms.DataVisualization.Charting.ChartArea();
+            System.Windows.Forms.DataVisualization.Charting.Legend legend4 = new System.Windows.Forms.DataVisualization.Charting.Legend();
+            System.Windows.Forms.DataVisualization.Charting.Series series4 = new System.Windows.Forms.DataVisualization.Charting.Series();
             this.mainTable = new System.Windows.Forms.TableLayoutPanel();
             this.tableLayoutPanel1 = new System.Windows.Forms.TableLayoutPanel();
             this.rChart = new System.Windows.Forms.DataVisualization.Charting.Chart();
@@ -59,6 +62,7 @@ namespace PresentationLayer.Views
             this.brushButton = new System.Windows.Forms.RadioButton();
             this.polygonButton = new System.Windows.Forms.RadioButton();
             this.pictureBox1 = new System.Windows.Forms.PictureBox();
+            this.functionChart = new System.Windows.Forms.DataVisualization.Charting.Chart();
             this.mainTable.SuspendLayout();
             this.tableLayoutPanel1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.rChart)).BeginInit();
@@ -71,6 +75,7 @@ namespace PresentationLayer.Views
             this.filterTable.SuspendLayout();
             this.panel2.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.functionChart)).BeginInit();
             this.SuspendLayout();
             // 
             // mainTable
@@ -110,54 +115,54 @@ namespace PresentationLayer.Views
             // 
             // rChart
             // 
-            chartArea7.Name = "ChartArea1";
-            this.rChart.ChartAreas.Add(chartArea7);
+            chartArea1.Name = "ChartArea1";
+            this.rChart.ChartAreas.Add(chartArea1);
             this.rChart.Dock = System.Windows.Forms.DockStyle.Fill;
-            legend7.Name = "Legend1";
-            this.rChart.Legends.Add(legend7);
+            legend1.Name = "Legend1";
+            this.rChart.Legends.Add(legend1);
             this.rChart.Location = new System.Drawing.Point(3, 3);
             this.rChart.Name = "rChart";
-            series7.ChartArea = "ChartArea1";
-            series7.Color = System.Drawing.Color.Red;
-            series7.Legend = "Legend1";
-            series7.Name = "Series1";
-            this.rChart.Series.Add(series7);
+            series1.ChartArea = "ChartArea1";
+            series1.Color = System.Drawing.Color.Red;
+            series1.Legend = "Legend1";
+            series1.Name = "Series1";
+            this.rChart.Series.Add(series1);
             this.rChart.Size = new System.Drawing.Size(263, 245);
             this.rChart.TabIndex = 0;
             this.rChart.Text = "chart1";
             // 
             // gChart
             // 
-            chartArea8.Name = "ChartArea1";
-            this.gChart.ChartAreas.Add(chartArea8);
+            chartArea2.Name = "ChartArea1";
+            this.gChart.ChartAreas.Add(chartArea2);
             this.gChart.Dock = System.Windows.Forms.DockStyle.Fill;
-            legend8.Name = "Legend1";
-            this.gChart.Legends.Add(legend8);
+            legend2.Name = "Legend1";
+            this.gChart.Legends.Add(legend2);
             this.gChart.Location = new System.Drawing.Point(3, 254);
             this.gChart.Name = "gChart";
-            series8.ChartArea = "ChartArea1";
-            series8.Color = System.Drawing.Color.Green;
-            series8.Legend = "Legend1";
-            series8.Name = "Series1";
-            this.gChart.Series.Add(series8);
+            series2.ChartArea = "ChartArea1";
+            series2.Color = System.Drawing.Color.Green;
+            series2.Legend = "Legend1";
+            series2.Name = "Series1";
+            this.gChart.Series.Add(series2);
             this.gChart.Size = new System.Drawing.Size(263, 245);
             this.gChart.TabIndex = 1;
             this.gChart.Text = "chart2";
             // 
             // bChart
             // 
-            chartArea9.Name = "ChartArea1";
-            this.bChart.ChartAreas.Add(chartArea9);
+            chartArea3.Name = "ChartArea1";
+            this.bChart.ChartAreas.Add(chartArea3);
             this.bChart.Dock = System.Windows.Forms.DockStyle.Fill;
-            legend9.Name = "Legend1";
-            this.bChart.Legends.Add(legend9);
+            legend3.Name = "Legend1";
+            this.bChart.Legends.Add(legend3);
             this.bChart.Location = new System.Drawing.Point(3, 505);
             this.bChart.Name = "bChart";
-            series9.ChartArea = "ChartArea1";
-            series9.Color = System.Drawing.Color.Blue;
-            series9.Legend = "Legend1";
-            series9.Name = "Series1";
-            this.bChart.Series.Add(series9);
+            series3.ChartArea = "ChartArea1";
+            series3.Color = System.Drawing.Color.Blue;
+            series3.Legend = "Legend1";
+            series3.Name = "Series1";
+            this.bChart.Series.Add(series3);
             this.bChart.Size = new System.Drawing.Size(263, 247);
             this.bChart.TabIndex = 2;
             this.bChart.Text = "chart3";
@@ -228,6 +233,7 @@ namespace PresentationLayer.Views
             this.filterTable.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 100F));
             this.filterTable.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 20F));
             this.filterTable.Controls.Add(this.panel2, 0, 0);
+            this.filterTable.Controls.Add(this.functionChart, 0, 1);
             this.filterTable.Dock = System.Windows.Forms.DockStyle.Fill;
             this.filterTable.Location = new System.Drawing.Point(3, 16);
             this.filterTable.Name = "filterTable";
@@ -346,6 +352,25 @@ namespace PresentationLayer.Views
             this.pictureBox1.TabIndex = 0;
             this.pictureBox1.TabStop = false;
             // 
+            // functionChart
+            // 
+            chartArea4.Name = "ChartArea1";
+            this.functionChart.ChartAreas.Add(chartArea4);
+            legend4.Name = "Legend1";
+            this.functionChart.Legends.Add(legend4);
+            this.functionChart.Location = new System.Drawing.Point(3, 255);
+            this.functionChart.Name = "functionChart";
+            series4.BackHatchStyle = System.Windows.Forms.DataVisualization.Charting.ChartHatchStyle.BackwardDiagonal;
+            series4.ChartArea = "ChartArea1";
+            series4.ChartType = System.Windows.Forms.DataVisualization.Charting.SeriesChartType.Line;
+            series4.Color = System.Drawing.Color.Black;
+            series4.Legend = "Legend1";
+            series4.Name = "Series1";
+            this.functionChart.Series.Add(series4);
+            this.functionChart.Size = new System.Drawing.Size(250, 246);
+            this.functionChart.TabIndex = 1;
+            this.functionChart.Text = "chart1";
+            // 
             // MainView
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -370,6 +395,7 @@ namespace PresentationLayer.Views
             this.panel2.ResumeLayout(false);
             this.panel2.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.functionChart)).EndInit();
             this.ResumeLayout(false);
 
         }
@@ -397,5 +423,6 @@ namespace PresentationLayer.Views
         private System.Windows.Forms.RadioButton polygonButton;
         private System.Windows.Forms.RadioButton brushButton;
         private System.Windows.Forms.RadioButton customButton;
+        private System.Windows.Forms.DataVisualization.Charting.Chart functionChart;
     }
 }
