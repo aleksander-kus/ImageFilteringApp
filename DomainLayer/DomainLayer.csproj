@@ -43,6 +43,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="ByteBitmap.cs" />
+    <Compile Include="Filters\BrightnessFilter.cs" />
     <Compile Include="Filters\Filter.cs" />
     <Compile Include="Filters\FilterMode.cs" />
     <Compile Include="Filters\NegationFilter.cs" />

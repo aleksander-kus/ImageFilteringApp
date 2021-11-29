@@ -28,6 +28,9 @@ namespace PresentationLayer.Presenters
                         case FilterMode.Negation:
                             filter = new NegationFilter();
                             break;
+                        case FilterMode.Brightness:
+                            filter = new BrightnessFilter(-100);
+                            break;
                     }
                     GetHistogramsFromBitmap();
                 }

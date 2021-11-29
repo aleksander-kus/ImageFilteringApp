@@ -54,8 +54,8 @@ namespace PresentationLayer.Views
         private void DrawHistogram(Chart chart, int[] histogram)
         {
             chart.Series[0].Points.Clear();
-            for (int i = 0; i < histogram.Length; ++i)
-                chart.Series[0].Points.AddXY(i + 1, histogram[i]);
+            for (int i = 1; i < histogram.Length - 1; ++i)
+                chart.Series[0].Points.AddXY(i, histogram[i]);
         }
 
         private void MainView_Load(object sender, EventArgs e)
@@ -73,6 +73,11 @@ namespace PresentationLayer.Views
         private void negationButton_Click(object sender, EventArgs e)
         {
             presenter.FilterMode = DomainLayer.Filters.FilterMode.Negation;
+        }
+
+        private void brightnessButton_Click(object sender, EventArgs e)
+        {
+            presenter.FilterMode = DomainLayer.Filters.FilterMode.Brightness;
         }
     }
 }
