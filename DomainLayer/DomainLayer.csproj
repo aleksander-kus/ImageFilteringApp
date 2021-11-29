@@ -43,8 +43,10 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="ByteBitmap.cs" />
-    <Compile Include="Filters\FilterFunction.cs" />
+    <Compile Include="Filters\Filter.cs" />
+    <Compile Include="Filters\FilterMode.cs" />
     <Compile Include="Filters\NegationFilter.cs" />
+    <Compile Include="Filters\NoFilter.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

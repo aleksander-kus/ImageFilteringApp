@@ -57,5 +57,15 @@ namespace PresentationLayer.Views
             MaximizeBox = false;
             MinimizeBox = false;
         }
+
+        private void noFilterButton_Click(object sender, EventArgs e)
+        {
+            presenter.FilterMode = DomainLayer.Filters.FilterMode.NoFilter;
+        }
+
+        private void negationButton_Click(object sender, EventArgs e)
+        {
+            presenter.FilterMode = DomainLayer.Filters.FilterMode.Negation;
+        }
     }
 }

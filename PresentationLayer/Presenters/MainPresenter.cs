@@ -12,6 +12,27 @@ namespace PresentationLayer.Presenters
         private readonly IMainView view;
         private readonly IViewLoader viewLoader;
         private Filter filter;
+        private FilterMode filterMode = FilterMode.NoFilter;
+        public FilterMode FilterMode
+        {
+            set
+            {
+                if(filterMode != value)
+                {
+                    filterMode = value;
+                    switch (filterMode)
+                    {
+                        case FilterMode.NoFilter:
+                            filter = new NoFilter();
+                            break;
+                        case FilterMode.Negation:
+                            filter = new NegationFilter();
+                            break;
+                    }
+                    GetHistogramsFromBitmap();
+                }
+            }
+        }
         public MainPresenter(IMainView view, IViewLoader viewLoader)
         {
             this.view = view;
@@ -19,7 +40,7 @@ namespace PresentationLayer.Presenters
 
             bitmap = new Bitmap(view.DefaultImage);
             this.view.CanvasImage = bitmap;
-            filter = new NegationFilter();
+            filter = new NoFilter();
             GetHistogramsFromBitmap();
         }
 
@@ -34,13 +55,12 @@ namespace PresentationLayer.Presenters
                 for (int j = 0; j < bitmap.Height; ++j)
                 {
                     Color color = byteBitmap.GetPixel(i, j);
+                    if (color.A != 255)
+                        continue;
                     Color newColor = filter.Transform(color);
-                    if (color.A == 255)
-                    {
-                        ++rHistogram[newColor.R];
-                        ++gHistogram[newColor.G];
-                        ++bHistogram[newColor.B];
-                    }
+                    ++rHistogram[newColor.R];
+                    ++gHistogram[newColor.G];
+                    ++bHistogram[newColor.B];
 
                     byteBitmap.SetPixel(i, j, newColor);
                 }
@@ -48,8 +68,8 @@ namespace PresentationLayer.Presenters
             view.RHistogram = rHistogram;
             view.GHistogram = gHistogram;
             view.BHistogram = bHistogram;
-            bitmap = byteBitmap.Bitmap;
-            view.CanvasImage = bitmap;
+            view.CanvasImage = byteBitmap.Bitmap;
+            view.RedrawCanvas();
             view.RedrawHistograms();
         }
     }
