@@ -13,13 +13,13 @@ namespace PresentationLayer.Views
             InitializeComponent();
         }
 
-        public int CanvasWidth => throw new NotImplementedException();
+        public int CanvasWidth => pictureBox1.Width;
 
-        public int CanvasHeight => throw new NotImplementedException();
+        public int CanvasHeight => pictureBox1.Height;
 
-        public Bitmap CanvasImage => throw new NotImplementedException();
 
         public MainPresenter Presenter { set => presenter = value; }
+        public Image CanvasImage { set => pictureBox1.Image = value; }
 
         public void RedrawCanvas()
         {
