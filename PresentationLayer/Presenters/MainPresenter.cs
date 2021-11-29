@@ -31,7 +31,7 @@ namespace PresentationLayer.Presenters
                 for (int j = 0; j < byteBitmap.Height; ++j)
                 {
                     Color c = byteBitmap.GetPixel(i, j);
-                    if (c.A == 0)
+                    if (c.A != 255)
                         continue;
                     ++rHistogram[c.R];
                     ++gHistogram[c.G];

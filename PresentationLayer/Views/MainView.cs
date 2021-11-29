@@ -49,7 +49,7 @@ namespace PresentationLayer.Views
         private void DrawHistogram(Chart chart, int[] histogram)
         {
             chart.Series[0].Points.Clear();
-            for (int i = 1; i < histogram.Length; ++i)
+            for (int i = 0; i < histogram.Length; ++i)
                 chart.Series[0].Points.AddXY(i, histogram[i]);
         }
 
