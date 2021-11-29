@@ -33,10 +33,10 @@ namespace PresentationLayer.Views
             // 
             // HistogramView
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 15F);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.Name = "HistogramView";
-            this.Size = new System.Drawing.Size(288, 815);
+            this.Size = new System.Drawing.Size(269, 755);
             this.ResumeLayout(false);
 
         }

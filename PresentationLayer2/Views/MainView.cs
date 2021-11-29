@@ -1,4 +1,5 @@
 ﻿using PresentationLayer.Presenters;
+using PresentationLayer.Properties;
 using System;
 using System.Drawing;
 using System.Windows.Forms;
@@ -13,7 +14,7 @@ namespace PresentationLayer.Views
         {
             InitializeComponent();
             // Default image source: https://upload.wikimedia.org/wikipedia/commons/thumb/2/22/Earth_Western_Hemisphere_transparent_background.png/1200px-Earth_Western_Hemisphere_transparent_background.png
-            defaultImage = Properties.Resources.earth;
+            defaultImage = Resources.earth;
         }
 
         public int CanvasWidth => pictureBox1.Width;

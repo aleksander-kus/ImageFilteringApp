@@ -49,7 +49,7 @@ namespace PresentationLayer.Views
             this.mainTable.Name = "mainTable";
             this.mainTable.RowCount = 1;
             this.mainTable.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 100F));
-            this.mainTable.Size = new System.Drawing.Size(1174, 821);
+            this.mainTable.Size = new System.Drawing.Size(1098, 761);
             this.mainTable.TabIndex = 0;
             // 
             // pictureBox1
@@ -57,23 +57,23 @@ namespace PresentationLayer.Views
             this.pictureBox1.Dock = System.Windows.Forms.DockStyle.Fill;
             this.pictureBox1.Location = new System.Drawing.Point(3, 3);
             this.pictureBox1.Name = "pictureBox1";
-            this.pictureBox1.Size = new System.Drawing.Size(581, 815);
+            this.pictureBox1.Size = new System.Drawing.Size(543, 755);
             this.pictureBox1.TabIndex = 0;
             this.pictureBox1.TabStop = false;
             // 
             // histogramView1
             // 
             this.histogramView1.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.histogramView1.Location = new System.Drawing.Point(883, 3);
+            this.histogramView1.Location = new System.Drawing.Point(826, 3);
             this.histogramView1.Name = "histogramView1";
-            this.histogramView1.Size = new System.Drawing.Size(288, 815);
+            this.histogramView1.Size = new System.Drawing.Size(269, 755);
             this.histogramView1.TabIndex = 1;
             // 
             // MainView
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 15F);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(1174, 821);
+            this.ClientSize = new System.Drawing.Size(1098, 761);
             this.Controls.Add(this.mainTable);
             this.Name = "MainView";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;

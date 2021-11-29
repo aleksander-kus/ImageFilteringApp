@@ -16,8 +16,8 @@ namespace PresentationLayer.ViewLoaders
 
         public void LoadHistogramView(HistogramParameters histogramParameters)
         {
-            HistogramView view = new();
-            HistogramPresenter presenter = new(view, histogramParameters);
+            HistogramView view = new HistogramView();
+            HistogramPresenter presenter = new HistogramPresenter(view, histogramParameters);
 
             view.Presenter = presenter;
 
@@ -26,8 +26,8 @@ namespace PresentationLayer.ViewLoaders
 
         public void LoadMainView()
         {
-            MainView view = new();
-            MainPresenter presenter = new(view, this);
+            MainView view = new MainView();
+            MainPresenter presenter = new MainPresenter(view, this);
 
             view.Presenter = presenter;
 
