@@ -29,10 +29,19 @@ namespace PresentationLayer.Views
         /// </summary>
         private void InitializeComponent()
         {
-            this.components = new System.ComponentModel.Container();
+            this.SuspendLayout();
+            // 
+            // MainView
+            // 
+            this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 15F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(800, 450);
-            this.Text = "MainView";
+            this.ClientSize = new System.Drawing.Size(1174, 821);
+            this.Name = "MainView";
+            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
+            this.Text = "Image function filtering program";
+            this.Load += new System.EventHandler(this.MainView_Load);
+            this.ResumeLayout(false);
+
         }
 
         #endregion

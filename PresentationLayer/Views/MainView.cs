@@ -25,5 +25,12 @@ namespace PresentationLayer.Views
         {
             throw new NotImplementedException();
         }
+
+        private void MainView_Load(object sender, EventArgs e)
+        {
+            FormBorderStyle = FormBorderStyle.FixedDialog;
+            MaximizeBox = false;
+            MinimizeBox = false;
+        }
     }
 }
