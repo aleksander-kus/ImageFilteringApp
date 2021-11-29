@@ -19,10 +19,10 @@ namespace PresentationLayer
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
 
-            ControlViewLoader loader = new();
+            ViewLoader loader = new();
             loader.LoadMainView();
 
-            Application.Run(loader.LoadedView as Form);
+            Application.Run(loader.LastLoadedForm);
         }
     }
 }

@@ -6,10 +6,13 @@ using System.Windows.Forms;
 
 namespace PresentationLayer.ViewLoaders
 {
-    class ControlViewLoader : IViewLoader
+    class ViewLoader : IViewLoader
     {
-        private Control loadedView;
-        public Control LoadedView => loadedView;
+        private Form lastLoadedForm;
+        public Form LastLoadedForm => lastLoadedForm;
+        
+        private Control lastLoadedControl;
+        public Control LastLoadedControl => lastLoadedControl;
 
         public void LoadHistogramView(HistogramParameters histogramParameters)
         {
@@ -18,7 +21,7 @@ namespace PresentationLayer.ViewLoaders
 
             view.Presenter = presenter;
 
-            LoadView(view);
+            LoadControl(view);
         }
 
         public void LoadMainView()
@@ -28,13 +31,18 @@ namespace PresentationLayer.ViewLoaders
 
             view.Presenter = presenter;
 
-            LoadView(view);
+            LoadForm(view);
         }
 
-        private void LoadView(Control view)
+        private void LoadForm(Form view)
         {
             view.Show();
-            loadedView = view;
+            lastLoadedForm = view;
+        }
+
+        private void LoadControl(Control view)
+        {
+            lastLoadedControl = view;
         }
     }
 }
