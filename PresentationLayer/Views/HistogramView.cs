@@ -9,6 +9,9 @@ namespace PresentationLayer.Views
         public HistogramView()
         {
             InitializeComponent();
+            rChart.Legends.Clear();
+            gChart.Legends.Clear();
+            bChart.Legends.Clear();
         }
 
         public HistogramPresenter Presenter { set => presenter = value; }
