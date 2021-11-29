@@ -25,9 +25,7 @@ namespace PresentationLayer.Views
         }
 
         public int CanvasWidth => pictureBox1.Width;
-
         public int CanvasHeight => pictureBox1.Height;
-
 
         public MainPresenter Presenter { set => presenter = value; }
         public Image CanvasImage { set => pictureBox1.Image = value; }
@@ -50,7 +48,7 @@ namespace PresentationLayer.Views
         {
             chart.Series[0].Points.Clear();
             for (int i = 0; i < histogram.Length; ++i)
-                chart.Series[0].Points.AddXY(i, histogram[i]);
+                chart.Series[0].Points.AddXY(i + 1, histogram[i]);
         }
 
         private void MainView_Load(object sender, EventArgs e)
