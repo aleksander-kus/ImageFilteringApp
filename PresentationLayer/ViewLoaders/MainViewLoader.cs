@@ -5,7 +5,7 @@ using System.Windows.Forms;
 
 namespace PresentationLayer.ViewLoaders
 {
-    class MainViewLoader
+    class MainViewLoader : IViewLoader
     {
         private Form loadedView;
         public Form LoadedView => loadedView;
@@ -13,7 +13,7 @@ namespace PresentationLayer.ViewLoaders
         public void LoadMainView()
         {
             MainView view = new();
-            MainPresenter presenter = new(view);
+            MainPresenter presenter = new(view, this);
 
             view.Presenter = presenter;
 
