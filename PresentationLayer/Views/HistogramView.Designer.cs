@@ -78,6 +78,8 @@ namespace PresentationLayer.Views
             series1.Color = System.Drawing.Color.Red;
             series1.Legend = "Legend1";
             series1.Name = "Series1";
+            series1.XValueMember = "X";
+            series1.YValueMembers = "Y";
             this.rChart.Series.Add(series1);
             this.rChart.Size = new System.Drawing.Size(263, 245);
             this.rChart.TabIndex = 0;
