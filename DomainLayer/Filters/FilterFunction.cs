@@ -6,6 +6,6 @@ namespace DomainLayer.Filters
     {
         protected int[] function = new int[256];
         public Color Transform(Color color) => 
-            Color.FromArgb(function[color.R], function[color.B], function[color.G]);
+            Color.FromArgb(function[color.R], function[color.G], function[color.B]);
     }
 }

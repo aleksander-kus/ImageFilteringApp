@@ -43,7 +43,6 @@ namespace PresentationLayer.Views
             this.rChart = new System.Windows.Forms.DataVisualization.Charting.Chart();
             this.gChart = new System.Windows.Forms.DataVisualization.Charting.Chart();
             this.bChart = new System.Windows.Forms.DataVisualization.Charting.Chart();
-            this.pictureBox1 = new System.Windows.Forms.PictureBox();
             this.menuTable = new System.Windows.Forms.TableLayoutPanel();
             this.groupBox1 = new System.Windows.Forms.GroupBox();
             this.panel1 = new System.Windows.Forms.Panel();
@@ -59,18 +58,19 @@ namespace PresentationLayer.Views
             this.customButton = new System.Windows.Forms.RadioButton();
             this.brushButton = new System.Windows.Forms.RadioButton();
             this.polygonButton = new System.Windows.Forms.RadioButton();
+            this.pictureBox1 = new System.Windows.Forms.PictureBox();
             this.mainTable.SuspendLayout();
             this.tableLayoutPanel1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.rChart)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.gChart)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.bChart)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             this.menuTable.SuspendLayout();
             this.groupBox1.SuspendLayout();
             this.panel1.SuspendLayout();
             this.groupBox2.SuspendLayout();
             this.filterTable.SuspendLayout();
             this.panel2.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             this.SuspendLayout();
             // 
             // mainTable
@@ -161,15 +161,6 @@ namespace PresentationLayer.Views
             this.bChart.Size = new System.Drawing.Size(263, 247);
             this.bChart.TabIndex = 2;
             this.bChart.Text = "chart3";
-            // 
-            // pictureBox1
-            // 
-            this.pictureBox1.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.pictureBox1.Location = new System.Drawing.Point(3, 3);
-            this.pictureBox1.Name = "pictureBox1";
-            this.pictureBox1.Size = new System.Drawing.Size(543, 755);
-            this.pictureBox1.TabIndex = 0;
-            this.pictureBox1.TabStop = false;
             // 
             // menuTable
             // 
@@ -263,6 +254,7 @@ namespace PresentationLayer.Views
             // noFilterButton
             // 
             this.noFilterButton.AutoSize = true;
+            this.noFilterButton.Checked = true;
             this.noFilterButton.Location = new System.Drawing.Point(4, 3);
             this.noFilterButton.Name = "noFilterButton";
             this.noFilterButton.Size = new System.Drawing.Size(61, 17);
@@ -278,7 +270,6 @@ namespace PresentationLayer.Views
             this.brightnessButton.Name = "brightnessButton";
             this.brightnessButton.Size = new System.Drawing.Size(74, 17);
             this.brightnessButton.TabIndex = 2;
-            this.brightnessButton.TabStop = true;
             this.brightnessButton.Text = "Brightness";
             this.brightnessButton.UseVisualStyleBackColor = true;
             // 
@@ -289,7 +280,6 @@ namespace PresentationLayer.Views
             this.contrastButton.Name = "contrastButton";
             this.contrastButton.Size = new System.Drawing.Size(64, 17);
             this.contrastButton.TabIndex = 3;
-            this.contrastButton.TabStop = true;
             this.contrastButton.Text = "Contrast";
             this.contrastButton.UseVisualStyleBackColor = true;
             // 
@@ -300,7 +290,6 @@ namespace PresentationLayer.Views
             this.negationButton.Name = "negationButton";
             this.negationButton.Size = new System.Drawing.Size(68, 17);
             this.negationButton.TabIndex = 4;
-            this.negationButton.TabStop = true;
             this.negationButton.Text = "Negation";
             this.negationButton.UseVisualStyleBackColor = true;
             // 
@@ -311,7 +300,6 @@ namespace PresentationLayer.Views
             this.gammaButton.Name = "gammaButton";
             this.gammaButton.Size = new System.Drawing.Size(111, 17);
             this.gammaButton.TabIndex = 5;
-            this.gammaButton.TabStop = true;
             this.gammaButton.Text = "Gamma correction";
             this.gammaButton.UseVisualStyleBackColor = true;
             // 
@@ -322,7 +310,6 @@ namespace PresentationLayer.Views
             this.customButton.Name = "customButton";
             this.customButton.Size = new System.Drawing.Size(101, 17);
             this.customButton.TabIndex = 6;
-            this.customButton.TabStop = true;
             this.customButton.Text = "Custom function";
             this.customButton.UseVisualStyleBackColor = true;
             // 
@@ -348,6 +335,15 @@ namespace PresentationLayer.Views
             this.polygonButton.Text = "Polygon";
             this.polygonButton.UseVisualStyleBackColor = true;
             // 
+            // pictureBox1
+            // 
+            this.pictureBox1.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.pictureBox1.Location = new System.Drawing.Point(3, 3);
+            this.pictureBox1.Name = "pictureBox1";
+            this.pictureBox1.Size = new System.Drawing.Size(543, 755);
+            this.pictureBox1.TabIndex = 0;
+            this.pictureBox1.TabStop = false;
+            // 
             // MainView
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -363,7 +359,6 @@ namespace PresentationLayer.Views
             ((System.ComponentModel.ISupportInitialize)(this.rChart)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.gChart)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.bChart)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
             this.menuTable.ResumeLayout(false);
             this.groupBox1.ResumeLayout(false);
             this.panel1.ResumeLayout(false);
@@ -372,6 +367,7 @@ namespace PresentationLayer.Views
             this.filterTable.ResumeLayout(false);
             this.panel2.ResumeLayout(false);
             this.panel2.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
             this.ResumeLayout(false);
 
         }

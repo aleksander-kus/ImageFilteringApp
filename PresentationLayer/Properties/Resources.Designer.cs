@@ -69,5 +69,15 @@ namespace PresentationLayer.Properties {
                 return ((System.Drawing.Bitmap)(obj));
             }
         }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap Taj_Mahal_Agra_India {
+            get {
+                object obj = ResourceManager.GetObject("Taj_Mahal_Agra_India", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
     }
 }
