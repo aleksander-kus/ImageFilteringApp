@@ -24,5 +24,10 @@ namespace PresentationLayer.Presenters
             };
             viewLoader.LoadHistogramView(histogramParameters);
         }
+
+        public void plsDo()
+        {
+            histogramParameters.Bitmap = bitmap;
+        }
     }
 }

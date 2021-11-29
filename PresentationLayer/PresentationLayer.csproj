@@ -47,7 +47,6 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="HistogramParameters.cs" />
     <Compile Include="Presenters\HistogramPresenter.cs" />
     <Compile Include="Presenters\MainPresenter.cs" />
     <Compile Include="Program.cs" />

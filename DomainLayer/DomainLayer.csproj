@@ -43,7 +43,6 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="ByteBitmap.cs" />
-    <Compile Include="Class1.cs" />
     <Compile Include="HistogramParameters.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>

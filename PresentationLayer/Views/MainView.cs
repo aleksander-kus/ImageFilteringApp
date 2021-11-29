@@ -35,5 +35,11 @@ namespace PresentationLayer.Views
             MaximizeBox = false;
             MinimizeBox = false;
         }
+
+        private void button1_Click(object sender, EventArgs e)
+        {
+            presenter.plsDo();
+            histogramView1.Refresh();
+        }
     }
 }

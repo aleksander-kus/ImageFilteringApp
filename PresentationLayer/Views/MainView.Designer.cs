@@ -32,6 +32,7 @@ namespace PresentationLayer.Views
             this.mainTable = new System.Windows.Forms.TableLayoutPanel();
             this.pictureBox1 = new System.Windows.Forms.PictureBox();
             this.histogramView1 = new PresentationLayer.Views.HistogramView();
+            this.button1 = new System.Windows.Forms.Button();
             this.mainTable.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             this.SuspendLayout();
@@ -44,6 +45,7 @@ namespace PresentationLayer.Views
             this.mainTable.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 25F));
             this.mainTable.Controls.Add(this.pictureBox1, 0, 0);
             this.mainTable.Controls.Add(this.histogramView1, 2, 0);
+            this.mainTable.Controls.Add(this.button1, 1, 0);
             this.mainTable.Dock = System.Windows.Forms.DockStyle.Fill;
             this.mainTable.Location = new System.Drawing.Point(0, 0);
             this.mainTable.Name = "mainTable";
@@ -69,6 +71,16 @@ namespace PresentationLayer.Views
             this.histogramView1.Size = new System.Drawing.Size(269, 755);
             this.histogramView1.TabIndex = 1;
             // 
+            // button1
+            // 
+            this.button1.Location = new System.Drawing.Point(552, 3);
+            this.button1.Name = "button1";
+            this.button1.Size = new System.Drawing.Size(75, 23);
+            this.button1.TabIndex = 2;
+            this.button1.Text = "button1";
+            this.button1.UseVisualStyleBackColor = true;
+            this.button1.Click += new System.EventHandler(this.button1_Click);
+            // 
             // MainView
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -90,5 +102,6 @@ namespace PresentationLayer.Views
         private System.Windows.Forms.TableLayoutPanel mainTable;
         private System.Windows.Forms.PictureBox pictureBox1;
         private HistogramView histogramView1;
+        private System.Windows.Forms.Button button1;
     }
 }
