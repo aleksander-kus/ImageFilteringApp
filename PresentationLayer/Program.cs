@@ -1,12 +1,10 @@
-using PresentationLayer.ViewLoaders;
+﻿using PresentationLayer.ViewLoaders;
 using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
 using System.Windows.Forms;
 
-namespace PresentationLayer
+namespace PresentationLayer2
 {
+
     static class Program
     {
         /// <summary>
@@ -15,14 +13,13 @@ namespace PresentationLayer
         [STAThread]
         static void Main()
         {
-            Application.SetHighDpiMode(HighDpiMode.SystemAware);
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
 
-            ControlViewLoader loader = new();
+            ViewLoader loader = new ViewLoader();
             loader.LoadMainView();
 
-            Application.Run(loader.LoadedView as Form);
+            Application.Run(loader.LastLoadedForm);
         }
     }
 }

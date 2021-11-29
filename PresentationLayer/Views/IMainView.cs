@@ -5,10 +5,15 @@ namespace PresentationLayer.Views
 {
     public interface IMainView
     {
-        public MainPresenter Presenter { set; }
-        public int CanvasWidth { get; }
-        public int CanvasHeight { get; }
-        public Bitmap CanvasImage { get; }
-        public void RedrawCanvas();
+        int[] RHistogram { set; }
+        int[] GHistogram { set; }
+        int[] BHistogram { set; }
+        MainPresenter Presenter { set; }
+        int CanvasWidth { get; }
+        int CanvasHeight { get; }
+        Image CanvasImage { set; }
+        Image DefaultImage { get; }
+        void RedrawCanvas();
+        void RedrawHistograms();
     }
 }
