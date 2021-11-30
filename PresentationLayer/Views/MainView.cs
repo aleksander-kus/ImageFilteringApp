@@ -1,4 +1,5 @@
-﻿using PresentationLayer.Presenters;
+﻿using DomainLayer.Filters;
+using PresentationLayer.Presenters;
 using PresentationLayer.Properties;
 using System;
 using System.Drawing;
@@ -15,6 +16,8 @@ namespace PresentationLayer.Views
         private int[] bHistogram;
         private int[] function;
         private readonly Image defaultImage;
+        private Image canvasImage;
+        private bool mouseDown = false;
         public MainView()
         {
             InitializeComponent();
@@ -33,7 +36,7 @@ namespace PresentationLayer.Views
         public int CanvasHeight => pictureBox1.Height;
 
         public MainPresenter Presenter { set => presenter = value; }
-        public Image CanvasImage { set => pictureBox1.Image = value; }
+        public Image CanvasImage { set => canvasImage = value; }
 
         public Image DefaultImage => defaultImage;
 
@@ -42,7 +45,7 @@ namespace PresentationLayer.Views
         public int[] BHistogram { set => bHistogram = value; }
         public int[] Function { set => function = value; }
 
-        public void RedrawCanvas() => pictureBox1.Invalidate();
+        public void RedrawCanvas() => bufferedPanel1.Invalidate();
         public void RedrawHistograms()
         {
             DrawHistogram(rChart, rHistogram);
@@ -53,6 +56,8 @@ namespace PresentationLayer.Views
 
         private void DrawHistogram(Chart chart, int[] histogram)
         {
+            if (histogram == null)
+                return;
             chart.Series[0].Points.Clear();
             for (int i = 1; i < histogram.Length - 1; ++i)
                 chart.Series[0].Points.AddXY(i, histogram[i]);
@@ -67,17 +72,69 @@ namespace PresentationLayer.Views
 
         private void noFilterButton_Click(object sender, EventArgs e)
         {
-            presenter.FilterMode = DomainLayer.Filters.FilterMode.NoFilter;
+            presenter.Filter = new NoFilter();
         }
 
         private void negationButton_Click(object sender, EventArgs e)
         {
-            presenter.FilterMode = DomainLayer.Filters.FilterMode.Negation;
+            presenter.Filter = new NegationFilter();
         }
 
         private void brightnessButton_Click(object sender, EventArgs e)
         {
-            presenter.FilterMode = DomainLayer.Filters.FilterMode.Brightness;
+            presenter.Filter = new BrightnessFilter(100);
+        }
+
+        private void brushButton_Click(object sender, EventArgs e)
+        {
+            presenter.SelectionMode = DomainLayer.SelectionMode.Brush;
+        }
+
+        private void polygonButton_Click(object sender, EventArgs e)
+        {
+            presenter.SelectionMode = DomainLayer.SelectionMode.Polygon;
+        }
+
+        private void wholeButton_Click(object sender, EventArgs e)
+        {
+            presenter.SelectionMode = DomainLayer.SelectionMode.Whole;
+        }
+
+        private void pictureBox1_MouseDown(object sender, MouseEventArgs e)
+        {
+            //presenter.RegisterCanvasClick(e.Location);
+        }
+
+        private void pictureBox1_MouseMove(object sender, MouseEventArgs e)
+        {
+
+        }
+
+        private void pictureBox1_MouseUp(object sender, MouseEventArgs e)
+        {
+            mouseDown = false;
+        }
+
+        private void bufferedPanel1_Paint(object sender, PaintEventArgs e)
+        {
+            e.Graphics.DrawImage(canvasImage, new Point(0, 0));
+        }
+
+        private void bufferedPanel1_MouseDown(object sender, MouseEventArgs e)
+        {
+            mouseDown = true;
+
+        }
+
+        private void bufferedPanel1_MouseMove(object sender, MouseEventArgs e)
+        {
+            if (mouseDown)
+                presenter.RegisterCanvasMouseMove(e.Location);
+        }
+
+        private void bufferedPanel1_MouseUp(object sender, MouseEventArgs e)
+        {
+            mouseDown = false;
         }
     }
 }
