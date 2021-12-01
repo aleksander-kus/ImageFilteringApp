@@ -468,6 +468,7 @@ namespace PresentationLayer.Views
             this.removePolygonButton.TabIndex = 4;
             this.removePolygonButton.Text = "Remove polygon";
             this.removePolygonButton.UseVisualStyleBackColor = true;
+            this.removePolygonButton.Click += new System.EventHandler(this.removePolygonButton_Click);
             // 
             // bufferedPanel1
             // 

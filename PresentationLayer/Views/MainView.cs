@@ -155,5 +155,10 @@ namespace PresentationLayer.Views
         {
             presenter.AddingPolygon = true;
         }
+
+        private void removePolygonButton_Click(object sender, EventArgs e)
+        {
+            presenter.RemovingPolygon = true;
+        }
     }
 }

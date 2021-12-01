@@ -14,14 +14,16 @@ namespace PresentationLayer.Presenters
         private Bitmap bitmap;
         private Bitmap exportBitmap;
         private bool[,] selected;
-        private bool addingPolygon = false;
         private readonly IMainView view;
         private readonly IViewLoader viewLoader;
         private const int BRUSH_RADIUS = 50;
         private Filter filter;
         private List<Polygon> polygons { get; set; } = new List<Polygon>();
         private List<Point> addingPolygonVertices { get; set; }
+        private bool addingPolygon = false;
+        private bool removingPolygon = false;
         public bool AddingPolygon { get => addingPolygon; set => addingPolygon = value; }
+        public bool RemovingPolygon { get => removingPolygon; set => removingPolygon = value; }
         public Filter Filter
         {
             set
@@ -53,6 +55,7 @@ namespace PresentationLayer.Presenters
                             polygons.Clear();
                             addingPolygonVertices = null;
                             addingPolygon = false;
+                            removingPolygon = false;
                             UpdateBitmap();
                             break;
                     }
@@ -85,7 +88,17 @@ namespace PresentationLayer.Presenters
                     addingPolygonVertices = new List<Point>();
                 if(AddPointToPolygon(mousePosition))  // if a new polygon was added, add points inside to selected array
                 {
-                    ScanLineColoring(polygons.Last());
+                    ScanLineSelecting(polygons.Last(), true);
+                }
+                UpdateBitmap();
+            }
+            else if (selectionMode == SelectionMode.Polygon && removingPolygon)
+            {
+                int id;
+                if((id = IsPolygonCenterClicked(mousePosition)) != -1)
+                {
+                    ScanLineSelecting(polygons[id], false);
+                    polygons.RemoveAt(id);
                 }
                 UpdateBitmap();
             }
@@ -125,6 +138,13 @@ namespace PresentationLayer.Presenters
                         selected[i, j] = true;
         }
 
+        public int IsPolygonCenterClicked(Point mousePosition)
+        {
+            for (int i = 0; i < polygons.Count; ++i)
+                if (IsPointClicked(polygons[i].Center, mousePosition))
+                    return i;
+            return -1;
+        }
         private static int SquaredDistance(Point p1, Point p2) => (p2.X - p1.X) * (p2.X - p1.X) + (p2.Y - p1.Y) * (p2.Y - p1.Y);
         private static bool IsPointClicked(Point point, Point mousePosition, int epsilon = 10) => SquaredDistance(point, mousePosition) <= epsilon * epsilon;
         private void SelectAll()
@@ -165,6 +185,8 @@ namespace PresentationLayer.Presenters
                     g.DrawLine(p, polygon.VertexList[i - 1], polygon.VertexList[i % polygon.VertexList.Count]);
                     DrawVertice(polygon.VertexList[i % polygon.VertexList.Count], Color.Red);
                 }
+                DrawVertice(polygon.Center, Color.Red);
+
             }
         }
 
@@ -218,7 +240,7 @@ namespace PresentationLayer.Presenters
             view.RedrawCanvas();
         }
 
-        private void ScanLineColoring(Polygon polygon)
+        private void ScanLineSelecting(Polygon polygon, bool select)
         {
             var vertexList = polygon.VertexList;
             (double X, double Y, int index)[] P = vertexList.Select((point, index) => ((double)point.X, (double)point.Y, index)).OrderBy(shape => shape.Item2).ToArray();
@@ -261,12 +283,8 @@ namespace PresentationLayer.Presenters
                 AET.Sort((item1, item2) => item1.x.CompareTo(item2.x));
                 // Fill pixels between every pair of edges
                 for (int i = 0; i < AET.Count; i += 2)
-                {
                     for (int x = (int)Math.Round(AET[i].x); x < AET[i + 1].x; ++x)
-                    {
-                        selected[x, y] = true;
-                    }
-                }
+                        selected[x, y] = select;
                 // Update the x value for each edge
                 for (int i = 0; i < AET.Count; ++i)
                 {

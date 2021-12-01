@@ -13,6 +13,8 @@ namespace DomainLayer
         public Polygon(List<Point> vertices = null)
         {
             VertexList = new List<Point>(vertices);
+            if (VertexList != null)
+                RecalculateCenterPoint();
         }
 
         public void RecalculateCenterPoint()
