@@ -82,7 +82,11 @@ namespace PresentationLayer.Views
 
         private void brightnessButton_Click(object sender, EventArgs e)
         {
-            presenter.Filter = new BrightnessFilter(100);
+            brightnessBox_ValueChanged(null, null);
+        }
+        private void gammaButton_Click(object sender, EventArgs e)
+        {
+            presenter.Filter = new GammaFilter((double)gammaBox.Value);
         }
 
         private void brushButton_Click(object sender, EventArgs e)
@@ -120,6 +124,29 @@ namespace PresentationLayer.Views
         private void bufferedPanel1_MouseUp(object sender, MouseEventArgs e)
         {
             mouseDown = false;
+        }
+
+        private void gammaBox_ValueChanged(object sender, EventArgs e)
+        {
+            if (gammaButton.Checked)
+                presenter.Filter = new GammaFilter((double)gammaBox.Value);
+        }
+
+        private void brightnessBox_ValueChanged(object sender, EventArgs e)
+        {
+            if (brightnessButton.Checked)
+                presenter.Filter = new BrightnessFilter((int)brightnessBox.Value);
+        }
+
+        private void contrastButton_Click(object sender, EventArgs e)
+        {
+            contrastBox_ValueChanged(null, null);
+        }
+
+        private void contrastBox_ValueChanged(object sender, EventArgs e)
+        {
+            if(contrastButton.Checked)
+                presenter.Filter = new ContrastFilter((int)contrastBox.Value);
         }
     }
 }

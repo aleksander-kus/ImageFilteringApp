@@ -29,18 +29,18 @@ namespace PresentationLayer.Views
         /// </summary>
         private void InitializeComponent()
         {
-            System.Windows.Forms.DataVisualization.Charting.ChartArea chartArea1 = new System.Windows.Forms.DataVisualization.Charting.ChartArea();
-            System.Windows.Forms.DataVisualization.Charting.Legend legend1 = new System.Windows.Forms.DataVisualization.Charting.Legend();
-            System.Windows.Forms.DataVisualization.Charting.Series series1 = new System.Windows.Forms.DataVisualization.Charting.Series();
-            System.Windows.Forms.DataVisualization.Charting.ChartArea chartArea2 = new System.Windows.Forms.DataVisualization.Charting.ChartArea();
-            System.Windows.Forms.DataVisualization.Charting.Legend legend2 = new System.Windows.Forms.DataVisualization.Charting.Legend();
-            System.Windows.Forms.DataVisualization.Charting.Series series2 = new System.Windows.Forms.DataVisualization.Charting.Series();
-            System.Windows.Forms.DataVisualization.Charting.ChartArea chartArea3 = new System.Windows.Forms.DataVisualization.Charting.ChartArea();
-            System.Windows.Forms.DataVisualization.Charting.Legend legend3 = new System.Windows.Forms.DataVisualization.Charting.Legend();
-            System.Windows.Forms.DataVisualization.Charting.Series series3 = new System.Windows.Forms.DataVisualization.Charting.Series();
-            System.Windows.Forms.DataVisualization.Charting.ChartArea chartArea4 = new System.Windows.Forms.DataVisualization.Charting.ChartArea();
-            System.Windows.Forms.DataVisualization.Charting.Legend legend4 = new System.Windows.Forms.DataVisualization.Charting.Legend();
-            System.Windows.Forms.DataVisualization.Charting.Series series4 = new System.Windows.Forms.DataVisualization.Charting.Series();
+            System.Windows.Forms.DataVisualization.Charting.ChartArea chartArea38 = new System.Windows.Forms.DataVisualization.Charting.ChartArea();
+            System.Windows.Forms.DataVisualization.Charting.Legend legend38 = new System.Windows.Forms.DataVisualization.Charting.Legend();
+            System.Windows.Forms.DataVisualization.Charting.Series series38 = new System.Windows.Forms.DataVisualization.Charting.Series();
+            System.Windows.Forms.DataVisualization.Charting.ChartArea chartArea39 = new System.Windows.Forms.DataVisualization.Charting.ChartArea();
+            System.Windows.Forms.DataVisualization.Charting.Legend legend39 = new System.Windows.Forms.DataVisualization.Charting.Legend();
+            System.Windows.Forms.DataVisualization.Charting.Series series39 = new System.Windows.Forms.DataVisualization.Charting.Series();
+            System.Windows.Forms.DataVisualization.Charting.ChartArea chartArea40 = new System.Windows.Forms.DataVisualization.Charting.ChartArea();
+            System.Windows.Forms.DataVisualization.Charting.Legend legend40 = new System.Windows.Forms.DataVisualization.Charting.Legend();
+            System.Windows.Forms.DataVisualization.Charting.Series series40 = new System.Windows.Forms.DataVisualization.Charting.Series();
+            System.Windows.Forms.DataVisualization.Charting.ChartArea chartArea37 = new System.Windows.Forms.DataVisualization.Charting.ChartArea();
+            System.Windows.Forms.DataVisualization.Charting.Legend legend37 = new System.Windows.Forms.DataVisualization.Charting.Legend();
+            System.Windows.Forms.DataVisualization.Charting.Series series37 = new System.Windows.Forms.DataVisualization.Charting.Series();
             this.mainTable = new System.Windows.Forms.TableLayoutPanel();
             this.tableLayoutPanel1 = new System.Windows.Forms.TableLayoutPanel();
             this.rChart = new System.Windows.Forms.DataVisualization.Charting.Chart();
@@ -63,6 +63,9 @@ namespace PresentationLayer.Views
             this.noFilterButton = new System.Windows.Forms.RadioButton();
             this.functionChart = new System.Windows.Forms.DataVisualization.Charting.Chart();
             this.bufferedPanel1 = new PresentationLayer.Controls.BufferedPanel();
+            this.gammaBox = new System.Windows.Forms.NumericUpDown();
+            this.brightnessBox = new System.Windows.Forms.NumericUpDown();
+            this.contrastBox = new System.Windows.Forms.NumericUpDown();
             this.mainTable.SuspendLayout();
             this.tableLayoutPanel1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.rChart)).BeginInit();
@@ -75,6 +78,9 @@ namespace PresentationLayer.Views
             this.filterTable.SuspendLayout();
             this.pictureBox1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.functionChart)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.gammaBox)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.brightnessBox)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.contrastBox)).BeginInit();
             this.SuspendLayout();
             // 
             // mainTable
@@ -114,54 +120,54 @@ namespace PresentationLayer.Views
             // 
             // rChart
             // 
-            chartArea1.Name = "ChartArea1";
-            this.rChart.ChartAreas.Add(chartArea1);
+            chartArea38.Name = "ChartArea1";
+            this.rChart.ChartAreas.Add(chartArea38);
             this.rChart.Dock = System.Windows.Forms.DockStyle.Fill;
-            legend1.Name = "Legend1";
-            this.rChart.Legends.Add(legend1);
+            legend38.Name = "Legend1";
+            this.rChart.Legends.Add(legend38);
             this.rChart.Location = new System.Drawing.Point(3, 3);
             this.rChart.Name = "rChart";
-            series1.ChartArea = "ChartArea1";
-            series1.Color = System.Drawing.Color.Red;
-            series1.Legend = "Legend1";
-            series1.Name = "Series1";
-            this.rChart.Series.Add(series1);
+            series38.ChartArea = "ChartArea1";
+            series38.Color = System.Drawing.Color.Red;
+            series38.Legend = "Legend1";
+            series38.Name = "Series1";
+            this.rChart.Series.Add(series38);
             this.rChart.Size = new System.Drawing.Size(263, 245);
             this.rChart.TabIndex = 0;
             this.rChart.Text = "chart1";
             // 
             // gChart
             // 
-            chartArea2.Name = "ChartArea1";
-            this.gChart.ChartAreas.Add(chartArea2);
+            chartArea39.Name = "ChartArea1";
+            this.gChart.ChartAreas.Add(chartArea39);
             this.gChart.Dock = System.Windows.Forms.DockStyle.Fill;
-            legend2.Name = "Legend1";
-            this.gChart.Legends.Add(legend2);
+            legend39.Name = "Legend1";
+            this.gChart.Legends.Add(legend39);
             this.gChart.Location = new System.Drawing.Point(3, 254);
             this.gChart.Name = "gChart";
-            series2.ChartArea = "ChartArea1";
-            series2.Color = System.Drawing.Color.Green;
-            series2.Legend = "Legend1";
-            series2.Name = "Series1";
-            this.gChart.Series.Add(series2);
+            series39.ChartArea = "ChartArea1";
+            series39.Color = System.Drawing.Color.Green;
+            series39.Legend = "Legend1";
+            series39.Name = "Series1";
+            this.gChart.Series.Add(series39);
             this.gChart.Size = new System.Drawing.Size(263, 245);
             this.gChart.TabIndex = 1;
             this.gChart.Text = "chart2";
             // 
             // bChart
             // 
-            chartArea3.Name = "ChartArea1";
-            this.bChart.ChartAreas.Add(chartArea3);
+            chartArea40.Name = "ChartArea1";
+            this.bChart.ChartAreas.Add(chartArea40);
             this.bChart.Dock = System.Windows.Forms.DockStyle.Fill;
-            legend3.Name = "Legend1";
-            this.bChart.Legends.Add(legend3);
+            legend40.Name = "Legend1";
+            this.bChart.Legends.Add(legend40);
             this.bChart.Location = new System.Drawing.Point(3, 505);
             this.bChart.Name = "bChart";
-            series3.ChartArea = "ChartArea1";
-            series3.Color = System.Drawing.Color.Blue;
-            series3.Legend = "Legend1";
-            series3.Name = "Series1";
-            this.bChart.Series.Add(series3);
+            series40.ChartArea = "ChartArea1";
+            series40.Color = System.Drawing.Color.Blue;
+            series40.Legend = "Legend1";
+            series40.Name = "Series1";
+            this.bChart.Series.Add(series40);
             this.bChart.Size = new System.Drawing.Size(263, 247);
             this.bChart.TabIndex = 2;
             this.bChart.Text = "chart3";
@@ -269,6 +275,9 @@ namespace PresentationLayer.Views
             // 
             // pictureBox1
             // 
+            this.pictureBox1.Controls.Add(this.contrastBox);
+            this.pictureBox1.Controls.Add(this.brightnessBox);
+            this.pictureBox1.Controls.Add(this.gammaBox);
             this.pictureBox1.Controls.Add(this.customButton);
             this.pictureBox1.Controls.Add(this.gammaButton);
             this.pictureBox1.Controls.Add(this.negationButton);
@@ -284,7 +293,7 @@ namespace PresentationLayer.Views
             // customButton
             // 
             this.customButton.AutoSize = true;
-            this.customButton.Location = new System.Drawing.Point(4, 119);
+            this.customButton.Location = new System.Drawing.Point(3, 198);
             this.customButton.Name = "customButton";
             this.customButton.Size = new System.Drawing.Size(101, 17);
             this.customButton.TabIndex = 6;
@@ -294,12 +303,13 @@ namespace PresentationLayer.Views
             // gammaButton
             // 
             this.gammaButton.AutoSize = true;
-            this.gammaButton.Location = new System.Drawing.Point(4, 72);
+            this.gammaButton.Location = new System.Drawing.Point(4, 98);
             this.gammaButton.Name = "gammaButton";
             this.gammaButton.Size = new System.Drawing.Size(111, 17);
             this.gammaButton.TabIndex = 5;
             this.gammaButton.Text = "Gamma correction";
             this.gammaButton.UseVisualStyleBackColor = true;
+            this.gammaButton.Click += new System.EventHandler(this.gammaButton_Click);
             // 
             // negationButton
             // 
@@ -315,12 +325,13 @@ namespace PresentationLayer.Views
             // contrastButton
             // 
             this.contrastButton.AutoSize = true;
-            this.contrastButton.Location = new System.Drawing.Point(4, 95);
+            this.contrastButton.Location = new System.Drawing.Point(4, 149);
             this.contrastButton.Name = "contrastButton";
             this.contrastButton.Size = new System.Drawing.Size(64, 17);
             this.contrastButton.TabIndex = 3;
             this.contrastButton.Text = "Contrast";
             this.contrastButton.UseVisualStyleBackColor = true;
+            this.contrastButton.Click += new System.EventHandler(this.contrastButton_Click);
             // 
             // brightnessButton
             // 
@@ -348,19 +359,19 @@ namespace PresentationLayer.Views
             // 
             // functionChart
             // 
-            chartArea4.Name = "ChartArea1";
-            this.functionChart.ChartAreas.Add(chartArea4);
-            legend4.Name = "Legend1";
-            this.functionChart.Legends.Add(legend4);
+            chartArea37.Name = "ChartArea1";
+            this.functionChart.ChartAreas.Add(chartArea37);
+            legend37.Name = "Legend1";
+            this.functionChart.Legends.Add(legend37);
             this.functionChart.Location = new System.Drawing.Point(3, 255);
             this.functionChart.Name = "functionChart";
-            series4.BackHatchStyle = System.Windows.Forms.DataVisualization.Charting.ChartHatchStyle.BackwardDiagonal;
-            series4.ChartArea = "ChartArea1";
-            series4.ChartType = System.Windows.Forms.DataVisualization.Charting.SeriesChartType.Line;
-            series4.Color = System.Drawing.Color.Black;
-            series4.Legend = "Legend1";
-            series4.Name = "Series1";
-            this.functionChart.Series.Add(series4);
+            series37.BackHatchStyle = System.Windows.Forms.DataVisualization.Charting.ChartHatchStyle.BackwardDiagonal;
+            series37.ChartArea = "ChartArea1";
+            series37.ChartType = System.Windows.Forms.DataVisualization.Charting.SeriesChartType.Line;
+            series37.Color = System.Drawing.Color.Black;
+            series37.Legend = "Legend1";
+            series37.Name = "Series1";
+            this.functionChart.Series.Add(series37);
             this.functionChart.Size = new System.Drawing.Size(250, 246);
             this.functionChart.TabIndex = 1;
             this.functionChart.Text = "chart1";
@@ -376,6 +387,76 @@ namespace PresentationLayer.Views
             this.bufferedPanel1.MouseDown += new System.Windows.Forms.MouseEventHandler(this.bufferedPanel1_MouseDown);
             this.bufferedPanel1.MouseMove += new System.Windows.Forms.MouseEventHandler(this.bufferedPanel1_MouseMove);
             this.bufferedPanel1.MouseUp += new System.Windows.Forms.MouseEventHandler(this.bufferedPanel1_MouseUp);
+            // 
+            // gammaBox
+            // 
+            this.gammaBox.DecimalPlaces = 2;
+            this.gammaBox.Increment = new decimal(new int[] {
+            1,
+            0,
+            0,
+            65536});
+            this.gammaBox.Location = new System.Drawing.Point(20, 123);
+            this.gammaBox.Name = "gammaBox";
+            this.gammaBox.Size = new System.Drawing.Size(120, 20);
+            this.gammaBox.TabIndex = 7;
+            this.gammaBox.Value = new decimal(new int[] {
+            1,
+            0,
+            0,
+            0});
+            this.gammaBox.ValueChanged += new System.EventHandler(this.gammaBox_ValueChanged);
+            // 
+            // brightnessBox
+            // 
+            this.brightnessBox.Increment = new decimal(new int[] {
+            5,
+            0,
+            0,
+            0});
+            this.brightnessBox.Location = new System.Drawing.Point(20, 72);
+            this.brightnessBox.Maximum = new decimal(new int[] {
+            255,
+            0,
+            0,
+            0});
+            this.brightnessBox.Minimum = new decimal(new int[] {
+            255,
+            0,
+            0,
+            -2147483648});
+            this.brightnessBox.Name = "brightnessBox";
+            this.brightnessBox.Size = new System.Drawing.Size(120, 20);
+            this.brightnessBox.TabIndex = 8;
+            this.brightnessBox.Value = new decimal(new int[] {
+            10,
+            0,
+            0,
+            0});
+            this.brightnessBox.ValueChanged += new System.EventHandler(this.brightnessBox_ValueChanged);
+            // 
+            // contrastBox
+            // 
+            this.contrastBox.Increment = new decimal(new int[] {
+            5,
+            0,
+            0,
+            0});
+            this.contrastBox.Location = new System.Drawing.Point(20, 172);
+            this.contrastBox.Maximum = new decimal(new int[] {
+            122,
+            0,
+            0,
+            0});
+            this.contrastBox.Name = "contrastBox";
+            this.contrastBox.Size = new System.Drawing.Size(120, 20);
+            this.contrastBox.TabIndex = 9;
+            this.contrastBox.Value = new decimal(new int[] {
+            10,
+            0,
+            0,
+            0});
+            this.contrastBox.ValueChanged += new System.EventHandler(this.contrastBox_ValueChanged);
             // 
             // MainView
             // 
@@ -401,6 +482,9 @@ namespace PresentationLayer.Views
             this.pictureBox1.ResumeLayout(false);
             this.pictureBox1.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.functionChart)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.gammaBox)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.brightnessBox)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.contrastBox)).EndInit();
             this.ResumeLayout(false);
 
         }
@@ -429,5 +513,8 @@ namespace PresentationLayer.Views
         private System.Windows.Forms.RadioButton customButton;
         private System.Windows.Forms.DataVisualization.Charting.Chart functionChart;
         private Controls.BufferedPanel bufferedPanel1;
+        private System.Windows.Forms.NumericUpDown contrastBox;
+        private System.Windows.Forms.NumericUpDown brightnessBox;
+        private System.Windows.Forms.NumericUpDown gammaBox;
     }
 }
