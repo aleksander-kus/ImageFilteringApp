@@ -150,5 +150,10 @@ namespace PresentationLayer.Views
             if(contrastButton.Checked)
                 presenter.Filter = new ContrastFilter((int)contrastBox.Value);
         }
+
+        private void addPolygonButton_Click(object sender, EventArgs e)
+        {
+            presenter.AddingPolygon = true;
+        }
     }
 }

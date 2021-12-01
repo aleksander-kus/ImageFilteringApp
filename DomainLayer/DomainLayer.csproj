@@ -49,6 +49,7 @@
     <Compile Include="Filters\GammaFilter.cs" />
     <Compile Include="Filters\NegationFilter.cs" />
     <Compile Include="Filters\NoFilter.cs" />
+    <Compile Include="Polygon.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="SelectionMode.cs" />
   </ItemGroup>
