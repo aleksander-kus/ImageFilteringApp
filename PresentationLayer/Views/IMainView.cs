@@ -1,13 +1,12 @@
-﻿using PresentationLayer.Presenters;
+﻿using DomainLayer;
+using PresentationLayer.Presenters;
 using System.Drawing;
 
 namespace PresentationLayer.Views
 {
     public interface IMainView
     {
-        int[] RHistogram { set; }
-        int[] GHistogram { set; }
-        int[] BHistogram { set; }
+        ColorHistograms ColorHistograms { set; }
         int[] Function { set; }
         MainPresenter Presenter { set; }
         int CanvasWidth { get; }

@@ -1,8 +1,10 @@
 ﻿using DomainLayer;
 using DomainLayer.Filters;
+using InfrastructureLayer;
 using PresentationLayer.ViewLoaders;
 using PresentationLayer.Views;
 using System;
+using System.Collections.Generic;
 using System.Drawing;
 using System.Linq;
 
@@ -11,18 +13,26 @@ namespace PresentationLayer.Presenters
     public class MainPresenter
     {
         private Bitmap bitmap;
-        private bool[,] selected;
+        private PolygonData polygonData;
+        private FilterParameters filterParameters;
+        private ColorHistograms colorHistograms;
         private readonly IMainView view;
         private readonly IViewLoader viewLoader;
         private const int BRUSH_RADIUS = 50;
-        private Filter filter;
+
+
+        public bool AddingPolygon { get => polygonData.AddingPolygon; set => polygonData.AddingPolygon = value; }
+        public bool RemovingPolygon { get => polygonData.RemovingPolygon; set => polygonData.RemovingPolygon = value; }
+
+        private readonly ISelectingService selectingService;
+        private readonly IDrawingService drawingService;
         public Filter Filter
         {
             set
             {
-                if(!filter.Function.SequenceEqual(value.Function))
+                if(!filterParameters.filter.Function.SequenceEqual(value.Function))
                 {
-                    filter = value;
+                    filterParameters.filter = value;
                     UpdateBitmap();
                 }
             }
@@ -38,12 +48,13 @@ namespace PresentationLayer.Presenters
                     switch(selectionMode)
                     {
                         case SelectionMode.Whole:
-                            SelectAll();
+                            selectingService.SelectAll(true);
                             UpdateBitmap();
                             break;
                         case SelectionMode.Brush:
                         case SelectionMode.Polygon:
-                            UnselectAll();
+                            selectingService.SelectAll(false);
+                            polygonData.Clear();
                             UpdateBitmap();
                             break;
                     }
@@ -57,9 +68,17 @@ namespace PresentationLayer.Presenters
 
             bitmap = new Bitmap(view.DefaultImage);
             this.view.CanvasImage = bitmap;
-            selected = new bool[bitmap.Width, bitmap.Height];
-            SelectAll();
-            filter = new NoFilter();
+            colorHistograms = new ColorHistograms();
+            this.view.ColorHistograms = colorHistograms;
+            filterParameters = new FilterParameters()
+            {
+                selected = new bool[bitmap.Width, bitmap.Height],
+                filter = new NoFilter()
+            };
+            selectingService = new SelectingService(filterParameters.selected);
+            selectingService.SelectAll(true);
+            polygonData = new PolygonData();
+            drawingService = new DrawingService(bitmap, polygonData, colorHistograms, filterParameters);
             UpdateBitmap();
         }
 
@@ -67,73 +86,72 @@ namespace PresentationLayer.Presenters
         {
             if(selectionMode == SelectionMode.Brush)
             {
-                SelectBrush(mousePosition);
+                selectingService.SelectBrush(mousePosition, BRUSH_RADIUS);
                 UpdateBitmap();
             }
+            else if (selectionMode == SelectionMode.Polygon && polygonData.AddingPolygon)
+            {
+                if (polygonData.addingPolygonVertices == null)
+                    polygonData.addingPolygonVertices = new List<Point>();
+                if(AddPointToPolygon(mousePosition))  // if a new polygon was added, add points inside to selected array
+                {
+                    selectingService.SelectPolygon(polygonData.polygons.Last(), true);
+                }
+                UpdateBitmap();
+            }
+            else if (selectionMode == SelectionMode.Polygon && polygonData.RemovingPolygon)
+            {
+                int id;
+                if((id = IsPolygonCenterClicked(mousePosition)) != -1)
+                {
+                    selectingService.SelectPolygon(polygonData.polygons[id], false);
+                    polygonData.polygons.RemoveAt(id);
+                }
+                UpdateBitmap();
+            }
+        }
+
+        private bool AddPointToPolygon(Point mousePosition)
+        {
+            // if the first point was clicked, finish adding the new resources.polygon
+            if (polygonData.addingPolygonVertices.Count >= 3 && IsPointClicked(polygonData.addingPolygonVertices[0], mousePosition))
+            {
+                //polygonData.polygonData.addingPolygonVertices.RemoveAt(polygonData.polygonData.addingPolygonVertices.Count - 1);
+                polygonData.polygons.Add(new Polygon(polygonData.addingPolygonVertices));
+                polygonData.addingPolygonVertices = null;
+                polygonData.AddingPolygon = false;
+                return true;
+            }
+            // else add a new point to the resources.polygon
+            else
+                polygonData.addingPolygonVertices.Add(mousePosition);
+            return false;
         }
 
         public void RegisterCanvasMouseMove(Point mousePosition)
         {
             if (selectionMode == SelectionMode.Brush)
             {
-                SelectBrush(mousePosition);
+                selectingService.SelectBrush(mousePosition, BRUSH_RADIUS);
                 UpdateBitmap();
             }
         }
 
-        private void SelectBrush(Point mousePosition)
+        public int IsPolygonCenterClicked(Point mousePosition)
         {
-            for (int i = Math.Max(0, mousePosition.X - BRUSH_RADIUS); i < Math.Min(bitmap.Width, mousePosition.X + BRUSH_RADIUS); ++i)
-                for (int j = Math.Max(0, mousePosition.Y - BRUSH_RADIUS); j < Math.Min(bitmap.Height, mousePosition.Y + BRUSH_RADIUS); ++j)
-                    if (SquaredDistance(mousePosition, new Point(i, j)) < BRUSH_RADIUS * BRUSH_RADIUS)
-                        selected[i, j] = true;
+            for (int i = 0; i < polygonData.polygons.Count; ++i)
+                if (IsPointClicked(polygonData.polygons[i].Center, mousePosition))
+                    return i;
+            return -1;
         }
-
         private static int SquaredDistance(Point p1, Point p2) => (p2.X - p1.X) * (p2.X - p1.X) + (p2.Y - p1.Y) * (p2.Y - p1.Y);
-
-        private void SelectAll()
-        {
-            for(int i = 0; i < selected.GetLength(0); ++i)
-                for(int j = 0; j < selected.GetLength(1); ++j)
-                    selected[i, j] = true;
-        }
-        private void UnselectAll()
-        {
-            for (int i = 0; i < selected.GetLength(0); ++i)
-                for (int j = 0; j < selected.GetLength(1); ++j)
-                    selected[i, j] = false;
-        }
+        private static bool IsPointClicked(Point point, Point mousePosition, int epsilon = 10) => SquaredDistance(point, mousePosition) <= epsilon * epsilon;
 
         private void UpdateBitmap()
         {
-            ByteBitmap byteBitmap = new ByteBitmap(bitmap);
-            int[] rHistogram = new int[256];
-            int[] gHistogram = new int[256];
-            int[] bHistogram = new int[256];
-            for (int i = 0; i < bitmap.Width; ++i)
-            {
-                for (int j = 0; j < bitmap.Height; ++j)
-                {
-                    Color color = byteBitmap.GetPixel(i, j);
-                    if (color.A != 255)
-                        continue;
-                    bool s = selected[i, j];
-                    if (s)
-                        color = filter.Transform(color);
-                    ++rHistogram[color.R];
-                    ++gHistogram[color.G];
-                    ++bHistogram[color.B];
-                    if (s)
-                        byteBitmap.SetPixel(i, j, color);
-                }
-            }
-            view.Function = filter.Function;
-            view.CanvasImage = byteBitmap.Bitmap;
-            view.RHistogram = rHistogram;
-            view.GHistogram = gHistogram;
-            view.BHistogram = bHistogram;
+            view.Function = filterParameters.filter.Function;
+            view.CanvasImage = drawingService.DrawBitmap();
             view.RedrawHistograms();
-
             view.RedrawCanvas();
         }
     }

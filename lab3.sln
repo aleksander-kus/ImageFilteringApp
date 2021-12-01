@@ -10,6 +10,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "PresentationLayer", "Presen
 		{F4CA3FCD-6C86-4F3D-9353-6C798DFD8107} = {F4CA3FCD-6C86-4F3D-9353-6C798DFD8107}
 	EndProjectSection
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "InfrastructureLayer", "InfrastructureLayer\InfrastructureLayer.csproj", "{233EF8D3-AC55-4493-A44D-24BB48C6FE87}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -24,6 +26,10 @@ Global
 		{CB0EBDA2-3797-4D1A-9D15-9504D935C5FF}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{CB0EBDA2-3797-4D1A-9D15-9504D935C5FF}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{CB0EBDA2-3797-4D1A-9D15-9504D935C5FF}.Release|Any CPU.Build.0 = Release|Any CPU
+		{233EF8D3-AC55-4493-A44D-24BB48C6FE87}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{233EF8D3-AC55-4493-A44D-24BB48C6FE87}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{233EF8D3-AC55-4493-A44D-24BB48C6FE87}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{233EF8D3-AC55-4493-A44D-24BB48C6FE87}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
