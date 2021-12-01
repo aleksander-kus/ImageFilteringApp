@@ -1,4 +1,5 @@
-﻿using DomainLayer.Filters;
+﻿using DomainLayer;
+using DomainLayer.Filters;
 using PresentationLayer.Presenters;
 using PresentationLayer.Properties;
 using System;
@@ -11,9 +12,7 @@ namespace PresentationLayer.Views
     public partial class MainView : Form, IMainView
     {
         private MainPresenter presenter;
-        private int[] rHistogram;
-        private int[] gHistogram;
-        private int[] bHistogram;
+        private ColorHistograms colorHistograms;
         private int[] function;
         private readonly Image defaultImage;
         private Image canvasImage;
@@ -32,25 +31,20 @@ namespace PresentationLayer.Views
             functionChart.ChartAreas[0].AxisY.MajorGrid.Enabled = false;
         }
 
+        public ColorHistograms ColorHistograms { set => colorHistograms = value; }
         public int CanvasWidth => pictureBox1.Width;
         public int CanvasHeight => pictureBox1.Height;
-
         public MainPresenter Presenter { set => presenter = value; }
         public Image CanvasImage { set => canvasImage = value; }
-
         public Image DefaultImage => defaultImage;
-
-        public int[] RHistogram { set => rHistogram = value; }
-        public int[] GHistogram { set => gHistogram = value; }
-        public int[] BHistogram { set => bHistogram = value; }
         public int[] Function { set => function = value; }
 
         public void RedrawCanvas() => bufferedPanel1.Invalidate();
         public void RedrawHistograms()
         {
-            DrawHistogram(rChart, rHistogram);
-            DrawHistogram(gChart, gHistogram);
-            DrawHistogram(bChart, bHistogram);
+            DrawHistogram(rChart, colorHistograms.RHistogram);
+            DrawHistogram(gChart, colorHistograms.GHistogram);
+            DrawHistogram(bChart, colorHistograms.BHistogram);
             DrawHistogram(functionChart, function);
         }
 
