@@ -106,11 +106,6 @@ namespace PresentationLayer.Presenters
 
         private void UpdateBitmap()
         {
-            GetHistogramsFromBitmap();
-            FilterSelectedPoints();
-        }
-        private void GetHistogramsFromBitmap()
-        {
             ByteBitmap byteBitmap = new ByteBitmap(bitmap);
             int[] rHistogram = new int[256];
             int[] gHistogram = new int[256];
@@ -122,35 +117,23 @@ namespace PresentationLayer.Presenters
                     Color color = byteBitmap.GetPixel(i, j);
                     if (color.A != 255)
                         continue;
+                    bool s = selected[i, j];
+                    if (s)
+                        color = filter.Transform(color);
                     ++rHistogram[color.R];
                     ++gHistogram[color.G];
                     ++bHistogram[color.B];
-                }
-            }
-            view.RHistogram = rHistogram;
-            view.GHistogram = gHistogram;
-            view.BHistogram = bHistogram;
-            view.RedrawHistograms();
-        }
-
-        private void FilterSelectedPoints()
-        {
-            ByteBitmap byteBitmap = new ByteBitmap(bitmap);
-            for (int i = 0; i < bitmap.Width; ++i)
-            {
-                for (int j = 0; j < bitmap.Height; ++j)
-                {
-                    if (!selected[i, j])
-                        continue;
-                    Color color = byteBitmap.GetPixel(i, j);
-                    if (color.A != 255)
-                        continue;
-                    color = filter.Transform(color);
-                    byteBitmap.SetPixel(i, j, color);
+                    if (s)
+                        byteBitmap.SetPixel(i, j, color);
                 }
             }
             view.Function = filter.Function;
             view.CanvasImage = byteBitmap.Bitmap;
+            view.RHistogram = rHistogram;
+            view.GHistogram = gHistogram;
+            view.BHistogram = bHistogram;
+            view.RedrawHistograms();
+
             view.RedrawCanvas();
         }
     }
