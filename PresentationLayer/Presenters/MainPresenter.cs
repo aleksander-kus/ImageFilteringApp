@@ -23,8 +23,7 @@ namespace PresentationLayer.Presenters
                 if(!filter.Function.SequenceEqual(value.Function))
                 {
                     filter = value;
-                    FilterSelectedPoints();
-                    GetHistogramsFromBitmap();
+                    UpdateBitmap();
                 }
             }
         }
@@ -40,14 +39,12 @@ namespace PresentationLayer.Presenters
                     {
                         case SelectionMode.Whole:
                             SelectAll();
-                            FilterSelectedPoints();
-                            GetHistogramsFromBitmap();
+                            UpdateBitmap();
                             break;
                         case SelectionMode.Brush:
                         case SelectionMode.Polygon:
                             UnselectAll();
-                            FilterSelectedPoints();
-                            GetHistogramsFromBitmap();
+                            UpdateBitmap();
                             break;
                     }
                 }
@@ -63,8 +60,7 @@ namespace PresentationLayer.Presenters
             selected = new bool[bitmap.Width, bitmap.Height];
             SelectAll();
             filter = new NoFilter();
-            FilterSelectedPoints();
-            GetHistogramsFromBitmap();
+            UpdateBitmap();
         }
 
         public void RegisterCanvasClick(Point mousePosition)
@@ -72,8 +68,7 @@ namespace PresentationLayer.Presenters
             if(selectionMode == SelectionMode.Brush)
             {
                 SelectBrush(mousePosition);
-                FilterSelectedPoints();
-                GetHistogramsFromBitmap();
+                UpdateBitmap();
             }
         }
 
@@ -82,8 +77,7 @@ namespace PresentationLayer.Presenters
             if (selectionMode == SelectionMode.Brush)
             {
                 SelectBrush(mousePosition);
-                FilterSelectedPoints();
-                GetHistogramsFromBitmap();
+                UpdateBitmap();
             }
         }
 
@@ -110,6 +104,11 @@ namespace PresentationLayer.Presenters
                     selected[i, j] = false;
         }
 
+        private void UpdateBitmap()
+        {
+            GetHistogramsFromBitmap();
+            FilterSelectedPoints();
+        }
         private void GetHistogramsFromBitmap()
         {
             ByteBitmap byteBitmap = new ByteBitmap(bitmap);

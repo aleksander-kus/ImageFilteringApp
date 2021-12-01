@@ -100,21 +100,6 @@ namespace PresentationLayer.Views
             presenter.SelectionMode = DomainLayer.SelectionMode.Whole;
         }
 
-        private void pictureBox1_MouseDown(object sender, MouseEventArgs e)
-        {
-            //presenter.RegisterCanvasClick(e.Location);
-        }
-
-        private void pictureBox1_MouseMove(object sender, MouseEventArgs e)
-        {
-
-        }
-
-        private void pictureBox1_MouseUp(object sender, MouseEventArgs e)
-        {
-            mouseDown = false;
-        }
-
         private void bufferedPanel1_Paint(object sender, PaintEventArgs e)
         {
             e.Graphics.DrawImage(canvasImage, new Point(0, 0));
@@ -123,7 +108,7 @@ namespace PresentationLayer.Views
         private void bufferedPanel1_MouseDown(object sender, MouseEventArgs e)
         {
             mouseDown = true;
-
+            presenter.RegisterCanvasClick(e.Location);
         }
 
         private void bufferedPanel1_MouseMove(object sender, MouseEventArgs e)
