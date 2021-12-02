@@ -68,12 +68,12 @@ namespace PresentationLayer.Views
             this.brightnessButton = new System.Windows.Forms.RadioButton();
             this.noFilterButton = new System.Windows.Forms.RadioButton();
             this.functionChart = new System.Windows.Forms.DataVisualization.Charting.Chart();
-            this.bufferedPanel1 = new PresentationLayer.Controls.BufferedPanel();
             this.menuStrip1 = new System.Windows.Forms.MenuStrip();
             this.fileToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.earthToolStripMenuItem1 = new System.Windows.Forms.ToolStripMenuItem();
             this.tajMahalToolStripMenuItem1 = new System.Windows.Forms.ToolStripMenuItem();
             this.loadFromFileToolStripMenuItem1 = new System.Windows.Forms.ToolStripMenuItem();
+            this.bufferedPanel1 = new PresentationLayer.Controls.BufferedPanel();
             this.mainTable.SuspendLayout();
             this.tableLayoutPanel1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.rChart)).BeginInit();
@@ -490,18 +490,6 @@ namespace PresentationLayer.Views
             this.functionChart.TabIndex = 1;
             this.functionChart.Text = "chart1";
             // 
-            // bufferedPanel1
-            // 
-            this.bufferedPanel1.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.bufferedPanel1.Location = new System.Drawing.Point(3, 27);
-            this.bufferedPanel1.Name = "bufferedPanel1";
-            this.bufferedPanel1.Size = new System.Drawing.Size(556, 771);
-            this.bufferedPanel1.TabIndex = 5;
-            this.bufferedPanel1.Paint += new System.Windows.Forms.PaintEventHandler(this.bufferedPanel1_Paint);
-            this.bufferedPanel1.MouseDown += new System.Windows.Forms.MouseEventHandler(this.bufferedPanel1_MouseDown);
-            this.bufferedPanel1.MouseMove += new System.Windows.Forms.MouseEventHandler(this.bufferedPanel1_MouseMove);
-            this.bufferedPanel1.MouseUp += new System.Windows.Forms.MouseEventHandler(this.bufferedPanel1_MouseUp);
-            // 
             // menuStrip1
             // 
             this.menuStrip1.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
@@ -527,22 +515,35 @@ namespace PresentationLayer.Views
             this.earthToolStripMenuItem1.Checked = true;
             this.earthToolStripMenuItem1.CheckState = System.Windows.Forms.CheckState.Checked;
             this.earthToolStripMenuItem1.Name = "earthToolStripMenuItem1";
-            this.earthToolStripMenuItem1.Size = new System.Drawing.Size(157, 22);
+            this.earthToolStripMenuItem1.Size = new System.Drawing.Size(180, 22);
             this.earthToolStripMenuItem1.Text = "Earth";
             this.earthToolStripMenuItem1.Click += new System.EventHandler(this.earthToolStripMenuItem1_Click);
             // 
             // tajMahalToolStripMenuItem1
             // 
             this.tajMahalToolStripMenuItem1.Name = "tajMahalToolStripMenuItem1";
-            this.tajMahalToolStripMenuItem1.Size = new System.Drawing.Size(157, 22);
+            this.tajMahalToolStripMenuItem1.Size = new System.Drawing.Size(180, 22);
             this.tajMahalToolStripMenuItem1.Text = "Taj Mahal";
             this.tajMahalToolStripMenuItem1.Click += new System.EventHandler(this.tajMahalToolStripMenuItem1_Click);
             // 
             // loadFromFileToolStripMenuItem1
             // 
             this.loadFromFileToolStripMenuItem1.Name = "loadFromFileToolStripMenuItem1";
-            this.loadFromFileToolStripMenuItem1.Size = new System.Drawing.Size(157, 22);
+            this.loadFromFileToolStripMenuItem1.Size = new System.Drawing.Size(180, 22);
             this.loadFromFileToolStripMenuItem1.Text = "Load from file...";
+            this.loadFromFileToolStripMenuItem1.Click += new System.EventHandler(this.loadFromFileToolStripMenuItem1_Click);
+            // 
+            // bufferedPanel1
+            // 
+            this.bufferedPanel1.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.bufferedPanel1.Location = new System.Drawing.Point(3, 27);
+            this.bufferedPanel1.Name = "bufferedPanel1";
+            this.bufferedPanel1.Size = new System.Drawing.Size(556, 771);
+            this.bufferedPanel1.TabIndex = 5;
+            this.bufferedPanel1.Paint += new System.Windows.Forms.PaintEventHandler(this.bufferedPanel1_Paint);
+            this.bufferedPanel1.MouseDown += new System.Windows.Forms.MouseEventHandler(this.bufferedPanel1_MouseDown);
+            this.bufferedPanel1.MouseMove += new System.Windows.Forms.MouseEventHandler(this.bufferedPanel1_MouseMove);
+            this.bufferedPanel1.MouseUp += new System.Windows.Forms.MouseEventHandler(this.bufferedPanel1_MouseUp);
             // 
             // MainView
             // 

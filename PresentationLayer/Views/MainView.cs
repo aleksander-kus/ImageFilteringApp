@@ -142,5 +142,18 @@ namespace PresentationLayer.Views
             wholeButton.Checked = true;
             noFilterButton.Checked = true;
         }
+
+        private void loadFromFileToolStripMenuItem1_Click(object sender, EventArgs e)
+        {
+            OpenFileDialog od = new OpenFileDialog();
+            od.Filter = "Image Files (*.bmp;*.jpg;*.jpeg,*.png)|*.BMP;*.JPG;*.JPEG;*.PNG";
+            if (od.ShowDialog() == DialogResult.OK)
+            {
+                presenter.LoadBitmapFromImage(Image.FromFile(od.FileName));
+                ResetPresenter();
+                earthToolStripMenuItem1.Checked = false;
+                tajMahalToolStripMenuItem1.Checked = false;
+            }    
+        }
     }
 }
