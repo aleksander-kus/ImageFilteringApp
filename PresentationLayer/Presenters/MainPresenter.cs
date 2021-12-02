@@ -1,4 +1,5 @@
 ﻿using DomainLayer;
+using DomainLayer.Dto;
 using DomainLayer.Filters;
 using InfrastructureLayer;
 using PresentationLayer.ViewLoaders;
@@ -12,10 +13,10 @@ namespace PresentationLayer.Presenters
 {
     public class MainPresenter
     {
-        private Bitmap bitmap;
-        private PolygonData polygonData;
-        private FilterParameters filterParameters;
-        private ColorHistograms colorHistograms;
+        private readonly Bitmap bitmap;
+        private readonly PolygonData polygonData;
+        private readonly FilterParameters filterParameters;
+        private readonly ColorHistograms colorHistograms;
         private readonly IMainView view;
         private readonly IViewLoader viewLoader;
         private const int BRUSH_RADIUS = 50;
@@ -113,16 +114,14 @@ namespace PresentationLayer.Presenters
 
         private bool AddPointToPolygon(Point mousePosition)
         {
-            // if the first point was clicked, finish adding the new resources.polygon
+            // if the first point was clicked, finish adding the new polygon
             if (polygonData.addingPolygonVertices.Count >= 3 && IsPointClicked(polygonData.addingPolygonVertices[0], mousePosition))
             {
-                //polygonData.polygonData.addingPolygonVertices.RemoveAt(polygonData.polygonData.addingPolygonVertices.Count - 1);
                 polygonData.polygons.Add(new Polygon(polygonData.addingPolygonVertices));
                 polygonData.addingPolygonVertices = null;
                 polygonData.AddingPolygon = false;
                 return true;
             }
-            // else add a new point to the resources.polygon
             else
                 polygonData.addingPolygonVertices.Add(mousePosition);
             return false;

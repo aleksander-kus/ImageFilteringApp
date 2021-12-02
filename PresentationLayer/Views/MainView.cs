@@ -1,4 +1,4 @@
-﻿using DomainLayer;
+﻿using DomainLayer.Dto;
 using DomainLayer.Filters;
 using PresentationLayer.Presenters;
 using PresentationLayer.Properties;

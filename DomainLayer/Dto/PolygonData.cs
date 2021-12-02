@@ -1,7 +1,7 @@
 ﻿using System.Collections.Generic;
 using System.Drawing;
 
-namespace DomainLayer
+namespace DomainLayer.Dto
 {
     public class PolygonData
     {

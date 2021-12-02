@@ -1,6 +1,7 @@
 ﻿using DomainLayer;
+using DomainLayer.Dto;
+using System.Collections.Generic;
 using System.Drawing;
-using System.Linq;
 
 namespace InfrastructureLayer
 {
@@ -74,13 +75,13 @@ namespace InfrastructureLayer
                     Color color = byteBitmap.GetPixel(i, j);
                     if (color.A != 255)
                         continue;
-                    bool s = filterParameters.selected[i, j];
-                    if (s)
+                    bool isPixelSelected = filterParameters.selected[i, j];
+                    if (isPixelSelected)
                         color = filterParameters.filter.Transform(color);
                     ++colorHistograms.RHistogram[color.R];
                     ++colorHistograms.GHistogram[color.G];
                     ++colorHistograms.BHistogram[color.B];
-                    if (s)
+                    if (isPixelSelected)
                         byteBitmap.SetPixel(i, j, color);
                 }
             }

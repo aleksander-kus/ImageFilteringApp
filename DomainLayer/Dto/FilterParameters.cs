@@ -1,6 +1,6 @@
 ﻿using DomainLayer.Filters;
 
-namespace DomainLayer
+namespace DomainLayer.Dto
 {
     public class FilterParameters
     {
