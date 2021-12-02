@@ -73,7 +73,38 @@ namespace PresentationLayer.Views
         {
             presenter.Filter = new NegationFilter();
         }
+        private void brightnessButton_Click(object sender, EventArgs e)
+        {
+            brightnessBox_ValueChanged(null, null);
+        }
 
+        private void brightnessBox_ValueChanged(object sender, EventArgs e)
+        {
+            if (brightnessButton.Checked)
+                presenter.Filter = new BrightnessFilter((int)brightnessBox.Value);
+        }
+
+        private void gammaButton_Click(object sender, EventArgs e)
+        {
+            gammaBox_ValueChanged(null, null);
+        }
+
+        private void gammaBox_ValueChanged(object sender, EventArgs e)
+        {
+            if (gammaButton.Checked)
+                presenter.Filter = new GammaFilter((double)gammaBox.Value);
+        }
+
+        private void contrastButton_Click(object sender, EventArgs e)
+        {
+            contrastBox_ValueChanged(null, null);
+        }
+
+        private void contrastBox_ValueChanged(object sender, EventArgs e)
+        {
+            if(contrastButton.Checked)
+                presenter.Filter = new ContrastFilter((int)contrastBox.Value);
+        }
 
         private void brushButton_Click(object sender, EventArgs e)
         {
@@ -112,38 +143,6 @@ namespace PresentationLayer.Views
             mouseDown = false;
         }
 
-        private void brightnessButton_Click(object sender, EventArgs e)
-        {
-            brightnessBox_ValueChanged(null, null);
-        }
-
-        private void brightnessBox_ValueChanged(object sender, EventArgs e)
-        {
-            if (brightnessButton.Checked)
-                presenter.Filter = new BrightnessFilter((int)brightnessBox.Value);
-        }
-
-        private void gammaButton_Click(object sender, EventArgs e)
-        {
-            gammaBox_ValueChanged(null, null);
-        }
-
-        private void gammaBox_ValueChanged(object sender, EventArgs e)
-        {
-            if (gammaButton.Checked)
-                presenter.Filter = new GammaFilter((double)gammaBox.Value);
-        }
-
-        private void contrastButton_Click(object sender, EventArgs e)
-        {
-            contrastBox_ValueChanged(null, null);
-        }
-
-        private void contrastBox_ValueChanged(object sender, EventArgs e)
-        {
-            if(contrastButton.Checked)
-                presenter.Filter = new ContrastFilter((int)contrastBox.Value);
-        }
 
         private void addPolygonButton_Click(object sender, EventArgs e)
         {
@@ -159,6 +158,12 @@ namespace PresentationLayer.Views
         {
             //MessageBox.Show($"Clicked location: {e.Location}, boottom is {rChart.Bottom}");
             MessageBox.Show($"Clicked location is: {rChart.ChartAreas[0].AxisX.PixelPositionToValue(e.Location.X)}, {rChart.ChartAreas[0].AxisY.PixelPositionToValue(e.Location.Y)}");
+        }
+
+        private void customFunctionButton_Click(object sender, EventArgs e)
+        {
+            customButton.Checked = true;
+            presenter.DefineCustomFunction();
         }
     }
 }

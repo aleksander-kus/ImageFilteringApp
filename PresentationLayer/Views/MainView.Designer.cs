@@ -68,6 +68,7 @@ namespace PresentationLayer.Views
             this.noFilterButton = new System.Windows.Forms.RadioButton();
             this.functionChart = new System.Windows.Forms.DataVisualization.Charting.Chart();
             this.bufferedPanel1 = new PresentationLayer.Controls.BufferedPanel();
+            this.customFunctionButton = new System.Windows.Forms.Button();
             this.mainTable.SuspendLayout();
             this.tableLayoutPanel1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.rChart)).BeginInit();
@@ -300,6 +301,7 @@ namespace PresentationLayer.Views
             // 
             // pictureBox1
             // 
+            this.pictureBox1.Controls.Add(this.customFunctionButton);
             this.pictureBox1.Controls.Add(this.contrastBox);
             this.pictureBox1.Controls.Add(this.brightnessBox);
             this.pictureBox1.Controls.Add(this.gammaBox);
@@ -483,6 +485,16 @@ namespace PresentationLayer.Views
             this.bufferedPanel1.MouseMove += new System.Windows.Forms.MouseEventHandler(this.bufferedPanel1_MouseMove);
             this.bufferedPanel1.MouseUp += new System.Windows.Forms.MouseEventHandler(this.bufferedPanel1_MouseUp);
             // 
+            // customFunctionButton
+            // 
+            this.customFunctionButton.Location = new System.Drawing.Point(20, 220);
+            this.customFunctionButton.Name = "customFunctionButton";
+            this.customFunctionButton.Size = new System.Drawing.Size(144, 23);
+            this.customFunctionButton.TabIndex = 10;
+            this.customFunctionButton.Text = "Define custom function";
+            this.customFunctionButton.UseVisualStyleBackColor = true;
+            this.customFunctionButton.Click += new System.EventHandler(this.customFunctionButton_Click);
+            // 
             // MainView
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -543,5 +555,6 @@ namespace PresentationLayer.Views
         private System.Windows.Forms.NumericUpDown gammaBox;
         private System.Windows.Forms.Button removePolygonButton;
         private System.Windows.Forms.Button addPolygonButton;
+        private System.Windows.Forms.Button customFunctionButton;
     }
 }

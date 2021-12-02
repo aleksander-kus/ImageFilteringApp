@@ -13,9 +13,6 @@ namespace DomainLayer.Filters
             for (int i = 255 - beginPoint; i < function.Length; ++i)
                 function[i] = 255;
             ConnectTwoPoints(new PointF(beginPoint, 0), new PointF(255 - beginPoint, 255));
-            //int f(int x) => (int)(255 / (255.0 - 2 * beginPoint) * x - 255.0 * beginPoint / (255.0 - 2 * beginPoint));
-            //for (int i = beginPoint; i < 255 - beginPoint; ++i)
-            //    function[i] = f(i);
         }
 
         private void ConnectTwoPoints(PointF p1, PointF p2)
