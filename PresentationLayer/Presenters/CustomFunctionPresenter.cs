@@ -13,7 +13,6 @@ namespace PresentationLayer.Presenters
         private readonly FilterParameters filterParameters;
         private readonly List<Point> controlPoints = new List<Point>();
         private readonly int[] function = new int[256];
-        private int movingPointId = -1;
         public ChartPointMode ChartPointMode { get; set; } = ChartPointMode.Adding;
         public CustomFunctionPresenter(ICustomFunctionView view, FilterParameters filterParameters)
         {
@@ -21,7 +20,6 @@ namespace PresentationLayer.Presenters
             this.filterParameters = filterParameters;
             controlPoints.Add(new Point(0, 0));
             controlPoints.Add(new Point(255, 255));
-            //controlPoints.Add(new Point(100, 200));
             UpdateFunction();
         }
 
@@ -36,10 +34,7 @@ namespace PresentationLayer.Presenters
             UpdateFunction();
         }
 
-        public void Apply()
-        {
-            filterParameters.Filter = new CustomFilter(function);
-        }
+        public void Apply() => filterParameters.Filter = new CustomFilter(function);
 
         private void RemoveControlPoint(Point mousePosition)
         {
