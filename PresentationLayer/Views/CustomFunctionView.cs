@@ -1,4 +1,5 @@
-﻿using PresentationLayer.Presenters;
+﻿using DomainLayer;
+using PresentationLayer.Presenters;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
@@ -43,14 +44,12 @@ namespace PresentationLayer.Views
             var highlighted = new Series("Highlighted")
             {
                 ChartType = SeriesChartType.Point,
-                Color = Color.Black
+                Color = Color.Black,
+                MarkerStyle = MarkerStyle.Circle,
+                MarkerSize = 7
             };
             foreach (var point in highlightedPoints)
-            {
                 highlighted.Points.AddXY(point.X, point.Y);
-                highlighted.Points.Last().MarkerStyle = MarkerStyle.Circle;
-                highlighted.Points.Last().MarkerSize = 7;
-            }
             functionChart.Series.Add(highlighted);
         }
 
@@ -70,5 +69,16 @@ namespace PresentationLayer.Views
             presenter.Apply();
             Close();
         }
+
+        private void functionChart_MouseDown(object sender, MouseEventArgs e)
+        {
+            int x = (int)Math.Round(functionChart.ChartAreas[0].AxisX.PixelPositionToValue(e.X));
+            int y = (int)Math.Round(functionChart.ChartAreas[0].AxisY.PixelPositionToValue(e.Y));
+            presenter.RegisterChartClick(new Point(x, y));
+        }
+
+        private void removePointsButton_Click(object sender, EventArgs e) => presenter.ChartPointMode = ChartPointMode.Removing;
+
+        private void addPointsButton_Click(object sender, EventArgs e) => presenter.ChartPointMode = ChartPointMode.Adding;
     }
 }

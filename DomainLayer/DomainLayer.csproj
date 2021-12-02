@@ -32,6 +32,7 @@
   </PropertyGroup>
   <ItemGroup>
     <Reference Include="System" />
+    <Reference Include="System.ComponentModel.Composition" />
     <Reference Include="System.Core" />
     <Reference Include="System.Drawing" />
     <Reference Include="System.Xml.Linq" />
@@ -43,6 +44,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="ByteBitmap.cs" />
+    <Compile Include="ChartPointMode.cs" />
     <Compile Include="Dto\ColorHistograms.cs" />
     <Compile Include="Dto\FilterParameters.cs" />
     <Compile Include="Filters\BrightnessFilter.cs" />

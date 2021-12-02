@@ -4,7 +4,7 @@
     {
         public CustomFilter(int[] function)
         {
-            this.function = function;
+            this.function = (int[])function.Clone();
         }
     }
 }

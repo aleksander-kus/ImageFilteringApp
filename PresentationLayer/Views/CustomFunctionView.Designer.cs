@@ -29,16 +29,16 @@ namespace PresentationLayer.Views
         /// </summary>
         private void InitializeComponent()
         {
-            System.Windows.Forms.DataVisualization.Charting.ChartArea chartArea4 = new System.Windows.Forms.DataVisualization.Charting.ChartArea();
-            System.Windows.Forms.DataVisualization.Charting.Legend legend4 = new System.Windows.Forms.DataVisualization.Charting.Legend();
-            System.Windows.Forms.DataVisualization.Charting.Series series4 = new System.Windows.Forms.DataVisualization.Charting.Series();
+            System.Windows.Forms.DataVisualization.Charting.ChartArea chartArea3 = new System.Windows.Forms.DataVisualization.Charting.ChartArea();
+            System.Windows.Forms.DataVisualization.Charting.Legend legend3 = new System.Windows.Forms.DataVisualization.Charting.Legend();
+            System.Windows.Forms.DataVisualization.Charting.Series series3 = new System.Windows.Forms.DataVisualization.Charting.Series();
             this.functionChart = new System.Windows.Forms.DataVisualization.Charting.Chart();
             this.okButton = new System.Windows.Forms.Button();
             this.cancelButton = new System.Windows.Forms.Button();
             this.applyButton = new System.Windows.Forms.Button();
             this.groupBox1 = new System.Windows.Forms.GroupBox();
-            this.normalCurveButton = new System.Windows.Forms.RadioButton();
             this.bezierCurveButton = new System.Windows.Forms.RadioButton();
+            this.normalCurveButton = new System.Windows.Forms.RadioButton();
             this.groupBox2 = new System.Windows.Forms.GroupBox();
             this.removePointsButton = new System.Windows.Forms.RadioButton();
             this.addPointsButton = new System.Windows.Forms.RadioButton();
@@ -49,21 +49,22 @@ namespace PresentationLayer.Views
             // 
             // functionChart
             // 
-            chartArea4.Name = "ChartArea1";
-            this.functionChart.ChartAreas.Add(chartArea4);
-            legend4.Name = "Legend1";
-            this.functionChart.Legends.Add(legend4);
+            chartArea3.Name = "ChartArea1";
+            this.functionChart.ChartAreas.Add(chartArea3);
+            legend3.Name = "Legend1";
+            this.functionChart.Legends.Add(legend3);
             this.functionChart.Location = new System.Drawing.Point(12, 12);
             this.functionChart.Name = "functionChart";
-            series4.ChartArea = "ChartArea1";
-            series4.ChartType = System.Windows.Forms.DataVisualization.Charting.SeriesChartType.Line;
-            series4.Color = System.Drawing.Color.Black;
-            series4.Legend = "Legend1";
-            series4.Name = "Series1";
-            this.functionChart.Series.Add(series4);
+            series3.ChartArea = "ChartArea1";
+            series3.ChartType = System.Windows.Forms.DataVisualization.Charting.SeriesChartType.Line;
+            series3.Color = System.Drawing.Color.Black;
+            series3.Legend = "Legend1";
+            series3.Name = "Series1";
+            this.functionChart.Series.Add(series3);
             this.functionChart.Size = new System.Drawing.Size(565, 320);
             this.functionChart.TabIndex = 0;
             this.functionChart.Text = "chart1";
+            this.functionChart.MouseDown += new System.Windows.Forms.MouseEventHandler(this.functionChart_MouseDown);
             // 
             // okButton
             // 
@@ -106,6 +107,16 @@ namespace PresentationLayer.Views
             this.groupBox1.TabStop = false;
             this.groupBox1.Text = "Curve mode";
             // 
+            // bezierCurveButton
+            // 
+            this.bezierCurveButton.AutoSize = true;
+            this.bezierCurveButton.Location = new System.Drawing.Point(7, 44);
+            this.bezierCurveButton.Name = "bezierCurveButton";
+            this.bezierCurveButton.Size = new System.Drawing.Size(54, 17);
+            this.bezierCurveButton.TabIndex = 1;
+            this.bezierCurveButton.Text = "Bezier";
+            this.bezierCurveButton.UseVisualStyleBackColor = true;
+            // 
             // normalCurveButton
             // 
             this.normalCurveButton.AutoSize = true;
@@ -117,16 +128,6 @@ namespace PresentationLayer.Views
             this.normalCurveButton.TabStop = true;
             this.normalCurveButton.Text = "Normal";
             this.normalCurveButton.UseVisualStyleBackColor = true;
-            // 
-            // bezierCurveButton
-            // 
-            this.bezierCurveButton.AutoSize = true;
-            this.bezierCurveButton.Location = new System.Drawing.Point(7, 44);
-            this.bezierCurveButton.Name = "bezierCurveButton";
-            this.bezierCurveButton.Size = new System.Drawing.Size(54, 17);
-            this.bezierCurveButton.TabIndex = 1;
-            this.bezierCurveButton.Text = "Bezier";
-            this.bezierCurveButton.UseVisualStyleBackColor = true;
             // 
             // groupBox2
             // 
@@ -142,12 +143,13 @@ namespace PresentationLayer.Views
             // removePointsButton
             // 
             this.removePointsButton.AutoSize = true;
-            this.removePointsButton.Location = new System.Drawing.Point(7, 44);
+            this.removePointsButton.Location = new System.Drawing.Point(7, 46);
             this.removePointsButton.Name = "removePointsButton";
             this.removePointsButton.Size = new System.Drawing.Size(65, 17);
             this.removePointsButton.TabIndex = 1;
             this.removePointsButton.Text = "Remove";
             this.removePointsButton.UseVisualStyleBackColor = true;
+            this.removePointsButton.Click += new System.EventHandler(this.removePointsButton_Click);
             // 
             // addPointsButton
             // 
@@ -160,6 +162,7 @@ namespace PresentationLayer.Views
             this.addPointsButton.TabStop = true;
             this.addPointsButton.Text = "Add";
             this.addPointsButton.UseVisualStyleBackColor = true;
+            this.addPointsButton.Click += new System.EventHandler(this.addPointsButton_Click);
             // 
             // CustomFunctionView
             // 
