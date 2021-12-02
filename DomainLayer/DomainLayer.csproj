@@ -44,7 +44,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="ByteBitmap.cs" />
-    <Compile Include="ChartPointMode.cs" />
+    <Compile Include="Enums\ChartPointMode.cs" />
     <Compile Include="Dto\ColorHistograms.cs" />
     <Compile Include="Dto\FilterParameters.cs" />
     <Compile Include="Filters\BrightnessFilter.cs" />
@@ -56,9 +56,10 @@
     <Compile Include="Filters\NoFilter.cs" />
     <Compile Include="Polygon.cs" />
     <Compile Include="Dto\PolygonData.cs" />
-    <Compile Include="PolygonMode.cs" />
+    <Compile Include="Enums\PolygonMode.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="SelectionMode.cs" />
+    <Compile Include="Enums\SelectionMode.cs" />
   </ItemGroup>
+  <ItemGroup />
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>
