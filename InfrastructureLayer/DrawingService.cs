@@ -7,7 +7,7 @@ namespace InfrastructureLayer
 {
     public class DrawingService : IDrawingService
     {
-        private readonly Bitmap originalBitmap;
+        public Bitmap OriginalBitmap { get; set; }
         private readonly PolygonData polygonData;
         private readonly ColorHistograms colorHistograms;
         private readonly FilterParameters filterParameters;
@@ -16,9 +16,9 @@ namespace InfrastructureLayer
         public DrawingService(Bitmap originalBitmap, PolygonData polygonData, ColorHistograms colorHistograms, FilterParameters filterParameters)
         {
             this.polygonData = polygonData;
-            this.originalBitmap = originalBitmap;
             this.colorHistograms = colorHistograms;
             this.filterParameters = filterParameters;
+            OriginalBitmap = originalBitmap;
         }
 
         private void DrawAddingPolygon()
@@ -66,7 +66,7 @@ namespace InfrastructureLayer
 
         public Bitmap DrawBitmap()
         {
-            ByteBitmap byteBitmap = new ByteBitmap(originalBitmap);
+            ByteBitmap byteBitmap = new ByteBitmap(OriginalBitmap);
             colorHistograms.Clear();
             for (int i = 0; i < byteBitmap.Width; ++i)
             {

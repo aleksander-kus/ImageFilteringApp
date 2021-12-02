@@ -57,6 +57,7 @@ namespace PresentationLayer.Views
             this.groupBox2 = new System.Windows.Forms.GroupBox();
             this.filterTable = new System.Windows.Forms.TableLayoutPanel();
             this.pictureBox1 = new System.Windows.Forms.Panel();
+            this.customFunctionButton = new System.Windows.Forms.Button();
             this.contrastBox = new System.Windows.Forms.NumericUpDown();
             this.brightnessBox = new System.Windows.Forms.NumericUpDown();
             this.gammaBox = new System.Windows.Forms.NumericUpDown();
@@ -68,7 +69,11 @@ namespace PresentationLayer.Views
             this.noFilterButton = new System.Windows.Forms.RadioButton();
             this.functionChart = new System.Windows.Forms.DataVisualization.Charting.Chart();
             this.bufferedPanel1 = new PresentationLayer.Controls.BufferedPanel();
-            this.customFunctionButton = new System.Windows.Forms.Button();
+            this.menuStrip1 = new System.Windows.Forms.MenuStrip();
+            this.fileToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.earthToolStripMenuItem1 = new System.Windows.Forms.ToolStripMenuItem();
+            this.tajMahalToolStripMenuItem1 = new System.Windows.Forms.ToolStripMenuItem();
+            this.loadFromFileToolStripMenuItem1 = new System.Windows.Forms.ToolStripMenuItem();
             this.mainTable.SuspendLayout();
             this.tableLayoutPanel1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.rChart)).BeginInit();
@@ -84,6 +89,7 @@ namespace PresentationLayer.Views
             ((System.ComponentModel.ISupportInitialize)(this.brightnessBox)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.gammaBox)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.functionChart)).BeginInit();
+            this.menuStrip1.SuspendLayout();
             this.SuspendLayout();
             // 
             // mainTable
@@ -92,15 +98,17 @@ namespace PresentationLayer.Views
             this.mainTable.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 50F));
             this.mainTable.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 25F));
             this.mainTable.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 25F));
-            this.mainTable.Controls.Add(this.tableLayoutPanel1, 2, 0);
-            this.mainTable.Controls.Add(this.menuTable, 1, 0);
-            this.mainTable.Controls.Add(this.bufferedPanel1, 0, 0);
+            this.mainTable.Controls.Add(this.tableLayoutPanel1, 2, 1);
+            this.mainTable.Controls.Add(this.menuTable, 1, 1);
+            this.mainTable.Controls.Add(this.bufferedPanel1, 0, 1);
+            this.mainTable.Controls.Add(this.menuStrip1, 0, 0);
             this.mainTable.Dock = System.Windows.Forms.DockStyle.Fill;
             this.mainTable.Location = new System.Drawing.Point(0, 0);
             this.mainTable.Name = "mainTable";
-            this.mainTable.RowCount = 1;
+            this.mainTable.RowCount = 2;
+            this.mainTable.RowStyles.Add(new System.Windows.Forms.RowStyle());
             this.mainTable.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 100F));
-            this.mainTable.Size = new System.Drawing.Size(1098, 761);
+            this.mainTable.Size = new System.Drawing.Size(1124, 801);
             this.mainTable.TabIndex = 0;
             // 
             // tableLayoutPanel1
@@ -111,14 +119,14 @@ namespace PresentationLayer.Views
             this.tableLayoutPanel1.Controls.Add(this.gChart, 0, 1);
             this.tableLayoutPanel1.Controls.Add(this.bChart, 0, 2);
             this.tableLayoutPanel1.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.tableLayoutPanel1.Location = new System.Drawing.Point(826, 3);
+            this.tableLayoutPanel1.Location = new System.Drawing.Point(846, 27);
             this.tableLayoutPanel1.Name = "tableLayoutPanel1";
             this.tableLayoutPanel1.RowCount = 3;
             this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 33.33333F));
             this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 33.33334F));
             this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 33.33333F));
             this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 20F));
-            this.tableLayoutPanel1.Size = new System.Drawing.Size(269, 755);
+            this.tableLayoutPanel1.Size = new System.Drawing.Size(275, 771);
             this.tableLayoutPanel1.TabIndex = 3;
             // 
             // rChart
@@ -135,7 +143,7 @@ namespace PresentationLayer.Views
             series1.Legend = "Legend1";
             series1.Name = "Series1";
             this.rChart.Series.Add(series1);
-            this.rChart.Size = new System.Drawing.Size(263, 245);
+            this.rChart.Size = new System.Drawing.Size(269, 250);
             this.rChart.TabIndex = 0;
             this.rChart.Text = "chart1";
             // 
@@ -146,14 +154,14 @@ namespace PresentationLayer.Views
             this.gChart.Dock = System.Windows.Forms.DockStyle.Fill;
             legend2.Name = "Legend1";
             this.gChart.Legends.Add(legend2);
-            this.gChart.Location = new System.Drawing.Point(3, 254);
+            this.gChart.Location = new System.Drawing.Point(3, 259);
             this.gChart.Name = "gChart";
             series2.ChartArea = "ChartArea1";
             series2.Color = System.Drawing.Color.Green;
             series2.Legend = "Legend1";
             series2.Name = "Series1";
             this.gChart.Series.Add(series2);
-            this.gChart.Size = new System.Drawing.Size(263, 245);
+            this.gChart.Size = new System.Drawing.Size(269, 251);
             this.gChart.TabIndex = 1;
             this.gChart.Text = "chart2";
             // 
@@ -164,17 +172,16 @@ namespace PresentationLayer.Views
             this.bChart.Dock = System.Windows.Forms.DockStyle.Fill;
             legend3.Name = "Legend1";
             this.bChart.Legends.Add(legend3);
-            this.bChart.Location = new System.Drawing.Point(3, 505);
+            this.bChart.Location = new System.Drawing.Point(3, 516);
             this.bChart.Name = "bChart";
             series3.ChartArea = "ChartArea1";
             series3.Color = System.Drawing.Color.Blue;
             series3.Legend = "Legend1";
             series3.Name = "Series1";
             this.bChart.Series.Add(series3);
-            this.bChart.Size = new System.Drawing.Size(263, 247);
+            this.bChart.Size = new System.Drawing.Size(269, 252);
             this.bChart.TabIndex = 2;
             this.bChart.Text = "chart3";
-            this.bChart.MouseDown += new System.Windows.Forms.MouseEventHandler(this.bChart_MouseDown);
             // 
             // menuTable
             // 
@@ -183,12 +190,12 @@ namespace PresentationLayer.Views
             this.menuTable.Controls.Add(this.groupBox1, 0, 0);
             this.menuTable.Controls.Add(this.groupBox2, 0, 1);
             this.menuTable.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.menuTable.Location = new System.Drawing.Point(552, 3);
+            this.menuTable.Location = new System.Drawing.Point(565, 27);
             this.menuTable.Name = "menuTable";
             this.menuTable.RowCount = 2;
             this.menuTable.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 30F));
             this.menuTable.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 70F));
-            this.menuTable.Size = new System.Drawing.Size(268, 755);
+            this.menuTable.Size = new System.Drawing.Size(275, 771);
             this.menuTable.TabIndex = 4;
             // 
             // groupBox1
@@ -197,7 +204,7 @@ namespace PresentationLayer.Views
             this.groupBox1.Dock = System.Windows.Forms.DockStyle.Fill;
             this.groupBox1.Location = new System.Drawing.Point(3, 3);
             this.groupBox1.Name = "groupBox1";
-            this.groupBox1.Size = new System.Drawing.Size(262, 220);
+            this.groupBox1.Size = new System.Drawing.Size(269, 225);
             this.groupBox1.TabIndex = 0;
             this.groupBox1.TabStop = false;
             this.groupBox1.Text = "Selection mode";
@@ -212,7 +219,7 @@ namespace PresentationLayer.Views
             this.panel1.Dock = System.Windows.Forms.DockStyle.Fill;
             this.panel1.Location = new System.Drawing.Point(3, 16);
             this.panel1.Name = "panel1";
-            this.panel1.Size = new System.Drawing.Size(256, 201);
+            this.panel1.Size = new System.Drawing.Size(263, 206);
             this.panel1.TabIndex = 0;
             // 
             // removePolygonButton
@@ -276,9 +283,9 @@ namespace PresentationLayer.Views
             // 
             this.groupBox2.Controls.Add(this.filterTable);
             this.groupBox2.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.groupBox2.Location = new System.Drawing.Point(3, 229);
+            this.groupBox2.Location = new System.Drawing.Point(3, 234);
             this.groupBox2.Name = "groupBox2";
-            this.groupBox2.Size = new System.Drawing.Size(262, 523);
+            this.groupBox2.Size = new System.Drawing.Size(269, 534);
             this.groupBox2.TabIndex = 1;
             this.groupBox2.TabStop = false;
             this.groupBox2.Text = "Filters";
@@ -296,7 +303,7 @@ namespace PresentationLayer.Views
             this.filterTable.RowCount = 2;
             this.filterTable.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 50F));
             this.filterTable.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 50F));
-            this.filterTable.Size = new System.Drawing.Size(256, 504);
+            this.filterTable.Size = new System.Drawing.Size(263, 515);
             this.filterTable.TabIndex = 0;
             // 
             // pictureBox1
@@ -314,8 +321,18 @@ namespace PresentationLayer.Views
             this.pictureBox1.Dock = System.Windows.Forms.DockStyle.Fill;
             this.pictureBox1.Location = new System.Drawing.Point(3, 3);
             this.pictureBox1.Name = "pictureBox1";
-            this.pictureBox1.Size = new System.Drawing.Size(250, 246);
+            this.pictureBox1.Size = new System.Drawing.Size(257, 251);
             this.pictureBox1.TabIndex = 0;
+            // 
+            // customFunctionButton
+            // 
+            this.customFunctionButton.Location = new System.Drawing.Point(20, 220);
+            this.customFunctionButton.Name = "customFunctionButton";
+            this.customFunctionButton.Size = new System.Drawing.Size(144, 23);
+            this.customFunctionButton.TabIndex = 10;
+            this.customFunctionButton.Text = "Define custom function";
+            this.customFunctionButton.UseVisualStyleBackColor = true;
+            this.customFunctionButton.Click += new System.EventHandler(this.customFunctionButton_Click);
             // 
             // contrastBox
             // 
@@ -460,7 +477,7 @@ namespace PresentationLayer.Views
             this.functionChart.ChartAreas.Add(chartArea4);
             legend4.Name = "Legend1";
             this.functionChart.Legends.Add(legend4);
-            this.functionChart.Location = new System.Drawing.Point(3, 255);
+            this.functionChart.Location = new System.Drawing.Point(3, 260);
             this.functionChart.Name = "functionChart";
             series4.BackHatchStyle = System.Windows.Forms.DataVisualization.Charting.ChartHatchStyle.BackwardDiagonal;
             series4.ChartArea = "ChartArea1";
@@ -469,43 +486,77 @@ namespace PresentationLayer.Views
             series4.Legend = "Legend1";
             series4.Name = "Series1";
             this.functionChart.Series.Add(series4);
-            this.functionChart.Size = new System.Drawing.Size(250, 246);
+            this.functionChart.Size = new System.Drawing.Size(250, 238);
             this.functionChart.TabIndex = 1;
             this.functionChart.Text = "chart1";
             // 
             // bufferedPanel1
             // 
             this.bufferedPanel1.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.bufferedPanel1.Location = new System.Drawing.Point(3, 3);
+            this.bufferedPanel1.Location = new System.Drawing.Point(3, 27);
             this.bufferedPanel1.Name = "bufferedPanel1";
-            this.bufferedPanel1.Size = new System.Drawing.Size(543, 755);
+            this.bufferedPanel1.Size = new System.Drawing.Size(556, 771);
             this.bufferedPanel1.TabIndex = 5;
             this.bufferedPanel1.Paint += new System.Windows.Forms.PaintEventHandler(this.bufferedPanel1_Paint);
             this.bufferedPanel1.MouseDown += new System.Windows.Forms.MouseEventHandler(this.bufferedPanel1_MouseDown);
             this.bufferedPanel1.MouseMove += new System.Windows.Forms.MouseEventHandler(this.bufferedPanel1_MouseMove);
             this.bufferedPanel1.MouseUp += new System.Windows.Forms.MouseEventHandler(this.bufferedPanel1_MouseUp);
             // 
-            // customFunctionButton
+            // menuStrip1
             // 
-            this.customFunctionButton.Location = new System.Drawing.Point(20, 220);
-            this.customFunctionButton.Name = "customFunctionButton";
-            this.customFunctionButton.Size = new System.Drawing.Size(144, 23);
-            this.customFunctionButton.TabIndex = 10;
-            this.customFunctionButton.Text = "Define custom function";
-            this.customFunctionButton.UseVisualStyleBackColor = true;
-            this.customFunctionButton.Click += new System.EventHandler(this.customFunctionButton_Click);
+            this.menuStrip1.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.fileToolStripMenuItem});
+            this.menuStrip1.Location = new System.Drawing.Point(0, 0);
+            this.menuStrip1.Name = "menuStrip1";
+            this.menuStrip1.Size = new System.Drawing.Size(562, 24);
+            this.menuStrip1.TabIndex = 6;
+            this.menuStrip1.Text = "menuStrip1";
+            // 
+            // fileToolStripMenuItem
+            // 
+            this.fileToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.earthToolStripMenuItem1,
+            this.tajMahalToolStripMenuItem1,
+            this.loadFromFileToolStripMenuItem1});
+            this.fileToolStripMenuItem.Name = "fileToolStripMenuItem";
+            this.fileToolStripMenuItem.Size = new System.Drawing.Size(37, 20);
+            this.fileToolStripMenuItem.Text = "File";
+            // 
+            // earthToolStripMenuItem1
+            // 
+            this.earthToolStripMenuItem1.Checked = true;
+            this.earthToolStripMenuItem1.CheckState = System.Windows.Forms.CheckState.Checked;
+            this.earthToolStripMenuItem1.Name = "earthToolStripMenuItem1";
+            this.earthToolStripMenuItem1.Size = new System.Drawing.Size(157, 22);
+            this.earthToolStripMenuItem1.Text = "Earth";
+            this.earthToolStripMenuItem1.Click += new System.EventHandler(this.earthToolStripMenuItem1_Click);
+            // 
+            // tajMahalToolStripMenuItem1
+            // 
+            this.tajMahalToolStripMenuItem1.Name = "tajMahalToolStripMenuItem1";
+            this.tajMahalToolStripMenuItem1.Size = new System.Drawing.Size(157, 22);
+            this.tajMahalToolStripMenuItem1.Text = "Taj Mahal";
+            this.tajMahalToolStripMenuItem1.Click += new System.EventHandler(this.tajMahalToolStripMenuItem1_Click);
+            // 
+            // loadFromFileToolStripMenuItem1
+            // 
+            this.loadFromFileToolStripMenuItem1.Name = "loadFromFileToolStripMenuItem1";
+            this.loadFromFileToolStripMenuItem1.Size = new System.Drawing.Size(157, 22);
+            this.loadFromFileToolStripMenuItem1.Text = "Load from file...";
             // 
             // MainView
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(1098, 761);
+            this.ClientSize = new System.Drawing.Size(1124, 801);
             this.Controls.Add(this.mainTable);
+            this.MainMenuStrip = this.menuStrip1;
             this.Name = "MainView";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Image function filtering program";
             this.Load += new System.EventHandler(this.MainView_Load);
             this.mainTable.ResumeLayout(false);
+            this.mainTable.PerformLayout();
             this.tableLayoutPanel1.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.rChart)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.gChart)).EndInit();
@@ -522,6 +573,8 @@ namespace PresentationLayer.Views
             ((System.ComponentModel.ISupportInitialize)(this.brightnessBox)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.gammaBox)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.functionChart)).EndInit();
+            this.menuStrip1.ResumeLayout(false);
+            this.menuStrip1.PerformLayout();
             this.ResumeLayout(false);
 
         }
@@ -556,5 +609,10 @@ namespace PresentationLayer.Views
         private System.Windows.Forms.Button removePolygonButton;
         private System.Windows.Forms.Button addPolygonButton;
         private System.Windows.Forms.Button customFunctionButton;
+        private System.Windows.Forms.MenuStrip menuStrip1;
+        private System.Windows.Forms.ToolStripMenuItem fileToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem earthToolStripMenuItem1;
+        private System.Windows.Forms.ToolStripMenuItem tajMahalToolStripMenuItem1;
+        private System.Windows.Forms.ToolStripMenuItem loadFromFileToolStripMenuItem1;
     }
 }

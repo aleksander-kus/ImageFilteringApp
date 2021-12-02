@@ -7,15 +7,13 @@ namespace DomainLayer.Dto
     {
         public List<Polygon> polygons { get; set; } = new List<Polygon>();
         public List<Point> addingPolygonVertices { get; set; }
-        public bool AddingPolygon { get; set; } = false;
-        public bool RemovingPolygon { get; set; } = false;
+        public PolygonMode PolygonMode { get; set; }
 
         public void Clear()
         {
             polygons.Clear();
             addingPolygonVertices = null;
-            AddingPolygon = false;
-            RemovingPolygon = false;
+            PolygonMode = PolygonMode.Adding;
         }
     }
 }
