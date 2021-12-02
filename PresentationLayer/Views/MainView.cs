@@ -154,5 +154,11 @@ namespace PresentationLayer.Views
         {
             presenter.RemovingPolygon = true;
         }
+
+        private void bChart_MouseDown(object sender, MouseEventArgs e)
+        {
+            //MessageBox.Show($"Clicked location: {e.Location}, boottom is {rChart.Bottom}");
+            MessageBox.Show($"Clicked location is: {rChart.ChartAreas[0].AxisX.PixelPositionToValue(e.Location.X)}, {rChart.ChartAreas[0].AxisY.PixelPositionToValue(e.Location.Y)}");
+        }
     }
 }
