@@ -61,8 +61,13 @@ namespace PresentationLayer.Views
             MinimizeBox = false;
         }
 
-        private void cancelButton_Click(object sender, EventArgs e)
+        private void cancelButton_Click(object sender, EventArgs e) => Close();
+
+        private void applyButton_Click(object sender, EventArgs e) => presenter.Apply();
+
+        private void okButton_Click(object sender, EventArgs e)
         {
+            presenter.Apply();
             Close();
         }
     }

@@ -29,9 +29,9 @@ namespace PresentationLayer.Views
         /// </summary>
         private void InitializeComponent()
         {
-            System.Windows.Forms.DataVisualization.Charting.ChartArea chartArea2 = new System.Windows.Forms.DataVisualization.Charting.ChartArea();
-            System.Windows.Forms.DataVisualization.Charting.Legend legend2 = new System.Windows.Forms.DataVisualization.Charting.Legend();
-            System.Windows.Forms.DataVisualization.Charting.Series series2 = new System.Windows.Forms.DataVisualization.Charting.Series();
+            System.Windows.Forms.DataVisualization.Charting.ChartArea chartArea4 = new System.Windows.Forms.DataVisualization.Charting.ChartArea();
+            System.Windows.Forms.DataVisualization.Charting.Legend legend4 = new System.Windows.Forms.DataVisualization.Charting.Legend();
+            System.Windows.Forms.DataVisualization.Charting.Series series4 = new System.Windows.Forms.DataVisualization.Charting.Series();
             this.functionChart = new System.Windows.Forms.DataVisualization.Charting.Chart();
             this.okButton = new System.Windows.Forms.Button();
             this.cancelButton = new System.Windows.Forms.Button();
@@ -49,18 +49,18 @@ namespace PresentationLayer.Views
             // 
             // functionChart
             // 
-            chartArea2.Name = "ChartArea1";
-            this.functionChart.ChartAreas.Add(chartArea2);
-            legend2.Name = "Legend1";
-            this.functionChart.Legends.Add(legend2);
+            chartArea4.Name = "ChartArea1";
+            this.functionChart.ChartAreas.Add(chartArea4);
+            legend4.Name = "Legend1";
+            this.functionChart.Legends.Add(legend4);
             this.functionChart.Location = new System.Drawing.Point(12, 12);
             this.functionChart.Name = "functionChart";
-            series2.ChartArea = "ChartArea1";
-            series2.ChartType = System.Windows.Forms.DataVisualization.Charting.SeriesChartType.Line;
-            series2.Color = System.Drawing.Color.Black;
-            series2.Legend = "Legend1";
-            series2.Name = "Series1";
-            this.functionChart.Series.Add(series2);
+            series4.ChartArea = "ChartArea1";
+            series4.ChartType = System.Windows.Forms.DataVisualization.Charting.SeriesChartType.Line;
+            series4.Color = System.Drawing.Color.Black;
+            series4.Legend = "Legend1";
+            series4.Name = "Series1";
+            this.functionChart.Series.Add(series4);
             this.functionChart.Size = new System.Drawing.Size(565, 320);
             this.functionChart.TabIndex = 0;
             this.functionChart.Text = "chart1";
@@ -73,6 +73,7 @@ namespace PresentationLayer.Views
             this.okButton.TabIndex = 1;
             this.okButton.Text = "OK";
             this.okButton.UseVisualStyleBackColor = true;
+            this.okButton.Click += new System.EventHandler(this.okButton_Click);
             // 
             // cancelButton
             // 
@@ -92,6 +93,7 @@ namespace PresentationLayer.Views
             this.applyButton.TabIndex = 3;
             this.applyButton.Text = "Apply";
             this.applyButton.UseVisualStyleBackColor = true;
+            this.applyButton.Click += new System.EventHandler(this.applyButton_Click);
             // 
             // groupBox1
             // 

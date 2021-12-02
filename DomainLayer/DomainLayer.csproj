@@ -47,6 +47,7 @@
     <Compile Include="Dto\FilterParameters.cs" />
     <Compile Include="Filters\BrightnessFilter.cs" />
     <Compile Include="Filters\ContrastFilter.cs" />
+    <Compile Include="Filters\CustomFilter.cs" />
     <Compile Include="Filters\Filter.cs" />
     <Compile Include="Filters\GammaFilter.cs" />
     <Compile Include="Filters\NegationFilter.cs" />

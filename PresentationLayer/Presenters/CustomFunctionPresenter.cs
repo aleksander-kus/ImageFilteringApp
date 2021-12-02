@@ -1,4 +1,5 @@
 ﻿using DomainLayer.Dto;
+using DomainLayer.Filters;
 using PresentationLayer.Views;
 using System.Collections.Generic;
 using System.Drawing;
@@ -18,11 +19,21 @@ namespace PresentationLayer.Presenters
             controlPoints.Add(new Point(0, 0));
             controlPoints.Add(new Point(255, 255));
             controlPoints.Add(new Point(100, 200));
+            UpdateFunction();
+        }
+
+        public void Apply()
+        {
+            filterParameters.Filter = new CustomFilter(function);
+        }
+
+        private void UpdateFunction()
+        {
+            controlPoints.Sort((p1, p2) => p1.X.CompareTo(p2.X));
             ConnectControlPoints();
-            this.view.Function = function;
-            this.view.HighlightedPoints = controlPoints;
-            this.view.DrawFunction();
-            this.view.DrawFunction();
+            view.Function = function;
+            view.HighlightedPoints = controlPoints;
+            view.DrawFunction();
         }
 
         private void ConnectControlPoints()
