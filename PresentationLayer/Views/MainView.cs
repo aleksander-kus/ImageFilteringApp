@@ -14,14 +14,12 @@ namespace PresentationLayer.Views
         private MainPresenter presenter;
         private ColorHistograms colorHistograms;
         private int[] function;
-        private readonly Image defaultImage;
         private Image canvasImage;
         private bool mouseDown = false;
         public MainView()
         {
             InitializeComponent();
-            // Default image source: https://upload.wikimedia.org/wikipedia/commons/thumb/2/22/Earth_Western_Hemisphere_transparent_background.png/1200px-Earth_Western_Hemisphere_transparent_background.png
-            defaultImage = Resources.earth;
+            // Earth image source: https://upload.wikimedia.org/wikipedia/commons/thumb/2/22/Earth_Western_Hemisphere_transparent_background.png/1200px-Earth_Western_Hemisphere_transparent_background.png
             rChart.Legends.Clear();
             gChart.Legends.Clear();
             bChart.Legends.Clear();
@@ -32,12 +30,13 @@ namespace PresentationLayer.Views
         }
 
         public ColorHistograms ColorHistograms { set => colorHistograms = value; }
-        public int CanvasWidth => pictureBox1.Width;
-        public int CanvasHeight => pictureBox1.Height;
+        public int CanvasWidth => bufferedPanel1.Width;
+        public int CanvasHeight => bufferedPanel1.Height;
         public MainPresenter Presenter { set => presenter = value; }
         public Image CanvasImage { set => canvasImage = value; }
-        public Image DefaultImage => defaultImage;
         public int[] Function { set => function = value; }
+
+        public Image DefaultImage => Resources.earth;
 
         public void RedrawCanvas() => bufferedPanel1.Invalidate();
         public void RedrawHistograms()
@@ -64,67 +63,37 @@ namespace PresentationLayer.Views
             MinimizeBox = false;
         }
 
-        private void noFilterButton_Click(object sender, EventArgs e)
-        {
-            presenter.Filter = new NoFilter();
-        }
+        private void noFilterButton_Click(object sender, EventArgs e) => presenter.Filter = new NoFilter();
 
-        private void negationButton_Click(object sender, EventArgs e)
-        {
-            presenter.Filter = new NegationFilter();
-        }
-        private void brightnessButton_Click(object sender, EventArgs e)
-        {
-            brightnessBox_ValueChanged(null, null);
-        }
+        private void negationButton_Click(object sender, EventArgs e) => presenter.Filter = new NegationFilter();
 
+        private void brightnessButton_Click(object sender, EventArgs e) => brightnessBox_ValueChanged(null, null);
         private void brightnessBox_ValueChanged(object sender, EventArgs e)
         {
             if (brightnessButton.Checked)
                 presenter.Filter = new BrightnessFilter((int)brightnessBox.Value);
         }
 
-        private void gammaButton_Click(object sender, EventArgs e)
-        {
-            gammaBox_ValueChanged(null, null);
-        }
-
+        private void gammaButton_Click(object sender, EventArgs e) => gammaBox_ValueChanged(null, null);
         private void gammaBox_ValueChanged(object sender, EventArgs e)
         {
             if (gammaButton.Checked)
                 presenter.Filter = new GammaFilter((double)gammaBox.Value);
         }
 
-        private void contrastButton_Click(object sender, EventArgs e)
-        {
-            contrastBox_ValueChanged(null, null);
-        }
-
+        private void contrastButton_Click(object sender, EventArgs e) => contrastBox_ValueChanged(null, null);
         private void contrastBox_ValueChanged(object sender, EventArgs e)
         {
             if(contrastButton.Checked)
                 presenter.Filter = new ContrastFilter((int)contrastBox.Value);
         }
+        private void wholeButton_Click(object sender, EventArgs e) => presenter.SelectionMode = DomainLayer.SelectionMode.Whole;
 
-        private void brushButton_Click(object sender, EventArgs e)
-        {
-            presenter.SelectionMode = DomainLayer.SelectionMode.Brush;
-        }
+        private void brushButton_Click(object sender, EventArgs e) => presenter.SelectionMode = DomainLayer.SelectionMode.Brush;
 
-        private void polygonButton_Click(object sender, EventArgs e)
-        {
-            presenter.SelectionMode = DomainLayer.SelectionMode.Polygon;
-        }
+        private void polygonButton_Click(object sender, EventArgs e) => presenter.SelectionMode = DomainLayer.SelectionMode.Polygon;
 
-        private void wholeButton_Click(object sender, EventArgs e)
-        {
-            presenter.SelectionMode = DomainLayer.SelectionMode.Whole;
-        }
-
-        private void bufferedPanel1_Paint(object sender, PaintEventArgs e)
-        {
-            e.Graphics.DrawImage(canvasImage, new Point(0, 0));
-        }
+        private void bufferedPanel1_Paint(object sender, PaintEventArgs e) => e.Graphics.DrawImage(canvasImage, new Point(0, 0));
 
         private void bufferedPanel1_MouseDown(object sender, MouseEventArgs e)
         {
@@ -138,32 +107,53 @@ namespace PresentationLayer.Views
                 presenter.RegisterCanvasMouseMove(e.Location);
         }
 
-        private void bufferedPanel1_MouseUp(object sender, MouseEventArgs e)
-        {
-            mouseDown = false;
-        }
+        private void bufferedPanel1_MouseUp(object sender, MouseEventArgs e) => mouseDown = false;
 
+        private void addPolygonButton_Click(object sender, EventArgs e) => presenter.PolygonMode = DomainLayer.PolygonMode.Adding;
 
-        private void addPolygonButton_Click(object sender, EventArgs e)
-        {
-            presenter.AddingPolygon = true;
-        }
-
-        private void removePolygonButton_Click(object sender, EventArgs e)
-        {
-            presenter.RemovingPolygon = true;
-        }
-
-        private void bChart_MouseDown(object sender, MouseEventArgs e)
-        {
-            //MessageBox.Show($"Clicked location: {e.Location}, boottom is {rChart.Bottom}");
-            MessageBox.Show($"Clicked location is: {rChart.ChartAreas[0].AxisX.PixelPositionToValue(e.Location.X)}, {rChart.ChartAreas[0].AxisY.PixelPositionToValue(e.Location.Y)}");
-        }
+        private void removePolygonButton_Click(object sender, EventArgs e) => presenter.PolygonMode = DomainLayer.PolygonMode.Removing;
 
         private void customFunctionButton_Click(object sender, EventArgs e)
         {
             customButton.Checked = true;
             presenter.DefineCustomFunction();
+        }
+
+        private void tajMahalToolStripMenuItem1_Click(object sender, EventArgs e)
+        {
+            earthToolStripMenuItem1.Checked = false;
+            tajMahalToolStripMenuItem1.Checked = true;
+            presenter.LoadBitmapFromImage(Resources.Taj_Mahal_Agra_India);
+            ResetPresenter();
+        }
+
+        private void earthToolStripMenuItem1_Click(object sender, EventArgs e)
+        {
+            tajMahalToolStripMenuItem1.Checked = false;
+            earthToolStripMenuItem1.Checked = true;
+            presenter.LoadBitmapFromImage(Resources.earth);
+            ResetPresenter();
+        }
+
+        private void ResetPresenter()
+        {
+            presenter.Filter = new NoFilter();
+            presenter.SelectionMode = DomainLayer.SelectionMode.Whole;
+            wholeButton.Checked = true;
+            noFilterButton.Checked = true;
+        }
+
+        private void loadFromFileToolStripMenuItem1_Click(object sender, EventArgs e)
+        {
+            OpenFileDialog od = new OpenFileDialog();
+            od.Filter = "Image Files (*.bmp;*.jpg;*.jpeg,*.png)|*.BMP;*.JPG;*.JPEG;*.PNG";
+            if (od.ShowDialog() == DialogResult.OK)
+            {
+                presenter.LoadBitmapFromImage(Image.FromFile(od.FileName));
+                ResetPresenter();
+                earthToolStripMenuItem1.Checked = false;
+                tajMahalToolStripMenuItem1.Checked = false;
+            }    
         }
     }
 }

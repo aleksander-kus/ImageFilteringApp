@@ -13,7 +13,7 @@ namespace PresentationLayer.Presenters
 {
     public class MainPresenter
     {
-        private readonly Bitmap bitmap;
+        private Bitmap bitmap;
         private readonly PolygonData polygonData;
         private readonly FilterParameters filterParameters;
         private readonly ColorHistograms colorHistograms;
@@ -21,9 +21,7 @@ namespace PresentationLayer.Presenters
         private readonly IViewLoader viewLoader;
         private const int BRUSH_RADIUS = 50;
 
-
-        public bool AddingPolygon { get => polygonData.AddingPolygon; set => polygonData.AddingPolygon = value; }
-        public bool RemovingPolygon { get => polygonData.RemovingPolygon; set => polygonData.RemovingPolygon = value; }
+        public PolygonMode PolygonMode { get => polygonData.PolygonMode; set => polygonData.PolygonMode = value; }
 
         private readonly ISelectingService selectingService;
         private readonly IDrawingService drawingService;
@@ -43,15 +41,14 @@ namespace PresentationLayer.Presenters
                     {
                         case SelectionMode.Whole:
                             selectingService.SelectAll(true);
-                            UpdateBitmap();
                             break;
                         case SelectionMode.Brush:
                         case SelectionMode.Polygon:
                             selectingService.SelectAll(false);
-                            polygonData.Clear();
-                            UpdateBitmap();
                             break;
                     }
+                    polygonData.Clear();
+                    UpdateBitmap();
                 }
             }
         }
@@ -60,21 +57,32 @@ namespace PresentationLayer.Presenters
             this.view = view;
             this.viewLoader = viewLoader;
 
-            bitmap = new Bitmap(view.DefaultImage);
-            this.view.CanvasImage = bitmap;
             colorHistograms = new ColorHistograms();
             this.view.ColorHistograms = colorHistograms;
+            LoadBitmapFromImage(view.DefaultImage);
             filterParameters = new FilterParameters()
             {
                 Selected = new bool[bitmap.Width, bitmap.Height],
                 Filter = new NoFilter()
             };
             filterParameters.PropertyChanged += FilterParameters_PropertyChanged;
-            selectingService = new SelectingService(filterParameters.Selected);
+            selectingService = new SelectingService(filterParameters);
             selectingService.SelectAll(true);
             polygonData = new PolygonData();
             drawingService = new DrawingService(bitmap, polygonData, colorHistograms, filterParameters);
             UpdateBitmap();
+        }
+
+        public void LoadBitmapFromImage(Image image)
+        {
+            float scale = Math.Min((float)view.CanvasWidth / image.Width, (float)view.CanvasHeight / image.Height);
+            bitmap = new Bitmap(image, new Size((int)(image.Width * scale), (int)(image.Height * scale)));
+            if(drawingService != null)
+            {
+                filterParameters.Selected = new bool[bitmap.Width, bitmap.Height];
+                drawingService.OriginalBitmap = bitmap;
+                UpdateBitmap();
+            }
         }
         
         public void DefineCustomFunction()
@@ -92,7 +100,7 @@ namespace PresentationLayer.Presenters
                 selectingService.SelectBrush(mousePosition, BRUSH_RADIUS);
                 UpdateBitmap();
             }
-            else if (selectionMode == SelectionMode.Polygon && polygonData.AddingPolygon)
+            else if (selectionMode == SelectionMode.Polygon && polygonData.PolygonMode == PolygonMode.Adding)
             {
                 if (polygonData.addingPolygonVertices == null)
                     polygonData.addingPolygonVertices = new List<Point>();
@@ -102,7 +110,7 @@ namespace PresentationLayer.Presenters
                 }
                 UpdateBitmap();
             }
-            else if (selectionMode == SelectionMode.Polygon && polygonData.RemovingPolygon)
+            else if (selectionMode == SelectionMode.Polygon && polygonData.PolygonMode == PolygonMode.Removing)
             {
                 int id;
                 if((id = IsPolygonCenterClicked(mousePosition)) != -1)
@@ -116,12 +124,13 @@ namespace PresentationLayer.Presenters
 
         private bool AddPointToPolygon(Point mousePosition)
         {
+            if (mousePosition.X >= bitmap.Width || mousePosition.X < 0 || mousePosition.Y >= bitmap.Height || mousePosition.Y < 0)
+                return false;
             // if the first point was clicked, finish adding the new polygon
             if (polygonData.addingPolygonVertices.Count >= 3 && IsPointClicked(polygonData.addingPolygonVertices[0], mousePosition))
             {
                 polygonData.polygons.Add(new Polygon(polygonData.addingPolygonVertices));
                 polygonData.addingPolygonVertices = null;
-                polygonData.AddingPolygon = false;
                 return true;
             }
             else

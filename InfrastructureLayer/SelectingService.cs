@@ -1,4 +1,5 @@
 ﻿using DomainLayer;
+using DomainLayer.Dto;
 using System;
 using System.Collections.Generic;
 using System.Drawing;
@@ -8,25 +9,25 @@ namespace InfrastructureLayer
 {
     public class SelectingService : ISelectingService
     {
-        private bool[,] selected;
-        public SelectingService(bool[,] selected)
+        private FilterParameters filterParameters;
+        public SelectingService(FilterParameters filterParameters)
         {
-            this.selected = selected;
+            this.filterParameters = filterParameters;
         }
 
         public void SelectAll(bool select)
         {
-            for (int i = 0; i < selected.GetLength(0); ++i)
-                for (int j = 0; j < selected.GetLength(1); ++j)
-                    selected[i, j] = select;
+            for (int i = 0; i < filterParameters.Selected.GetLength(0); ++i)
+                for (int j = 0; j < filterParameters.Selected.GetLength(1); ++j)
+                    filterParameters.Selected[i, j] = select;
         }
 
         public void SelectBrush(Point mousePosition, int brushRadius)
         {
-            for (int i = Math.Max(0, mousePosition.X - brushRadius); i < Math.Min(selected.GetLength(0), mousePosition.X + brushRadius); ++i)
-                for (int j = Math.Max(0, mousePosition.Y - brushRadius); j < Math.Min(selected.GetLength(1), mousePosition.Y + brushRadius); ++j)
+            for (int i = Math.Max(0, mousePosition.X - brushRadius); i < Math.Min(filterParameters.Selected.GetLength(0), mousePosition.X + brushRadius); ++i)
+                for (int j = Math.Max(0, mousePosition.Y - brushRadius); j < Math.Min(filterParameters.Selected.GetLength(1), mousePosition.Y + brushRadius); ++j)
                     if (SquaredDistance(mousePosition, new Point(i, j)) < brushRadius * brushRadius)
-                        selected[i, j] = true;
+                        filterParameters.Selected[i, j] = true;
         }
 
         public void SelectPolygon(Polygon polygon, bool select)
@@ -73,7 +74,7 @@ namespace InfrastructureLayer
                 // Fill pixels between every pair of edges
                 for (int i = 0; i < AET.Count; i += 2)
                     for (int x = (int)Math.Round(AET[i].x); x < AET[i + 1].x; ++x)
-                        selected[x, y] = select;
+                        filterParameters.Selected[x, y] = select;
                 // Update the x value for each edge
                 for (int i = 0; i < AET.Count; ++i)
                 {
