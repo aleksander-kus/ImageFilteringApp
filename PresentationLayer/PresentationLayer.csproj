@@ -56,11 +56,19 @@
     <Compile Include="Controls\BufferedPanel.Designer.cs">
       <DependentUpon>BufferedPanel.cs</DependentUpon>
     </Compile>
+    <Compile Include="Presenters\CustomFunctionPresenter.cs" />
     <Compile Include="Presenters\MainPresenter.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="ViewLoaders\IViewLoader.cs" />
     <Compile Include="ViewLoaders\ViewLoader.cs" />
+    <Compile Include="Views\CustomFunctionView.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Views\CustomFunctionView.Designer.cs">
+      <DependentUpon>CustomFunctionView.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Views\ICustomFunctionView.cs" />
     <Compile Include="Views\IMainView.cs" />
     <Compile Include="Views\MainView.cs">
       <SubType>Form</SubType>
@@ -78,6 +86,9 @@
       <DependentUpon>Resources.resx</DependentUpon>
       <DesignTime>True</DesignTime>
     </Compile>
+    <EmbeddedResource Include="Views\CustomFunctionView.resx">
+      <DependentUpon>CustomFunctionView.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Views\MainView.resx">
       <DependentUpon>MainView.cs</DependentUpon>
     </EmbeddedResource>

@@ -1,7 +1,6 @@
-﻿using DomainLayer;
+﻿using DomainLayer.Dto;
 using PresentationLayer.Presenters;
 using PresentationLayer.Views;
-using System;
 using System.Windows.Forms;
 
 namespace PresentationLayer.ViewLoaders
@@ -11,6 +10,16 @@ namespace PresentationLayer.ViewLoaders
         private Form lastLoadedForm;
         public Form LastLoadedForm => lastLoadedForm;
 
+        public void LoadCustomFunctionView(FilterParameters filterParameters)
+        {
+            CustomFunctionView view = new CustomFunctionView();
+            CustomFunctionPresenter presenter = new CustomFunctionPresenter(view, filterParameters);
+
+            view.Presenter = presenter;
+
+            LoadView(view);
+        }
+
         public void LoadMainView()
         {
             MainView view = new MainView();
@@ -18,10 +27,10 @@ namespace PresentationLayer.ViewLoaders
 
             view.Presenter = presenter;
 
-            LoadForm(view);
+            LoadView(view);
         }
 
-        private void LoadForm(Form view)
+        private void LoadView(Form view)
         {
             view.Show();
             lastLoadedForm = view;

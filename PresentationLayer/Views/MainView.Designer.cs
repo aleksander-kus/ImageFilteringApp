@@ -49,6 +49,8 @@ namespace PresentationLayer.Views
             this.menuTable = new System.Windows.Forms.TableLayoutPanel();
             this.groupBox1 = new System.Windows.Forms.GroupBox();
             this.panel1 = new System.Windows.Forms.Panel();
+            this.removePolygonButton = new System.Windows.Forms.Button();
+            this.addPolygonButton = new System.Windows.Forms.Button();
             this.polygonButton = new System.Windows.Forms.RadioButton();
             this.brushButton = new System.Windows.Forms.RadioButton();
             this.wholeButton = new System.Windows.Forms.RadioButton();
@@ -65,9 +67,8 @@ namespace PresentationLayer.Views
             this.brightnessButton = new System.Windows.Forms.RadioButton();
             this.noFilterButton = new System.Windows.Forms.RadioButton();
             this.functionChart = new System.Windows.Forms.DataVisualization.Charting.Chart();
-            this.addPolygonButton = new System.Windows.Forms.Button();
-            this.removePolygonButton = new System.Windows.Forms.Button();
             this.bufferedPanel1 = new PresentationLayer.Controls.BufferedPanel();
+            this.customFunctionButton = new System.Windows.Forms.Button();
             this.mainTable.SuspendLayout();
             this.tableLayoutPanel1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.rChart)).BeginInit();
@@ -173,6 +174,7 @@ namespace PresentationLayer.Views
             this.bChart.Size = new System.Drawing.Size(263, 247);
             this.bChart.TabIndex = 2;
             this.bChart.Text = "chart3";
+            this.bChart.MouseDown += new System.Windows.Forms.MouseEventHandler(this.bChart_MouseDown);
             // 
             // menuTable
             // 
@@ -212,6 +214,26 @@ namespace PresentationLayer.Views
             this.panel1.Name = "panel1";
             this.panel1.Size = new System.Drawing.Size(256, 201);
             this.panel1.TabIndex = 0;
+            // 
+            // removePolygonButton
+            // 
+            this.removePolygonButton.Location = new System.Drawing.Point(137, 85);
+            this.removePolygonButton.Name = "removePolygonButton";
+            this.removePolygonButton.Size = new System.Drawing.Size(95, 23);
+            this.removePolygonButton.TabIndex = 4;
+            this.removePolygonButton.Text = "Remove polygon";
+            this.removePolygonButton.UseVisualStyleBackColor = true;
+            this.removePolygonButton.Click += new System.EventHandler(this.removePolygonButton_Click);
+            // 
+            // addPolygonButton
+            // 
+            this.addPolygonButton.Location = new System.Drawing.Point(23, 85);
+            this.addPolygonButton.Name = "addPolygonButton";
+            this.addPolygonButton.Size = new System.Drawing.Size(75, 23);
+            this.addPolygonButton.TabIndex = 3;
+            this.addPolygonButton.Text = "Add polygon";
+            this.addPolygonButton.UseVisualStyleBackColor = true;
+            this.addPolygonButton.Click += new System.EventHandler(this.addPolygonButton_Click);
             // 
             // polygonButton
             // 
@@ -279,6 +301,7 @@ namespace PresentationLayer.Views
             // 
             // pictureBox1
             // 
+            this.pictureBox1.Controls.Add(this.customFunctionButton);
             this.pictureBox1.Controls.Add(this.contrastBox);
             this.pictureBox1.Controls.Add(this.brightnessBox);
             this.pictureBox1.Controls.Add(this.gammaBox);
@@ -450,26 +473,6 @@ namespace PresentationLayer.Views
             this.functionChart.TabIndex = 1;
             this.functionChart.Text = "chart1";
             // 
-            // addPolygonButton
-            // 
-            this.addPolygonButton.Location = new System.Drawing.Point(23, 85);
-            this.addPolygonButton.Name = "addPolygonButton";
-            this.addPolygonButton.Size = new System.Drawing.Size(75, 23);
-            this.addPolygonButton.TabIndex = 3;
-            this.addPolygonButton.Text = "Add polygon";
-            this.addPolygonButton.UseVisualStyleBackColor = true;
-            this.addPolygonButton.Click += new System.EventHandler(this.addPolygonButton_Click);
-            // 
-            // removePolygonButton
-            // 
-            this.removePolygonButton.Location = new System.Drawing.Point(137, 85);
-            this.removePolygonButton.Name = "removePolygonButton";
-            this.removePolygonButton.Size = new System.Drawing.Size(95, 23);
-            this.removePolygonButton.TabIndex = 4;
-            this.removePolygonButton.Text = "Remove polygon";
-            this.removePolygonButton.UseVisualStyleBackColor = true;
-            this.removePolygonButton.Click += new System.EventHandler(this.removePolygonButton_Click);
-            // 
             // bufferedPanel1
             // 
             this.bufferedPanel1.Dock = System.Windows.Forms.DockStyle.Fill;
@@ -481,6 +484,16 @@ namespace PresentationLayer.Views
             this.bufferedPanel1.MouseDown += new System.Windows.Forms.MouseEventHandler(this.bufferedPanel1_MouseDown);
             this.bufferedPanel1.MouseMove += new System.Windows.Forms.MouseEventHandler(this.bufferedPanel1_MouseMove);
             this.bufferedPanel1.MouseUp += new System.Windows.Forms.MouseEventHandler(this.bufferedPanel1_MouseUp);
+            // 
+            // customFunctionButton
+            // 
+            this.customFunctionButton.Location = new System.Drawing.Point(20, 220);
+            this.customFunctionButton.Name = "customFunctionButton";
+            this.customFunctionButton.Size = new System.Drawing.Size(144, 23);
+            this.customFunctionButton.TabIndex = 10;
+            this.customFunctionButton.Text = "Define custom function";
+            this.customFunctionButton.UseVisualStyleBackColor = true;
+            this.customFunctionButton.Click += new System.EventHandler(this.customFunctionButton_Click);
             // 
             // MainView
             // 
@@ -542,5 +555,6 @@ namespace PresentationLayer.Views
         private System.Windows.Forms.NumericUpDown gammaBox;
         private System.Windows.Forms.Button removePolygonButton;
         private System.Windows.Forms.Button addPolygonButton;
+        private System.Windows.Forms.Button customFunctionButton;
     }
 }

@@ -75,9 +75,9 @@ namespace InfrastructureLayer
                     Color color = byteBitmap.GetPixel(i, j);
                     if (color.A != 255)
                         continue;
-                    bool isPixelSelected = filterParameters.selected[i, j];
+                    bool isPixelSelected = filterParameters.Selected[i, j];
                     if (isPixelSelected)
-                        color = filterParameters.filter.Transform(color);
+                        color = filterParameters.Filter.Transform(color);
                     ++colorHistograms.RHistogram[color.R];
                     ++colorHistograms.GHistogram[color.G];
                     ++colorHistograms.BHistogram[color.B];

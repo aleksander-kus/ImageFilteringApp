@@ -29,14 +29,7 @@ namespace PresentationLayer.Presenters
         private readonly IDrawingService drawingService;
         public Filter Filter
         {
-            set
-            {
-                if(!filterParameters.filter.Function.SequenceEqual(value.Function))
-                {
-                    filterParameters.filter = value;
-                    UpdateBitmap();
-                }
-            }
+            set => filterParameters.Filter = value;
         }
         private SelectionMode selectionMode = SelectionMode.Whole;
         public SelectionMode SelectionMode
@@ -73,15 +66,24 @@ namespace PresentationLayer.Presenters
             this.view.ColorHistograms = colorHistograms;
             filterParameters = new FilterParameters()
             {
-                selected = new bool[bitmap.Width, bitmap.Height],
-                filter = new NoFilter()
+                Selected = new bool[bitmap.Width, bitmap.Height],
+                Filter = new NoFilter()
             };
-            selectingService = new SelectingService(filterParameters.selected);
+            filterParameters.PropertyChanged += FilterParameters_PropertyChanged;
+            selectingService = new SelectingService(filterParameters.Selected);
             selectingService.SelectAll(true);
             polygonData = new PolygonData();
             drawingService = new DrawingService(bitmap, polygonData, colorHistograms, filterParameters);
             UpdateBitmap();
         }
+        
+        public void DefineCustomFunction()
+        {
+            viewLoader.LoadCustomFunctionView(filterParameters);
+        }
+
+        private void FilterParameters_PropertyChanged(object sender, System.ComponentModel.PropertyChangedEventArgs e) =>
+            UpdateBitmap();
 
         public void RegisterCanvasClick(Point mousePosition)
         {
@@ -148,7 +150,7 @@ namespace PresentationLayer.Presenters
 
         private void UpdateBitmap()
         {
-            view.Function = filterParameters.filter.Function;
+            view.Function = filterParameters.Filter.Function;
             view.CanvasImage = drawingService.DrawBitmap();
             view.RedrawHistograms();
             view.RedrawCanvas();
