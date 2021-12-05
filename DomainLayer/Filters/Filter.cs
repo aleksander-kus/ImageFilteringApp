@@ -39,6 +39,8 @@ namespace DomainLayer.Filters
 
         private void ConnectTwoPoints(PointF p1, PointF p2)
         {
+            if (p1.Equals(p2))
+                return;
             float a = (p2.Y - p1.Y) / (p2.X - p1.X);
             float b = p2.Y - a * p2.X;
             int f(int x) => (int)(a * x + b);
