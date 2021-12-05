@@ -82,14 +82,12 @@ namespace PresentationLayer.Presenters
             {
                 filterParameters.Selected = new bool[bitmap.Width, bitmap.Height];
                 drawingService.OriginalBitmap = bitmap;
+                selectingService.SelectAll(true);
                 UpdateBitmap();
             }
         }
-        
-        public void DefineCustomFunction()
-        {
-            viewLoader.LoadCustomFunctionView(filterParameters);
-        }
+
+        public void DefineCustomFunction() => viewLoader.LoadCustomFunctionView(filterParameters);
 
         private void FilterParameters_PropertyChanged(object sender, System.ComponentModel.PropertyChangedEventArgs e) =>
             UpdateBitmap();

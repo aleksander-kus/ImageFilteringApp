@@ -179,8 +179,8 @@ namespace PresentationLayer.Views
 
         private void ResetPresenter()
         {
-            presenter.Filter = new NoFilter();
             presenter.SelectionMode = DomainLayer.SelectionMode.Whole;
+            presenter.Filter = new NoFilter();
             wholeButton.Checked = true;
             noFilterButton.Checked = true;
         }
