@@ -116,6 +116,7 @@ namespace PresentationLayer.Views
             this.bezierCurveButton.TabIndex = 1;
             this.bezierCurveButton.Text = "Bezier";
             this.bezierCurveButton.UseVisualStyleBackColor = true;
+            this.bezierCurveButton.Click += new System.EventHandler(this.bezierCurveButton_Click);
             // 
             // normalCurveButton
             // 
@@ -128,6 +129,7 @@ namespace PresentationLayer.Views
             this.normalCurveButton.TabStop = true;
             this.normalCurveButton.Text = "Normal";
             this.normalCurveButton.UseVisualStyleBackColor = true;
+            this.normalCurveButton.Click += new System.EventHandler(this.normalCurveButton_Click);
             // 
             // groupBox2
             // 

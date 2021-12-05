@@ -4,6 +4,7 @@ using DomainLayer.Filters;
 using PresentationLayer.Views;
 using System.Collections.Generic;
 using System.Drawing;
+using System.Linq;
 
 namespace PresentationLayer.Presenters
 {
@@ -21,6 +22,18 @@ namespace PresentationLayer.Presenters
             controlPoints.Add(new Point(0, 0));
             controlPoints.Add(new Point(255, 255));
             UpdateFunction();
+        }
+        private CurveMode curveMode;
+        public CurveMode CurveMode
+        {
+            set
+            {
+                if(curveMode != value)
+                {
+                    curveMode = value;
+                    UpdateFunction();
+                }
+            }
         }
 
         public void RegisterChartClick(Point mousePosition)
@@ -50,7 +63,10 @@ namespace PresentationLayer.Presenters
         private void UpdateFunction()
         {
             controlPoints.Sort((p1, p2) => p1.X.CompareTo(p2.X));
-            ConnectControlPoints();
+            if (curveMode == CurveMode.Normal)
+                ConnectControlPoints();
+            else
+                ComputeBezier();
             view.Function = function;
             view.HighlightedPoints = controlPoints;
             view.DrawFunction();
@@ -69,6 +85,38 @@ namespace PresentationLayer.Presenters
             int f(int x) => (int)(a * x + b);
             for (int i = (int)p1.X; i <= p2.X; ++i)
                 function[i] = f(i);
+        }
+
+        private PointF approx(float t, PointF p1, PointF p2)
+        {
+            float x = p1.X * (1 - t) + p2.X * t;
+            float y = p1.Y * (1 - t) + p2.Y * t;
+            return new PointF(x, y);
+        }
+
+        private void ComputeBezier()
+        {
+            List<PointF> bezierCurve = new List<PointF>();
+            for(float t = 0; t < 1; t += 1/256f)
+            {
+                List<PointF> temp1 = new List<PointF>(controlPoints.Select(p => new PointF(p.X, p.Y)));
+                while(temp1.Count > 1)
+                {
+                    List<PointF> temp2 = new List<PointF>();
+                    for(int i = 0; i < temp1.Count - 1; ++i)
+                    {
+                        PointF p1 = temp1[i];
+                        PointF p2 = temp1[i + 1];
+
+                        temp2.Add(approx(t, p1, p2));
+                    }
+
+                    temp1 = temp2;
+                }
+                bezierCurve.Add(temp1[0]);
+            }
+            for (int i = 0; i < bezierCurve.Count && i < function.Length; ++i)
+                function[i] = (int)bezierCurve[i].Y;
         }
     }
 }

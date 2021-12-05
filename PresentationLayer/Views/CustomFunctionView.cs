@@ -80,5 +80,15 @@ namespace PresentationLayer.Views
         private void removePointsButton_Click(object sender, EventArgs e) => presenter.ChartPointMode = ChartPointMode.Removing;
 
         private void addPointsButton_Click(object sender, EventArgs e) => presenter.ChartPointMode = ChartPointMode.Adding;
+
+        private void bezierCurveButton_Click(object sender, EventArgs e)
+        {
+            presenter.CurveMode = CurveMode.Bezier;
+        }
+
+        private void normalCurveButton_Click(object sender, EventArgs e)
+        {
+            presenter.CurveMode = CurveMode.Normal;
+        }
     }
 }

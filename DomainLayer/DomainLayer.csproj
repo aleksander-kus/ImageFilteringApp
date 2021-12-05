@@ -47,6 +47,7 @@
     <Compile Include="Enums\ChartPointMode.cs" />
     <Compile Include="Dto\ColorHistograms.cs" />
     <Compile Include="Dto\FilterParameters.cs" />
+    <Compile Include="Enums\CurveMode.cs" />
     <Compile Include="Filters\BrightnessFilter.cs" />
     <Compile Include="Filters\ContrastFilter.cs" />
     <Compile Include="Filters\CustomFilter.cs" />
