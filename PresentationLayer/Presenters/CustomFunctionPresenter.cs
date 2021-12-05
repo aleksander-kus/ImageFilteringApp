@@ -69,6 +69,7 @@ namespace PresentationLayer.Presenters
         {
             filter = new CustomFilter(controlPoints);
             view.Function = filterParameters.CurveMode == CurveMode.Normal ? filter.Function : filter.BezierFunction;
+            view.CurveMode = filterParameters.CurveMode;
             view.HighlightedPoints = controlPoints;
             view.DrawFunction();
         }

@@ -22,6 +22,7 @@ namespace PresentationLayer.Presenters
         private const int BRUSH_RADIUS = 50;
 
         public PolygonMode PolygonMode { get => polygonData.PolygonMode; set => polygonData.PolygonMode = value; }
+        public CurveMode CurveMode { get => filterParameters.CurveMode; set => filterParameters.CurveMode = value; }
 
         private readonly ISelectingService selectingService;
         private readonly IDrawingService drawingService;
@@ -160,6 +161,8 @@ namespace PresentationLayer.Presenters
         private void UpdateBitmap()
         {
             view.Function = filterParameters.CurveMode == CurveMode.Normal ? filterParameters.Filter.Function : filterParameters.Filter.BezierFunction;
+            view.CurveMode = filterParameters.CurveMode;
+            view.HighlightedPoints = filterParameters.Filter.ControlPoints;
             view.CanvasImage = drawingService.DrawBitmap();
             view.RedrawHistograms();
             view.RedrawCanvas();

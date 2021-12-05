@@ -1,5 +1,7 @@
-﻿using DomainLayer.Dto;
+﻿using DomainLayer;
+using DomainLayer.Dto;
 using PresentationLayer.Presenters;
+using System.Collections.Generic;
 using System.Drawing;
 
 namespace PresentationLayer.Views
@@ -13,7 +15,10 @@ namespace PresentationLayer.Views
         int CanvasHeight { get; }
         Image CanvasImage { set; }
         Image DefaultImage { get; }
+        List<Point> HighlightedPoints { set; }
+        CurveMode CurveMode { set; }
         void RedrawCanvas();
         void RedrawHistograms();
+        void DrawFunction();
     }
 }

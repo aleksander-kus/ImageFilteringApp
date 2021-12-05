@@ -2,12 +2,7 @@
 using PresentationLayer.Presenters;
 using System;
 using System.Collections.Generic;
-using System.ComponentModel;
-using System.Data;
 using System.Drawing;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows.Forms;
 using System.Windows.Forms.DataVisualization.Charting;
 
@@ -18,6 +13,21 @@ namespace PresentationLayer.Views
         private CustomFunctionPresenter presenter;
         private int[] function;
         private List<Point> highlightedPoints;
+        private CurveMode curveMode = CurveMode.Normal;
+        public CurveMode CurveMode
+        {
+            set
+            {
+                if (curveMode != value)
+                {
+                    curveMode = value;
+                    if (curveMode == CurveMode.Normal)
+                        normalCurveButton.Checked = true;
+                    else
+                        bezierCurveButton.Checked = true;
+                }
+            }
+        }
         public CustomFunctionView()
         {
             InitializeComponent();
@@ -81,19 +91,10 @@ namespace PresentationLayer.Views
 
         private void addPointsButton_Click(object sender, EventArgs e) => presenter.ChartPointMode = ChartPointMode.Adding;
 
-        private void bezierCurveButton_Click(object sender, EventArgs e)
-        {
-            presenter.CurveMode = CurveMode.Bezier;
-        }
+        private void bezierCurveButton_Click(object sender, EventArgs e) => presenter.CurveMode = curveMode = CurveMode.Bezier;
 
-        private void normalCurveButton_Click(object sender, EventArgs e)
-        {
-            presenter.CurveMode = CurveMode.Normal;
-        }
+        private void normalCurveButton_Click(object sender, EventArgs e) => presenter.CurveMode = curveMode = CurveMode.Normal;
 
-        private void clearFunctionButton_Click(object sender, EventArgs e)
-        {
-            presenter.ClearFunction();
-        }
+        private void clearFunctionButton_Click(object sender, EventArgs e) => presenter.ClearFunction();
     }
 }
