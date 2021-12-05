@@ -11,20 +11,16 @@ namespace PresentationLayer.Presenters
     {
         private readonly ICustomFunctionView view;
         private readonly FilterParameters filterParameters;
-        private readonly List<Point> controlPoints = new List<Point>();
+        private List<Point> controlPoints = new List<Point>();
         private CustomFilter filter;
         public ChartPointMode ChartPointMode { get; set; } = ChartPointMode.Adding;
         public CustomFunctionPresenter(ICustomFunctionView view, FilterParameters filterParameters)
         {
             this.view = view;
             this.filterParameters = filterParameters;
-            if(this.filterParameters.Filter is CustomFilter)
-                controlPoints = this.filterParameters.Filter.ControlPoints;
-            else
-            {
-                controlPoints.Add(new Point(0, 0));
-                controlPoints.Add(new Point(255, 255));
-            }
+            controlPoints = this.filterParameters.Filter is CustomFilter
+                ? this.filterParameters.Filter.ControlPoints
+                : new List<Point> { new Point(0, 0), new Point(255, 255) };
             UpdateFunction();
         }
         public CurveMode CurveMode
@@ -51,6 +47,12 @@ namespace PresentationLayer.Presenters
         }
 
         public void Apply() => filterParameters.Filter = new CustomFilter(controlPoints);
+
+        public void ClearFunction()
+        {
+            controlPoints = new List<Point> { new Point(0, 0), new Point(255, 255) };
+            UpdateFunction();
+        }
 
         private void RemoveControlPoint(Point mousePosition)
         {

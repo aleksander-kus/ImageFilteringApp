@@ -1,6 +1,5 @@
 ﻿using DomainLayer;
 using DomainLayer.Dto;
-using System.Collections.Generic;
 using System.Drawing;
 
 namespace InfrastructureLayer

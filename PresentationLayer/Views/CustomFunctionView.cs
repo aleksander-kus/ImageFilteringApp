@@ -90,5 +90,10 @@ namespace PresentationLayer.Views
         {
             presenter.CurveMode = CurveMode.Normal;
         }
+
+        private void clearFunctionButton_Click(object sender, EventArgs e)
+        {
+            presenter.ClearFunction();
+        }
     }
 }
