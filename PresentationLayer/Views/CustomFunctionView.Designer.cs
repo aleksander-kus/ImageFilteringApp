@@ -29,9 +29,9 @@ namespace PresentationLayer.Views
         /// </summary>
         private void InitializeComponent()
         {
-            System.Windows.Forms.DataVisualization.Charting.ChartArea chartArea3 = new System.Windows.Forms.DataVisualization.Charting.ChartArea();
-            System.Windows.Forms.DataVisualization.Charting.Legend legend3 = new System.Windows.Forms.DataVisualization.Charting.Legend();
-            System.Windows.Forms.DataVisualization.Charting.Series series3 = new System.Windows.Forms.DataVisualization.Charting.Series();
+            System.Windows.Forms.DataVisualization.Charting.ChartArea chartArea1 = new System.Windows.Forms.DataVisualization.Charting.ChartArea();
+            System.Windows.Forms.DataVisualization.Charting.Legend legend1 = new System.Windows.Forms.DataVisualization.Charting.Legend();
+            System.Windows.Forms.DataVisualization.Charting.Series series1 = new System.Windows.Forms.DataVisualization.Charting.Series();
             this.functionChart = new System.Windows.Forms.DataVisualization.Charting.Chart();
             this.okButton = new System.Windows.Forms.Button();
             this.cancelButton = new System.Windows.Forms.Button();
@@ -42,6 +42,7 @@ namespace PresentationLayer.Views
             this.groupBox2 = new System.Windows.Forms.GroupBox();
             this.removePointsButton = new System.Windows.Forms.RadioButton();
             this.addPointsButton = new System.Windows.Forms.RadioButton();
+            this.clearFunctionButton = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.functionChart)).BeginInit();
             this.groupBox1.SuspendLayout();
             this.groupBox2.SuspendLayout();
@@ -49,18 +50,18 @@ namespace PresentationLayer.Views
             // 
             // functionChart
             // 
-            chartArea3.Name = "ChartArea1";
-            this.functionChart.ChartAreas.Add(chartArea3);
-            legend3.Name = "Legend1";
-            this.functionChart.Legends.Add(legend3);
+            chartArea1.Name = "ChartArea1";
+            this.functionChart.ChartAreas.Add(chartArea1);
+            legend1.Name = "Legend1";
+            this.functionChart.Legends.Add(legend1);
             this.functionChart.Location = new System.Drawing.Point(12, 12);
             this.functionChart.Name = "functionChart";
-            series3.ChartArea = "ChartArea1";
-            series3.ChartType = System.Windows.Forms.DataVisualization.Charting.SeriesChartType.Line;
-            series3.Color = System.Drawing.Color.Black;
-            series3.Legend = "Legend1";
-            series3.Name = "Series1";
-            this.functionChart.Series.Add(series3);
+            series1.ChartArea = "ChartArea1";
+            series1.ChartType = System.Windows.Forms.DataVisualization.Charting.SeriesChartType.Line;
+            series1.Color = System.Drawing.Color.Black;
+            series1.Legend = "Legend1";
+            series1.Name = "Series1";
+            this.functionChart.Series.Add(series1);
             this.functionChart.Size = new System.Drawing.Size(565, 320);
             this.functionChart.TabIndex = 0;
             this.functionChart.Text = "chart1";
@@ -116,6 +117,7 @@ namespace PresentationLayer.Views
             this.bezierCurveButton.TabIndex = 1;
             this.bezierCurveButton.Text = "Bezier";
             this.bezierCurveButton.UseVisualStyleBackColor = true;
+            this.bezierCurveButton.Click += new System.EventHandler(this.bezierCurveButton_Click);
             // 
             // normalCurveButton
             // 
@@ -128,6 +130,7 @@ namespace PresentationLayer.Views
             this.normalCurveButton.TabStop = true;
             this.normalCurveButton.Text = "Normal";
             this.normalCurveButton.UseVisualStyleBackColor = true;
+            this.normalCurveButton.Click += new System.EventHandler(this.normalCurveButton_Click);
             // 
             // groupBox2
             // 
@@ -164,11 +167,22 @@ namespace PresentationLayer.Views
             this.addPointsButton.UseVisualStyleBackColor = true;
             this.addPointsButton.Click += new System.EventHandler(this.addPointsButton_Click);
             // 
+            // clearFunctionButton
+            // 
+            this.clearFunctionButton.Location = new System.Drawing.Point(592, 174);
+            this.clearFunctionButton.Name = "clearFunctionButton";
+            this.clearFunctionButton.Size = new System.Drawing.Size(128, 28);
+            this.clearFunctionButton.TabIndex = 6;
+            this.clearFunctionButton.Text = "Clear function";
+            this.clearFunctionButton.UseVisualStyleBackColor = true;
+            this.clearFunctionButton.Click += new System.EventHandler(this.clearFunctionButton_Click);
+            // 
             // CustomFunctionView
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(741, 400);
+            this.Controls.Add(this.clearFunctionButton);
             this.Controls.Add(this.groupBox2);
             this.Controls.Add(this.groupBox1);
             this.Controls.Add(this.applyButton);
@@ -200,5 +214,6 @@ namespace PresentationLayer.Views
         private System.Windows.Forms.GroupBox groupBox2;
         private System.Windows.Forms.RadioButton removePointsButton;
         private System.Windows.Forms.RadioButton addPointsButton;
+        private System.Windows.Forms.Button clearFunctionButton;
     }
 }

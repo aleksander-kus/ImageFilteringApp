@@ -1,8 +1,10 @@
-﻿using DomainLayer.Dto;
+﻿using DomainLayer;
+using DomainLayer.Dto;
 using DomainLayer.Filters;
 using PresentationLayer.Presenters;
 using PresentationLayer.Properties;
 using System;
+using System.Collections.Generic;
 using System.Drawing;
 using System.Windows.Forms;
 using System.Windows.Forms.DataVisualization.Charting;
@@ -16,6 +18,22 @@ namespace PresentationLayer.Views
         private int[] function;
         private Image canvasImage;
         private bool mouseDown = false;
+
+        private CurveMode curveMode = CurveMode.Normal;
+        public CurveMode CurveMode
+        {
+            set
+            {
+                if(curveMode != value)
+                {
+                    curveMode = value;
+                    if (curveMode == CurveMode.Normal)
+                        normalCurveButton.Checked = true;
+                    else
+                        bezierCurveButton.Checked = true;
+                }
+            }
+        }
         public MainView()
         {
             InitializeComponent();
@@ -44,7 +62,7 @@ namespace PresentationLayer.Views
             DrawHistogram(rChart, colorHistograms.RHistogram);
             DrawHistogram(gChart, colorHistograms.GHistogram);
             DrawHistogram(bChart, colorHistograms.BHistogram);
-            DrawHistogram(functionChart, function);
+            DrawFunction();
         }
 
         private void DrawHistogram(Chart chart, int[] histogram)
@@ -54,6 +72,30 @@ namespace PresentationLayer.Views
             chart.Series[0].Points.Clear();
             for (int i = 1; i < histogram.Length - 1; ++i)
                 chart.Series[0].Points.AddXY(i, histogram[i]);
+        }
+
+        private List<Point> highlightedPoints = new List<Point>();
+        public List<Point> HighlightedPoints { set => highlightedPoints = value; }
+
+        public void DrawFunction()
+        {
+            if (function == null)
+                return;
+            functionChart.Series[0].Points.Clear();
+            for (int i = 0; i < function.Length - 1; ++i)
+                functionChart.Series[0].Points.AddXY(i, function[i]);
+            if (functionChart.Series.Count > 1)
+                functionChart.Series.RemoveAt(1);
+            var highlighted = new Series("Highlighted")
+            {
+                ChartType = SeriesChartType.Point,
+                Color = Color.Black,
+                MarkerStyle = MarkerStyle.Circle,
+                MarkerSize = 5
+            };
+            foreach (var point in highlightedPoints)
+                highlighted.Points.AddXY(point.X, point.Y);
+            functionChart.Series.Add(highlighted);
         }
 
         private void MainView_Load(object sender, EventArgs e)
@@ -155,5 +197,9 @@ namespace PresentationLayer.Views
                 tajMahalToolStripMenuItem1.Checked = false;
             }    
         }
+
+        private void normalCurveButton_Click(object sender, EventArgs e) => presenter.CurveMode = curveMode = CurveMode.Normal;
+
+        private void bezierCurveButton_Click(object sender, EventArgs e) => presenter.CurveMode = curveMode = CurveMode.Bezier;
     }
 }

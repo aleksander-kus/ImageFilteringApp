@@ -21,6 +21,20 @@ namespace DomainLayer.Dto
             }
         }
 
+        private CurveMode curveMode = CurveMode.Normal;
+        public CurveMode CurveMode
+        {
+            get => curveMode;
+            set
+            {
+                if(curveMode != value)
+                {
+                    curveMode = value;
+                    OnPropertyChanged(new PropertyChangedEventArgs(nameof(CurveMode)));
+                }
+            }
+        }
+
         protected void OnPropertyChanged(PropertyChangedEventArgs e) =>
             PropertyChanged?.Invoke(this, e);
 

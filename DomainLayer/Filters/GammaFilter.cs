@@ -1,4 +1,6 @@
 ﻿using System;
+using System.Collections.Generic;
+using System.Drawing;
 
 namespace DomainLayer.Filters
 {
@@ -6,8 +8,9 @@ namespace DomainLayer.Filters
     {
         public GammaFilter(double gamma)
         {
-            for (int i = 0; i < function.Length; ++i)
-                function[i] = (int)Math.Round(Math.Pow(i / 255.0, 1.0/gamma) * 255);
+            ControlPoints = new List<Point> { new Point(0, 0), new Point(255, 255) };
+            for (int i = 0; i < Function.Length; ++i)
+                BezierFunction[i] = Function[i] = (int)Math.Round(Math.Pow(i / 255.0, 1.0/gamma) * 255);
         }
     }
 }

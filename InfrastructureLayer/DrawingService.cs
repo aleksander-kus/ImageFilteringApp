@@ -1,6 +1,5 @@
 ﻿using DomainLayer;
 using DomainLayer.Dto;
-using System.Collections.Generic;
 using System.Drawing;
 
 namespace InfrastructureLayer
@@ -77,7 +76,7 @@ namespace InfrastructureLayer
                         continue;
                     bool isPixelSelected = filterParameters.Selected[i, j];
                     if (isPixelSelected)
-                        color = filterParameters.Filter.Transform(color);
+                        color = filterParameters.CurveMode == CurveMode.Normal ? filterParameters.Filter.Transform(color) : filterParameters.Filter.BezierTransform(color);
                     ++colorHistograms.RHistogram[color.R];
                     ++colorHistograms.GHistogram[color.G];
                     ++colorHistograms.BHistogram[color.B];

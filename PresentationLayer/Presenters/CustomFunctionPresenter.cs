@@ -11,16 +11,28 @@ namespace PresentationLayer.Presenters
     {
         private readonly ICustomFunctionView view;
         private readonly FilterParameters filterParameters;
-        private readonly List<Point> controlPoints = new List<Point>();
-        private readonly int[] function = new int[256];
+        private List<Point> controlPoints = new List<Point>();
+        private CustomFilter filter;
         public ChartPointMode ChartPointMode { get; set; } = ChartPointMode.Adding;
         public CustomFunctionPresenter(ICustomFunctionView view, FilterParameters filterParameters)
         {
             this.view = view;
             this.filterParameters = filterParameters;
-            controlPoints.Add(new Point(0, 0));
-            controlPoints.Add(new Point(255, 255));
+            controlPoints = this.filterParameters.Filter is CustomFilter
+                ? this.filterParameters.Filter.ControlPoints
+                : new List<Point> { new Point(0, 0), new Point(255, 255) };
             UpdateFunction();
+        }
+        public CurveMode CurveMode
+        {
+            set
+            {
+                if(filterParameters.CurveMode != value)
+                {
+                    filterParameters.CurveMode = value;
+                    UpdateFunction();
+                }
+            }
         }
 
         public void RegisterChartClick(Point mousePosition)
@@ -34,7 +46,13 @@ namespace PresentationLayer.Presenters
             UpdateFunction();
         }
 
-        public void Apply() => filterParameters.Filter = new CustomFilter(function);
+        public void Apply() => filterParameters.Filter = new CustomFilter(controlPoints);
+
+        public void ClearFunction()
+        {
+            controlPoints = new List<Point> { new Point(0, 0), new Point(255, 255) };
+            UpdateFunction();
+        }
 
         private void RemoveControlPoint(Point mousePosition)
         {
@@ -49,26 +67,11 @@ namespace PresentationLayer.Presenters
 
         private void UpdateFunction()
         {
-            controlPoints.Sort((p1, p2) => p1.X.CompareTo(p2.X));
-            ConnectControlPoints();
-            view.Function = function;
+            filter = new CustomFilter(controlPoints);
+            view.Function = filterParameters.CurveMode == CurveMode.Normal ? filter.Function : filter.BezierFunction;
+            view.CurveMode = filterParameters.CurveMode;
             view.HighlightedPoints = controlPoints;
             view.DrawFunction();
-        }
-
-        private void ConnectControlPoints()
-        {
-            for (int i = 0; i < controlPoints.Count - 1; ++i)
-                ConnectTwoPoints(controlPoints[i], controlPoints[i + 1]);
-        }
-
-        private void ConnectTwoPoints(PointF p1, PointF p2)
-        {
-            float a = (p2.Y - p1.Y) / (p2.X - p1.X);
-            float b = p2.Y - a * p2.X;
-            int f(int x) => (int)(a * x + b);
-            for (int i = (int)p1.X; i <= p2.X; ++i)
-                function[i] = f(i);
         }
     }
 }

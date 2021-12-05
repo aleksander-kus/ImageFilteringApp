@@ -1,11 +1,13 @@
-﻿namespace DomainLayer.Filters
+﻿using System.Collections.Generic;
+using System.Drawing;
+
+namespace DomainLayer.Filters
 {
     public class NoFilter : Filter
     {
         public NoFilter()
         {
-            for (int i = 0; i < function.Length; ++i)
-                function[i] = i;
+            ControlPoints = new List<Point> { new Point(0, 0), new Point(255, 255) };
         }
     }
 }

@@ -1,10 +1,15 @@
-﻿namespace DomainLayer.Filters
+﻿using System.Collections.Generic;
+using System.Drawing;
+
+namespace DomainLayer.Filters
 {
     public class CustomFilter : Filter
     {
-        public CustomFilter(int[] function)
+        public CustomFilter(List<Point> controlPoints)
         {
-            this.function = (int[])function.Clone();
+            controlPoints.Remove(new Point(255, 255));
+            controlPoints.Add(new Point(255, 255));
+            ControlPoints = controlPoints;
         }
     }
 }

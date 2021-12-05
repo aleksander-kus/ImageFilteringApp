@@ -1,11 +1,13 @@
-﻿namespace DomainLayer.Filters
+﻿using System.Collections.Generic;
+using System.Drawing;
+
+namespace DomainLayer.Filters
 {
     public class NegationFilter : Filter
     {
         public NegationFilter()
         {
-            for (int i = 0; i < function.Length; ++i)
-                function[i] = 255 - i;
+            ControlPoints = new List<Point> { new Point(0, 255), new Point(255, 0) };
         }
     }
 }
