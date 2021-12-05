@@ -159,7 +159,7 @@ namespace PresentationLayer.Presenters
 
         private void UpdateBitmap()
         {
-            view.Function = filterParameters.Filter.Function;
+            view.Function = filterParameters.CurveMode == CurveMode.Normal ? filterParameters.Filter.Function : filterParameters.Filter.BezierFunction;
             view.CanvasImage = drawingService.DrawBitmap();
             view.RedrawHistograms();
             view.RedrawCanvas();

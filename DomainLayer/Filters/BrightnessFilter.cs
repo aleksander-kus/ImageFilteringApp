@@ -1,23 +1,14 @@
-﻿namespace DomainLayer.Filters
+﻿using System.Drawing;
+
+namespace DomainLayer.Filters
 {
     public class BrightnessFilter : Filter
     {
         public BrightnessFilter(int beginPoint)
         {
-            if(beginPoint < 0)
-            {
-                beginPoint = -beginPoint;
-                for (int i = beginPoint; i < function.Length; ++i)
-                    function[i] = i - beginPoint;
-            }
-            else
-            {
-                int i = 0;
-                for (; i < 256 - beginPoint; ++i)
-                    function[i] = beginPoint + i;
-                for (; i < function.Length; ++i)
-                    function[i] = 255;
-            }
+            ControlPoints = beginPoint < 0
+                ? new System.Collections.Generic.List<Point> { new Point(0, 0), new Point(-beginPoint, 0), new Point(255, 255 - (-beginPoint)) }
+                : new System.Collections.Generic.List<Point> { new Point(0, beginPoint), new Point(255 - beginPoint, 255), new Point(255, 255) };
         }
     }
 }
