@@ -42,9 +42,11 @@ namespace PresentationLayer.Views
             gChart.Legends.Clear();
             bChart.Legends.Clear();
             functionChart.Legends.Clear();
-            functionChart.ChartAreas[0].AxisY.Maximum = 255;
             functionChart.ChartAreas[0].AxisX.MajorGrid.Enabled = false;
+            functionChart.ChartAreas[0].AxisX.Minimum = 0;
             functionChart.ChartAreas[0].AxisY.MajorGrid.Enabled = false;
+            functionChart.ChartAreas[0].AxisY.Maximum = 255;
+            functionChart.ChartAreas[0].AxisY.Maximum = 255;
         }
 
         public ColorHistograms ColorHistograms { set => colorHistograms = value; }
