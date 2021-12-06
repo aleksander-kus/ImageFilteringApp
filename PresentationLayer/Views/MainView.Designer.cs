@@ -29,18 +29,18 @@ namespace PresentationLayer.Views
         /// </summary>
         private void InitializeComponent()
         {
-            System.Windows.Forms.DataVisualization.Charting.ChartArea chartArea6 = new System.Windows.Forms.DataVisualization.Charting.ChartArea();
-            System.Windows.Forms.DataVisualization.Charting.Legend legend6 = new System.Windows.Forms.DataVisualization.Charting.Legend();
-            System.Windows.Forms.DataVisualization.Charting.Series series6 = new System.Windows.Forms.DataVisualization.Charting.Series();
-            System.Windows.Forms.DataVisualization.Charting.ChartArea chartArea7 = new System.Windows.Forms.DataVisualization.Charting.ChartArea();
-            System.Windows.Forms.DataVisualization.Charting.Legend legend7 = new System.Windows.Forms.DataVisualization.Charting.Legend();
-            System.Windows.Forms.DataVisualization.Charting.Series series7 = new System.Windows.Forms.DataVisualization.Charting.Series();
-            System.Windows.Forms.DataVisualization.Charting.ChartArea chartArea8 = new System.Windows.Forms.DataVisualization.Charting.ChartArea();
-            System.Windows.Forms.DataVisualization.Charting.Legend legend8 = new System.Windows.Forms.DataVisualization.Charting.Legend();
-            System.Windows.Forms.DataVisualization.Charting.Series series8 = new System.Windows.Forms.DataVisualization.Charting.Series();
-            System.Windows.Forms.DataVisualization.Charting.ChartArea chartArea5 = new System.Windows.Forms.DataVisualization.Charting.ChartArea();
-            System.Windows.Forms.DataVisualization.Charting.Legend legend5 = new System.Windows.Forms.DataVisualization.Charting.Legend();
-            System.Windows.Forms.DataVisualization.Charting.Series series5 = new System.Windows.Forms.DataVisualization.Charting.Series();
+            System.Windows.Forms.DataVisualization.Charting.ChartArea chartArea9 = new System.Windows.Forms.DataVisualization.Charting.ChartArea();
+            System.Windows.Forms.DataVisualization.Charting.Legend legend9 = new System.Windows.Forms.DataVisualization.Charting.Legend();
+            System.Windows.Forms.DataVisualization.Charting.Series series9 = new System.Windows.Forms.DataVisualization.Charting.Series();
+            System.Windows.Forms.DataVisualization.Charting.ChartArea chartArea10 = new System.Windows.Forms.DataVisualization.Charting.ChartArea();
+            System.Windows.Forms.DataVisualization.Charting.Legend legend10 = new System.Windows.Forms.DataVisualization.Charting.Legend();
+            System.Windows.Forms.DataVisualization.Charting.Series series10 = new System.Windows.Forms.DataVisualization.Charting.Series();
+            System.Windows.Forms.DataVisualization.Charting.ChartArea chartArea11 = new System.Windows.Forms.DataVisualization.Charting.ChartArea();
+            System.Windows.Forms.DataVisualization.Charting.Legend legend11 = new System.Windows.Forms.DataVisualization.Charting.Legend();
+            System.Windows.Forms.DataVisualization.Charting.Series series11 = new System.Windows.Forms.DataVisualization.Charting.Series();
+            System.Windows.Forms.DataVisualization.Charting.ChartArea chartArea12 = new System.Windows.Forms.DataVisualization.Charting.ChartArea();
+            System.Windows.Forms.DataVisualization.Charting.Legend legend12 = new System.Windows.Forms.DataVisualization.Charting.Legend();
+            System.Windows.Forms.DataVisualization.Charting.Series series12 = new System.Windows.Forms.DataVisualization.Charting.Series();
             this.mainTable = new System.Windows.Forms.TableLayoutPanel();
             this.tableLayoutPanel1 = new System.Windows.Forms.TableLayoutPanel();
             this.rChart = new System.Windows.Forms.DataVisualization.Charting.Chart();
@@ -57,6 +57,9 @@ namespace PresentationLayer.Views
             this.groupBox2 = new System.Windows.Forms.GroupBox();
             this.filterTable = new System.Windows.Forms.TableLayoutPanel();
             this.pictureBox1 = new System.Windows.Forms.Panel();
+            this.groupBox3 = new System.Windows.Forms.GroupBox();
+            this.bezierCurveButton = new System.Windows.Forms.RadioButton();
+            this.normalCurveButton = new System.Windows.Forms.RadioButton();
             this.customFunctionButton = new System.Windows.Forms.Button();
             this.contrastBox = new System.Windows.Forms.NumericUpDown();
             this.brightnessBox = new System.Windows.Forms.NumericUpDown();
@@ -68,15 +71,16 @@ namespace PresentationLayer.Views
             this.brightnessButton = new System.Windows.Forms.RadioButton();
             this.noFilterButton = new System.Windows.Forms.RadioButton();
             this.functionChart = new System.Windows.Forms.DataVisualization.Charting.Chart();
-            this.bufferedPanel1 = new PresentationLayer.Controls.BufferedPanel();
             this.menuStrip1 = new System.Windows.Forms.MenuStrip();
             this.fileToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.earthToolStripMenuItem1 = new System.Windows.Forms.ToolStripMenuItem();
             this.tajMahalToolStripMenuItem1 = new System.Windows.Forms.ToolStripMenuItem();
             this.loadFromFileToolStripMenuItem1 = new System.Windows.Forms.ToolStripMenuItem();
-            this.groupBox3 = new System.Windows.Forms.GroupBox();
-            this.normalCurveButton = new System.Windows.Forms.RadioButton();
-            this.bezierCurveButton = new System.Windows.Forms.RadioButton();
+            this.groupBox4 = new System.Windows.Forms.GroupBox();
+            this.reductionCheckbox = new System.Windows.Forms.CheckBox();
+            this.label1 = new System.Windows.Forms.Label();
+            this.kUpDown = new System.Windows.Forms.NumericUpDown();
+            this.bufferedPanel1 = new PresentationLayer.Controls.BufferedPanel();
             this.mainTable.SuspendLayout();
             this.tableLayoutPanel1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.rChart)).BeginInit();
@@ -88,12 +92,14 @@ namespace PresentationLayer.Views
             this.groupBox2.SuspendLayout();
             this.filterTable.SuspendLayout();
             this.pictureBox1.SuspendLayout();
+            this.groupBox3.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.contrastBox)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.brightnessBox)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.gammaBox)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.functionChart)).BeginInit();
             this.menuStrip1.SuspendLayout();
-            this.groupBox3.SuspendLayout();
+            this.groupBox4.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.kUpDown)).BeginInit();
             this.SuspendLayout();
             // 
             // mainTable
@@ -135,54 +141,54 @@ namespace PresentationLayer.Views
             // 
             // rChart
             // 
-            chartArea6.Name = "ChartArea1";
-            this.rChart.ChartAreas.Add(chartArea6);
+            chartArea9.Name = "ChartArea1";
+            this.rChart.ChartAreas.Add(chartArea9);
             this.rChart.Dock = System.Windows.Forms.DockStyle.Fill;
-            legend6.Name = "Legend1";
-            this.rChart.Legends.Add(legend6);
+            legend9.Name = "Legend1";
+            this.rChart.Legends.Add(legend9);
             this.rChart.Location = new System.Drawing.Point(3, 3);
             this.rChart.Name = "rChart";
-            series6.ChartArea = "ChartArea1";
-            series6.Color = System.Drawing.Color.Red;
-            series6.Legend = "Legend1";
-            series6.Name = "Series1";
-            this.rChart.Series.Add(series6);
+            series9.ChartArea = "ChartArea1";
+            series9.Color = System.Drawing.Color.Red;
+            series9.Legend = "Legend1";
+            series9.Name = "Series1";
+            this.rChart.Series.Add(series9);
             this.rChart.Size = new System.Drawing.Size(269, 250);
             this.rChart.TabIndex = 0;
             this.rChart.Text = "chart1";
             // 
             // gChart
             // 
-            chartArea7.Name = "ChartArea1";
-            this.gChart.ChartAreas.Add(chartArea7);
+            chartArea10.Name = "ChartArea1";
+            this.gChart.ChartAreas.Add(chartArea10);
             this.gChart.Dock = System.Windows.Forms.DockStyle.Fill;
-            legend7.Name = "Legend1";
-            this.gChart.Legends.Add(legend7);
+            legend10.Name = "Legend1";
+            this.gChart.Legends.Add(legend10);
             this.gChart.Location = new System.Drawing.Point(3, 259);
             this.gChart.Name = "gChart";
-            series7.ChartArea = "ChartArea1";
-            series7.Color = System.Drawing.Color.Green;
-            series7.Legend = "Legend1";
-            series7.Name = "Series1";
-            this.gChart.Series.Add(series7);
+            series10.ChartArea = "ChartArea1";
+            series10.Color = System.Drawing.Color.Green;
+            series10.Legend = "Legend1";
+            series10.Name = "Series1";
+            this.gChart.Series.Add(series10);
             this.gChart.Size = new System.Drawing.Size(269, 251);
             this.gChart.TabIndex = 1;
             this.gChart.Text = "chart2";
             // 
             // bChart
             // 
-            chartArea8.Name = "ChartArea1";
-            this.bChart.ChartAreas.Add(chartArea8);
+            chartArea11.Name = "ChartArea1";
+            this.bChart.ChartAreas.Add(chartArea11);
             this.bChart.Dock = System.Windows.Forms.DockStyle.Fill;
-            legend8.Name = "Legend1";
-            this.bChart.Legends.Add(legend8);
+            legend11.Name = "Legend1";
+            this.bChart.Legends.Add(legend11);
             this.bChart.Location = new System.Drawing.Point(3, 516);
             this.bChart.Name = "bChart";
-            series8.ChartArea = "ChartArea1";
-            series8.Color = System.Drawing.Color.Blue;
-            series8.Legend = "Legend1";
-            series8.Name = "Series1";
-            this.bChart.Series.Add(series8);
+            series11.ChartArea = "ChartArea1";
+            series11.Color = System.Drawing.Color.Blue;
+            series11.Legend = "Legend1";
+            series11.Name = "Series1";
+            this.bChart.Series.Add(series11);
             this.bChart.Size = new System.Drawing.Size(269, 252);
             this.bChart.TabIndex = 2;
             this.bChart.Text = "chart3";
@@ -215,6 +221,7 @@ namespace PresentationLayer.Views
             // 
             // panel1
             // 
+            this.panel1.Controls.Add(this.groupBox4);
             this.panel1.Controls.Add(this.removePolygonButton);
             this.panel1.Controls.Add(this.addPolygonButton);
             this.panel1.Controls.Add(this.polygonButton);
@@ -328,6 +335,41 @@ namespace PresentationLayer.Views
             this.pictureBox1.Name = "pictureBox1";
             this.pictureBox1.Size = new System.Drawing.Size(257, 251);
             this.pictureBox1.TabIndex = 0;
+            // 
+            // groupBox3
+            // 
+            this.groupBox3.Controls.Add(this.bezierCurveButton);
+            this.groupBox3.Controls.Add(this.normalCurveButton);
+            this.groupBox3.Location = new System.Drawing.Point(158, 10);
+            this.groupBox3.Name = "groupBox3";
+            this.groupBox3.Size = new System.Drawing.Size(86, 70);
+            this.groupBox3.TabIndex = 11;
+            this.groupBox3.TabStop = false;
+            this.groupBox3.Text = "Curve mode";
+            // 
+            // bezierCurveButton
+            // 
+            this.bezierCurveButton.AutoSize = true;
+            this.bezierCurveButton.Location = new System.Drawing.Point(6, 42);
+            this.bezierCurveButton.Name = "bezierCurveButton";
+            this.bezierCurveButton.Size = new System.Drawing.Size(54, 17);
+            this.bezierCurveButton.TabIndex = 1;
+            this.bezierCurveButton.Text = "Bezier";
+            this.bezierCurveButton.UseVisualStyleBackColor = true;
+            this.bezierCurveButton.Click += new System.EventHandler(this.bezierCurveButton_Click);
+            // 
+            // normalCurveButton
+            // 
+            this.normalCurveButton.AutoSize = true;
+            this.normalCurveButton.Checked = true;
+            this.normalCurveButton.Location = new System.Drawing.Point(6, 19);
+            this.normalCurveButton.Name = "normalCurveButton";
+            this.normalCurveButton.Size = new System.Drawing.Size(58, 17);
+            this.normalCurveButton.TabIndex = 0;
+            this.normalCurveButton.TabStop = true;
+            this.normalCurveButton.Text = "Normal";
+            this.normalCurveButton.UseVisualStyleBackColor = true;
+            this.normalCurveButton.Click += new System.EventHandler(this.normalCurveButton_Click);
             // 
             // customFunctionButton
             // 
@@ -478,34 +520,22 @@ namespace PresentationLayer.Views
             // 
             // functionChart
             // 
-            chartArea5.Name = "ChartArea1";
-            this.functionChart.ChartAreas.Add(chartArea5);
-            legend5.Name = "Legend1";
-            this.functionChart.Legends.Add(legend5);
+            chartArea12.Name = "ChartArea1";
+            this.functionChart.ChartAreas.Add(chartArea12);
+            legend12.Name = "Legend1";
+            this.functionChart.Legends.Add(legend12);
             this.functionChart.Location = new System.Drawing.Point(3, 260);
             this.functionChart.Name = "functionChart";
-            series5.BackHatchStyle = System.Windows.Forms.DataVisualization.Charting.ChartHatchStyle.BackwardDiagonal;
-            series5.ChartArea = "ChartArea1";
-            series5.ChartType = System.Windows.Forms.DataVisualization.Charting.SeriesChartType.Line;
-            series5.Color = System.Drawing.Color.Black;
-            series5.Legend = "Legend1";
-            series5.Name = "Series1";
-            this.functionChart.Series.Add(series5);
+            series12.BackHatchStyle = System.Windows.Forms.DataVisualization.Charting.ChartHatchStyle.BackwardDiagonal;
+            series12.ChartArea = "ChartArea1";
+            series12.ChartType = System.Windows.Forms.DataVisualization.Charting.SeriesChartType.Line;
+            series12.Color = System.Drawing.Color.Black;
+            series12.Legend = "Legend1";
+            series12.Name = "Series1";
+            this.functionChart.Series.Add(series12);
             this.functionChart.Size = new System.Drawing.Size(250, 238);
             this.functionChart.TabIndex = 1;
             this.functionChart.Text = "chart1";
-            // 
-            // bufferedPanel1
-            // 
-            this.bufferedPanel1.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.bufferedPanel1.Location = new System.Drawing.Point(3, 27);
-            this.bufferedPanel1.Name = "bufferedPanel1";
-            this.bufferedPanel1.Size = new System.Drawing.Size(556, 771);
-            this.bufferedPanel1.TabIndex = 5;
-            this.bufferedPanel1.Paint += new System.Windows.Forms.PaintEventHandler(this.bufferedPanel1_Paint);
-            this.bufferedPanel1.MouseDown += new System.Windows.Forms.MouseEventHandler(this.bufferedPanel1_MouseDown);
-            this.bufferedPanel1.MouseMove += new System.Windows.Forms.MouseEventHandler(this.bufferedPanel1_MouseMove);
-            this.bufferedPanel1.MouseUp += new System.Windows.Forms.MouseEventHandler(this.bufferedPanel1_MouseUp);
             // 
             // menuStrip1
             // 
@@ -550,40 +580,72 @@ namespace PresentationLayer.Views
             this.loadFromFileToolStripMenuItem1.Text = "Load from file...";
             this.loadFromFileToolStripMenuItem1.Click += new System.EventHandler(this.loadFromFileToolStripMenuItem1_Click);
             // 
-            // groupBox3
+            // groupBox4
             // 
-            this.groupBox3.Controls.Add(this.bezierCurveButton);
-            this.groupBox3.Controls.Add(this.normalCurveButton);
-            this.groupBox3.Location = new System.Drawing.Point(158, 10);
-            this.groupBox3.Name = "groupBox3";
-            this.groupBox3.Size = new System.Drawing.Size(86, 70);
-            this.groupBox3.TabIndex = 11;
-            this.groupBox3.TabStop = false;
-            this.groupBox3.Text = "Curve mode";
+            this.groupBox4.Controls.Add(this.kUpDown);
+            this.groupBox4.Controls.Add(this.label1);
+            this.groupBox4.Controls.Add(this.reductionCheckbox);
+            this.groupBox4.Location = new System.Drawing.Point(7, 119);
+            this.groupBox4.Name = "groupBox4";
+            this.groupBox4.Size = new System.Drawing.Size(171, 77);
+            this.groupBox4.TabIndex = 5;
+            this.groupBox4.TabStop = false;
+            this.groupBox4.Text = "Image loading";
             // 
-            // normalCurveButton
+            // reductionCheckbox
             // 
-            this.normalCurveButton.AutoSize = true;
-            this.normalCurveButton.Checked = true;
-            this.normalCurveButton.Location = new System.Drawing.Point(6, 19);
-            this.normalCurveButton.Name = "normalCurveButton";
-            this.normalCurveButton.Size = new System.Drawing.Size(58, 17);
-            this.normalCurveButton.TabIndex = 0;
-            this.normalCurveButton.TabStop = true;
-            this.normalCurveButton.Text = "Normal";
-            this.normalCurveButton.UseVisualStyleBackColor = true;
-            this.normalCurveButton.Click += new System.EventHandler(this.normalCurveButton_Click);
+            this.reductionCheckbox.AutoSize = true;
+            this.reductionCheckbox.Location = new System.Drawing.Point(6, 19);
+            this.reductionCheckbox.Name = "reductionCheckbox";
+            this.reductionCheckbox.Size = new System.Drawing.Size(97, 17);
+            this.reductionCheckbox.TabIndex = 0;
+            this.reductionCheckbox.Text = "Color reduction";
+            this.reductionCheckbox.UseVisualStyleBackColor = true;
+            this.reductionCheckbox.CheckedChanged += new System.EventHandler(this.reductionCheckbox_CheckedChanged);
             // 
-            // bezierCurveButton
+            // label1
             // 
-            this.bezierCurveButton.AutoSize = true;
-            this.bezierCurveButton.Location = new System.Drawing.Point(6, 42);
-            this.bezierCurveButton.Name = "bezierCurveButton";
-            this.bezierCurveButton.Size = new System.Drawing.Size(54, 17);
-            this.bezierCurveButton.TabIndex = 1;
-            this.bezierCurveButton.Text = "Bezier";
-            this.bezierCurveButton.UseVisualStyleBackColor = true;
-            this.bezierCurveButton.Click += new System.EventHandler(this.bezierCurveButton_Click);
+            this.label1.AutoSize = true;
+            this.label1.Location = new System.Drawing.Point(11, 47);
+            this.label1.Name = "label1";
+            this.label1.Size = new System.Drawing.Size(16, 13);
+            this.label1.TabIndex = 2;
+            this.label1.Text = "k:";
+            // 
+            // kUpDown
+            // 
+            this.kUpDown.Location = new System.Drawing.Point(33, 45);
+            this.kUpDown.Maximum = new decimal(new int[] {
+            255,
+            0,
+            0,
+            0});
+            this.kUpDown.Minimum = new decimal(new int[] {
+            1,
+            0,
+            0,
+            0});
+            this.kUpDown.Name = "kUpDown";
+            this.kUpDown.Size = new System.Drawing.Size(120, 20);
+            this.kUpDown.TabIndex = 3;
+            this.kUpDown.Value = new decimal(new int[] {
+            8,
+            0,
+            0,
+            0});
+            this.kUpDown.ValueChanged += new System.EventHandler(this.kUpDown_ValueChanged);
+            // 
+            // bufferedPanel1
+            // 
+            this.bufferedPanel1.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.bufferedPanel1.Location = new System.Drawing.Point(3, 27);
+            this.bufferedPanel1.Name = "bufferedPanel1";
+            this.bufferedPanel1.Size = new System.Drawing.Size(556, 771);
+            this.bufferedPanel1.TabIndex = 5;
+            this.bufferedPanel1.Paint += new System.Windows.Forms.PaintEventHandler(this.bufferedPanel1_Paint);
+            this.bufferedPanel1.MouseDown += new System.Windows.Forms.MouseEventHandler(this.bufferedPanel1_MouseDown);
+            this.bufferedPanel1.MouseMove += new System.Windows.Forms.MouseEventHandler(this.bufferedPanel1_MouseMove);
+            this.bufferedPanel1.MouseUp += new System.Windows.Forms.MouseEventHandler(this.bufferedPanel1_MouseUp);
             // 
             // MainView
             // 
@@ -610,14 +672,17 @@ namespace PresentationLayer.Views
             this.filterTable.ResumeLayout(false);
             this.pictureBox1.ResumeLayout(false);
             this.pictureBox1.PerformLayout();
+            this.groupBox3.ResumeLayout(false);
+            this.groupBox3.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.contrastBox)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.brightnessBox)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.gammaBox)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.functionChart)).EndInit();
             this.menuStrip1.ResumeLayout(false);
             this.menuStrip1.PerformLayout();
-            this.groupBox3.ResumeLayout(false);
-            this.groupBox3.PerformLayout();
+            this.groupBox4.ResumeLayout(false);
+            this.groupBox4.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.kUpDown)).EndInit();
             this.ResumeLayout(false);
 
         }
@@ -660,5 +725,9 @@ namespace PresentationLayer.Views
         private System.Windows.Forms.GroupBox groupBox3;
         private System.Windows.Forms.RadioButton bezierCurveButton;
         private System.Windows.Forms.RadioButton normalCurveButton;
+        private System.Windows.Forms.GroupBox groupBox4;
+        private System.Windows.Forms.NumericUpDown kUpDown;
+        private System.Windows.Forms.Label label1;
+        private System.Windows.Forms.CheckBox reductionCheckbox;
     }
 }

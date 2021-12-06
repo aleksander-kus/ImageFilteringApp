@@ -20,7 +20,8 @@ namespace PresentationLayer.Presenters
         private readonly IMainView view;
         private readonly IViewLoader viewLoader;
         private const int BRUSH_RADIUS = 50;
-
+        public LoadingMode LoadingMode { get; set; } = LoadingMode.Normal;
+        public int K { get; set; } = 8;
         public PolygonMode PolygonMode { get => polygonData.PolygonMode; set => polygonData.PolygonMode = value; }
         public CurveMode CurveMode { get => filterParameters.CurveMode; set => filterParameters.CurveMode = value; }
 
@@ -81,6 +82,11 @@ namespace PresentationLayer.Presenters
             if(drawingService != null)
             {
                 filterParameters.Selected = new bool[bitmap.Width, bitmap.Height];
+                if(LoadingMode == LoadingMode.Reduction)
+                {
+                    CalculateHistograms();
+                    ReduceColors();
+                }
                 drawingService.OriginalBitmap = bitmap;
                 selectingService.SelectAll(true);
                 UpdateBitmap();
@@ -164,6 +170,65 @@ namespace PresentationLayer.Presenters
             view.CanvasImage = drawingService.DrawBitmap();
             view.RedrawHistograms();
             view.RedrawCanvas();
+        }
+
+        private void ReduceColors()
+        {
+            var reds = ComputeReductionFromHistogram(colorHistograms.RHistogram);
+            var greens = ComputeReductionFromHistogram(colorHistograms.GHistogram);
+            var blues = ComputeReductionFromHistogram(colorHistograms.BHistogram);
+            ByteBitmap byteBitmap = new ByteBitmap(bitmap);
+            for (int i = 0; i < byteBitmap.Width; ++i)
+            {
+                for (int j = 0; j < byteBitmap.Height; ++j)
+                {
+                    Color color = byteBitmap.GetPixel(i, j);
+                    if (color.A != 255)
+                        continue;
+                    Color c = Color.FromArgb(GetClosest(reds, color.R), GetClosest(greens, color.G), GetClosest(blues, color.B));
+                    byteBitmap.SetPixel(i, j, c);
+                }
+            }
+            bitmap = byteBitmap.Bitmap;
+        }
+
+        private int GetClosest(List<int> values, int val)
+        {
+            if (values.Count == 0)
+                return 0;
+            int index = values.FindIndex(x => x > val);
+            if (index == -1)
+                return values.Last();
+            if (index == 0 || Math.Abs(val - values[index]) < Math.Abs(val - values[index - 1]))
+                return values[index];
+            return values[index - 1];
+        }
+
+        private List<int> ComputeReductionFromHistogram(int[] colors)
+        {
+            var kMaxColors = colors.Select((c, index) => (index, c)).ToList();
+            kMaxColors.Sort((x1, x2) => x2.c.CompareTo(x1.c));
+            var ret = kMaxColors.Take(K).Select(x => x.index).ToList();
+            ret.Sort();
+            return ret;
+        }
+
+        private void CalculateHistograms()
+        {
+            ByteBitmap byteBitmap = new ByteBitmap(bitmap);
+            colorHistograms.Clear();
+            for (int i = 0; i < byteBitmap.Width; ++i)
+            {
+                for (int j = 0; j < byteBitmap.Height; ++j)
+                {
+                    Color color = byteBitmap.GetPixel(i, j);
+                    if (color.A != 255)
+                        continue;
+                    ++colorHistograms.RHistogram[color.R];
+                    ++colorHistograms.GHistogram[color.G];
+                    ++colorHistograms.BHistogram[color.B];
+                }
+            }
         }
     }
 }

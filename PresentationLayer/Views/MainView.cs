@@ -203,5 +203,11 @@ namespace PresentationLayer.Views
         private void normalCurveButton_Click(object sender, EventArgs e) => presenter.CurveMode = curveMode = CurveMode.Normal;
 
         private void bezierCurveButton_Click(object sender, EventArgs e) => presenter.CurveMode = curveMode = CurveMode.Bezier;
+
+        private void reductionCheckbox_CheckedChanged(object sender, EventArgs e) => 
+            presenter.LoadingMode = reductionCheckbox.Checked ? LoadingMode.Reduction : LoadingMode.Normal;
+
+        private void kUpDown_ValueChanged(object sender, EventArgs e) => 
+            presenter.K = (int)kUpDown.Value;
     }
 }
