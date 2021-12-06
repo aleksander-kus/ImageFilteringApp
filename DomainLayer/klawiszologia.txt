@@ -1,0 +1,4 @@
+Program należy obsługiwać za pomocą myszki. Aby wybrac tryb zaznaczania, należy kliknąć jeden z przycisków w środkowej częśći ekranu. 
+W trybie zaznaczania wielokątem domyślnie wybrana jest możliwość ich dodawania. Aby dodać wielokąt, należy kliknąć w co najmniej trzech miejscach na panelu.
+Aby wybrać konkretny filtr, należy skorzystać z menu w środkowej części ekranu. Istnieje możliwość definiowania własnych filtrów, co można zrobić klikając przycisk Define custom function.
+W trybie dodawania własnej funkcji należy nacisnąć przycisk Apply, aby zobaczyć efekt filtru na obrazku.
