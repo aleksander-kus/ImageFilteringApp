@@ -50,36 +50,26 @@ namespace DomainLayer.Filters
 
         private void GetFunctionFromPointsBezier()
         {
-            ComputeBezier();
-        }
-
-        private PointF approx(float t, PointF p1, PointF p2)
-        {
-            float x = p1.X * (1 - t) + p2.X * t;
-            float y = p1.Y * (1 - t) + p2.Y * t;
-            return new PointF(x, y);
-        }
-
-        private void ComputeBezier()
-        {
             var bezierCurve = new List<PointF>();
             for (float t = 0; t < 1; t += 1 / 256f)
             {
-                var temp1 = new List<PointF>(controlPoints.Select(p => new PointF(p.X, p.Y)));
-                while (temp1.Count > 1)
+                var list1 = new List<PointF>(controlPoints.Select(p => new PointF(p.X, p.Y)));
+                while (list1.Count > 1)
                 {
-                    var temp2 = new List<PointF>();
-                    for (int i = 0; i < temp1.Count - 1; ++i)
+                    var list2 = new List<PointF>();
+                    for (int i = 0; i < list1.Count - 1; ++i)
                     {
-                        PointF p1 = temp1[i];
-                        PointF p2 = temp1[i + 1];
+                        PointF p1 = list1[i];
+                        PointF p2 = list1[i + 1];
+                        float x = p1.X * (1 - t) + p2.X * t;
+                        float y = p1.Y * (1 - t) + p2.Y * t;
 
-                        temp2.Add(approx(t, p1, p2));
+                        list2.Add(new PointF(x, y));
                     }
 
-                    temp1 = temp2;
+                    list1 = list2;
                 }
-                bezierCurve.Add(temp1[0]);
+                bezierCurve.Add(list1[0]);
             }
             for (int i = 0; i < bezierCurve.Count && i < BezierFunction.Length; ++i)
                 BezierFunction[i] = (int)bezierCurve[i].Y;
